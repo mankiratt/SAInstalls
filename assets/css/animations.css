@@ -1,0 +1,243 @@
+/* ============================================================
+   S&A INSTALLS & JOINERY — Animations
+   All motion is disabled for users who prefer reduced motion.
+   The @media (prefers-reduced-motion: no-preference) wrapper
+   means: animations ONLY run if the user hasn't turned them off.
+============================================================ */
+
+/* ============================================================
+   1. SCROLL-TRIGGERED FADE-UP ANIMATIONS
+   Elements start hidden (opacity 0, shifted down).
+   JavaScript adds .in-view when they enter the viewport.
+============================================================ */
+
+/* Default state — visible (fallback when JS or motion prefs block) */
+.animate-element {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated state — only when motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+    transition-delay: var(--anim-delay, 0s);
+  }
+
+  .animate-element.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   2. PAGE LOAD SEQUENCE
+   Hero content animates in on page load.
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Eyebrow label */
+  .hero .eyebrow.animate-element {
+    transition-delay: 0.1s;
+  }
+
+  /* Headline */
+  .hero .hero-heading.animate-element {
+    transition-delay: 0.25s;
+  }
+
+  /* Subheading */
+  .hero .hero-sub.animate-element {
+    transition-delay: 0.4s;
+  }
+
+  /* CTAs */
+  .hero .hero-ctas.animate-element {
+    transition-delay: 0.55s;
+  }
+
+}
+
+/* ============================================================
+   3. STAGGER DELAYS — SERVICE CARDS
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .service-card:nth-child(1).animate-element { transition-delay: 0s; }
+  .service-card:nth-child(2).animate-element { transition-delay: 0.1s; }
+  .service-card:nth-child(3).animate-element { transition-delay: 0.2s; }
+  .service-card:nth-child(4).animate-element { transition-delay: 0.3s; }
+  .service-card:nth-child(5).animate-element { transition-delay: 0.4s; }
+  .service-card:nth-child(6).animate-element { transition-delay: 0.5s; }
+}
+
+/* ============================================================
+   4. STAGGER DELAYS — WHY US CARDS
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .why-card:nth-child(1).animate-element { transition-delay: 0s; }
+  .why-card:nth-child(2).animate-element { transition-delay: 0.12s; }
+  .why-card:nth-child(3).animate-element { transition-delay: 0.24s; }
+  .why-card:nth-child(4).animate-element { transition-delay: 0.36s; }
+}
+
+/* ============================================================
+   5. STAGGER DELAYS — REVIEW CARDS
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .review-card:nth-child(1).animate-element { transition-delay: 0s; }
+  .review-card:nth-child(2).animate-element { transition-delay: 0.1s; }
+  .review-card:nth-child(3).animate-element { transition-delay: 0.2s; }
+  .review-card:nth-child(4).animate-element { transition-delay: 0.3s; }
+}
+
+/* ============================================================
+   6. STAGGER DELAYS — PROCESS STEPS
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .process-step:nth-child(1).animate-element { transition-delay: 0s; }
+  .process-step:nth-child(2).animate-element { transition-delay: 0.15s; }
+  .process-step:nth-child(3).animate-element { transition-delay: 0.3s; }
+  .process-step:nth-child(4).animate-element { transition-delay: 0.45s; }
+}
+
+/* ============================================================
+   7. HERO GRID FADE-IN
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-grid {
+    animation: gridFadeIn 1.2s ease 0.3s both;
+  }
+
+  @keyframes gridFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* ============================================================
+   8. HERO CYCLING WORD KEYFRAMES
+   Spring-style ease (cubic-bezier(0.22, 1, 0.36, 1)) mimics
+   framer-motion's spring physics — overshoots then settles.
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroWordIn {
+    from { opacity: 0; transform: translateY(110%); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes heroWordOut {
+    0%  { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0; transform: translateY(-30%); }
+    100% { opacity: 0; transform: translateY(-60%); }
+  }
+}
+
+/* Reduced motion: no word animation — first word stays static */
+@media (prefers-reduced-motion: reduce) {
+  .hero-word.word-in,
+  .hero-word.word-out { animation: none; }
+  .hero-word.word-in  { opacity: 1; transform: translateY(0); }
+  .hero-word.word-out { opacity: 0; }
+}
+
+/* ============================================================
+   9. SCROLL INDICATOR BOUNCE
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+    50%       { transform: translateX(-50%) translateY(8px); opacity: 0.7; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator { animation: none; }
+}
+
+/* ============================================================
+   9. FLOATING ACTION BUTTON ENTRANCE
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .fab-container {
+    animation: fabEntrance 0.6s ease 1.2s both;
+  }
+
+  @keyframes fabEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Subtle attention bounce after entrance */
+  .fab {
+    animation: fabBounce 3s ease 2s 2;
+  }
+
+  @keyframes fabBounce {
+    0%, 100% { transform: translateY(0); }
+    20%  { transform: translateY(-6px); }
+    40%  { transform: translateY(0); }
+    60%  { transform: translateY(-3px); }
+    80%  { transform: translateY(0); }
+  }
+}
+
+/* ============================================================
+   10. LOADING SHIMMER (for future image loading states)
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface) 25%,
+      var(--color-surface-2) 50%,
+      var(--color-surface) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* ============================================================
+   11. SMOOTH TRANSITIONS — GLOBAL
+============================================================ */
+
+/* Navigation active link underline */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link::after {
+    transition: width 0.25s ease;
+  }
+}
+
+/* Gallery filter tabs */
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-filter {
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+  .gallery-filter:active { transform: scale(0.96); }
+}
+
+/* Value cards slide right on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .value-card {
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+}
+
+/* Lightbox fade */
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox {
+    transition: opacity 0.3s ease;
+  }
+}

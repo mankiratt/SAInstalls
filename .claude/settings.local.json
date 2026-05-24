@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse -File \"c:\\\\Users\\\\Home\\\\Desktop\\\\SimonSAWebsite\" | ForEach-Object { \"$\\($_.FullName.Replace\\('c:\\\\Users\\\\Home\\\\Desktop\\\\SimonSAWebsite\\\\',''\\)\\)  \\($\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\\)\" })",
+      "WebFetch(domain:www.google.com)",
+      "WebSearch"
+    ]
+  }
+}
