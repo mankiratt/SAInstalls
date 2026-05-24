@@ -12,6 +12,46 @@
   const allItems = Array.from(document.querySelectorAll('.gallery-item'));
   let filteredItems = [...allItems]; // items visible in current filter
   let currentIndex = 0;             // index within filteredItems
+  let showAll = false;              // whether "see all" is expanded
+
+  const DESKTOP_LIMIT = 6;
+  const MOBILE_LIMIT  = 3;
+
+  function getLimit() {
+    return window.innerWidth <= 600 ? MOBILE_LIMIT : DESKTOP_LIMIT;
+  }
+
+  /* ----------------------------------------------------------
+     SHOW MORE / SEE ALL BUTTON
+  ---------------------------------------------------------- */
+  const showMoreWrap = document.getElementById('gallery-show-more');
+  const seeAllBtn    = document.getElementById('gallery-see-all');
+
+  function applyLimit() {
+    const limit = showAll ? Infinity : getLimit();
+    const visible = filteredItems.filter(i => !i.classList.contains('hidden'));
+
+    visible.forEach((item, i) => {
+      item.classList.toggle('limit-hidden', i >= limit);
+    });
+
+    const hasMore = visible.length > getLimit();
+    showMoreWrap.classList.toggle('hidden', !hasMore);
+    if (seeAllBtn) {
+      seeAllBtn.textContent = showAll ? 'Show Less' : 'See All Projects';
+    }
+  }
+
+  if (seeAllBtn) {
+    seeAllBtn.addEventListener('click', () => {
+      showAll = !showAll;
+      applyLimit();
+      if (!showAll) {
+        // scroll back up to the gallery section when collapsing
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
 
   /* ----------------------------------------------------------
      FILTER TABS
@@ -30,6 +70,7 @@
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
 
+      showAll = false; // reset expand state on filter change
       applyFilter(category);
     });
   });
@@ -38,18 +79,19 @@
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReduced) {
-      // No animation — just show/hide
       allItems.forEach(item => {
         const match = category === 'all' || item.dataset.category === category;
         item.classList.toggle('hidden', !match);
+        item.classList.remove('limit-hidden');
       });
       filteredItems = allItems.filter(item => !item.classList.contains('hidden'));
+      applyLimit();
       return;
     }
 
     // Step 1: fade out all visible items
     allItems.forEach(item => {
-      if (!item.classList.contains('hidden')) {
+      if (!item.classList.contains('hidden') && !item.classList.contains('limit-hidden')) {
         item.classList.add('filtering');
       }
     });
@@ -57,17 +99,15 @@
     // Step 2: after fade-out, show/hide and fade in
     setTimeout(() => {
       allItems.forEach(item => {
-        item.classList.remove('filtering');
+        item.classList.remove('filtering', 'limit-hidden');
         const match = category === 'all' || item.dataset.category === category;
         item.classList.toggle('hidden', !match);
-        if (match) {
-          item.classList.add('filter-in');
-        }
+        if (match) item.classList.add('filter-in');
       });
 
       filteredItems = allItems.filter(item => !item.classList.contains('hidden'));
+      applyLimit();
 
-      // Clean up transition class after animation completes
       setTimeout(() => {
         allItems.forEach(item => item.classList.remove('filter-in'));
       }, 400);
@@ -153,16 +193,19 @@
   ---------------------------------------------------------- */
   allItems.forEach(item => {
     item.addEventListener('click', () => {
-      if (!item.classList.contains('hidden')) openLightbox(item);
+      if (!item.classList.contains('hidden') && !item.classList.contains('limit-hidden')) openLightbox(item);
     });
 
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (!item.classList.contains('hidden')) openLightbox(item);
+        if (!item.classList.contains('hidden') && !item.classList.contains('limit-hidden')) openLightbox(item);
       }
     });
   });
+
+  // Run on load
+  applyLimit();
 
   /* ----------------------------------------------------------
      LIGHTBOX CONTROLS

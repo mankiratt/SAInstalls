@@ -678,35 +678,28 @@ body.cursor-hover .cursor-follower {
   color: #fff;
 }
 
-/* Gallery grid — masonry-style with mixed row spans */
+/* Gallery grid — 3 columns, uniform 16:9 */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 220px;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  grid-auto-flow: dense;
 }
 
-@media (min-width: 769px) {
+@media (max-width: 600px) {
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 260px;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
-/* Tall items span 2 rows */
-.gallery-item--tall {
-  grid-row: span 2;
-}
-
-/* Gallery items */
+/* Gallery items — uniform 16:9 */
 .gallery-item {
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
   cursor: pointer;
   background: var(--color-surface);
+  aspect-ratio: 16 / 9;
 }
 
 .gallery-item img {
@@ -723,6 +716,11 @@ body.cursor-hover .cursor-follower {
 
 /* Hidden items when filtered out */
 .gallery-item.hidden {
+  display: none;
+}
+
+/* Hidden by the show-more limit */
+.gallery-item.limit-hidden {
   display: none;
 }
 
@@ -807,6 +805,16 @@ body.cursor-hover .cursor-follower {
   color: var(--color-text);
 }
 
+/* See All / Show Less button */
+.gallery-show-more {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.gallery-show-more.hidden {
+  display: none;
+}
+
 /* ============================================================
    11. LIGHTBOX
 ============================================================ */
@@ -847,8 +855,8 @@ body.cursor-hover .cursor-follower {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  max-width: 900px;
-  width: 90vw;
+  max-width: 1200px;
+  width: 95vw;
   padding: 0 var(--space-sm);
 }
 
@@ -862,12 +870,11 @@ body.cursor-hover .cursor-follower {
 
 .lightbox-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--color-surface-2);
-  min-height: 300px;
 }
 
 .lightbox-image-placeholder {
@@ -978,11 +985,9 @@ body.cursor-hover .cursor-follower {
     gap: 0;
   }
 
-  /* Make the image tall enough to actually see */
+  /* Keep 16:9 on mobile, let width drive the height */
   .lightbox-image {
-    aspect-ratio: unset;
-    height: 58vh;
-    min-height: unset;
+    aspect-ratio: 16 / 9;
   }
 
   /* Nav arrows — ghost style, overlaid on image sides */
