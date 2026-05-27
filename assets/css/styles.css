@@ -813,10 +813,7 @@ body.cursor-hover .cursor {
 }
 
 .gallery-overlay-title {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text);
+  display: none;
 }
 
 /* See All / Show Less button */
