@@ -331,18 +331,34 @@
       return;
     }
 
-    /*
-      FORM SUBMISSION NOTE:
-      This is a static site — connect a form service to send emails.
-      Options: Netlify Forms (add data-netlify="true" to <form>),
-      Formspree (action="https://formspree.io/f/YOUR_ID"),
-      or EmailJS for client-side email sending.
+    const submitBtn = form.querySelector('[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
 
-      For now: show the success message.
-    */
-
-    form.hidden = true;
-    if (success) success.hidden = false;
+    const formData = new FormData(form);
+    fetch('https://formspree.io/f/mwvzwapj', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(res => {
+        if (res.ok) {
+          form.hidden = true;
+          if (success) success.hidden = false;
+        } else {
+          res.json().then(data => {
+            const msg = (data.errors || []).map(e => e.message).join(', ') || 'Something went wrong. Please try again.';
+            alert(msg);
+          });
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Enquiry';
+        }
+      })
+      .catch(() => {
+        alert('Could not send your message. Please check your connection and try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Enquiry';
+      });
   });
 })();
 
