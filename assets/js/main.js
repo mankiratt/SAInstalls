@@ -16,46 +16,56 @@
   if (!words.length) return;
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // With reduced motion, keep first word visible and don't cycle
   if (prefersReduced) return;
 
   let current = 0;
-  const IN_DURATION  = 750; // matches heroWordIn duration
-  const OUT_DURATION = 200; // matches heroWordOut duration
-  const HOLD_TIME    = 2500; // how long each word is held visible
+  let intervalId = null;
+  const IN_DURATION  = 750;
+  const OUT_DURATION = 200;
+  const HOLD_TIME    = 2500;
+
+  function resetToWord(idx) {
+    words.forEach((w, i) => {
+      w.classList.remove('active', 'word-in', 'word-out');
+      if (i === idx) w.classList.add('active');
+    });
+  }
 
   function cycleToNext() {
     const outEl = words[current];
-
-    // Slide the current word out
     outEl.classList.remove('active');
     outEl.classList.add('word-out');
+    setTimeout(() => outEl.classList.remove('word-out'), OUT_DURATION);
 
-    // Clean up word-out class after animation finishes
-    setTimeout(() => {
-      outEl.classList.remove('word-out');
-    }, OUT_DURATION);
-
-    // Move to next word (wrap around)
     current = (current + 1) % words.length;
     const inEl = words[current];
-
-    // Slide the next word in — starts simultaneously with out
     inEl.classList.add('word-in');
-
-    // After it's fully in, switch from animated state to static active state
     setTimeout(() => {
       inEl.classList.remove('word-in');
       inEl.classList.add('active');
     }, IN_DURATION);
   }
 
-  // First cycle starts after hero has faded in (hero transition is ~0.9s)
-  // plus a beat so the visitor reads the first word
-  setTimeout(() => {
-    setInterval(cycleToNext, HOLD_TIME);
-  }, 1200);
+  function start() {
+    intervalId = setInterval(cycleToNext, HOLD_TIME);
+  }
+
+  function stop() {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  // Pause when tab is hidden, reset cleanly when it becomes visible again
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stop();
+    } else {
+      resetToWord(current);
+      start();
+    }
+  });
+
+  setTimeout(start, 1200);
 })();
 
 /* ============================================================
