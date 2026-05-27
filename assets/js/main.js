@@ -165,30 +165,13 @@
   if (window.matchMedia('(hover: none)').matches) return;
 
   const cursor = document.querySelector('.cursor');
-  const follower = document.querySelector('.cursor-follower');
-  if (!cursor || !follower) return;
-
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
+  if (!cursor) return;
 
   document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
   });
 
-  // Follower lags behind slightly for a smooth feel
-  function animateFollower() {
-    followerX += (mouseX - followerX) * 0.12;
-    followerY += (mouseY - followerY) * 0.12;
-    follower.style.left = followerX + 'px';
-    follower.style.top = followerY + 'px';
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
-
-  // Expand cursor on interactive elements
   const hoverTargets = 'a, button, [role="button"], input, select, textarea, .gallery-item, .service-card';
   document.querySelectorAll(hoverTargets).forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));

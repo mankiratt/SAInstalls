@@ -219,28 +219,11 @@ p:last-child { margin-bottom: 0; }
   transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
 }
 
-.cursor-follower {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid rgba(255, 107, 43, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
-}
-
 /* Cursor expands when hovering over links/buttons */
 body.cursor-hover .cursor {
   width: 12px;
   height: 12px;
   background: var(--color-accent-hover);
-}
-body.cursor-hover .cursor-follower {
-  width: 48px;
-  height: 48px;
-  border-color: rgba(255, 107, 43, 0.3);
 }
 
 /* ============================================================
@@ -296,6 +279,7 @@ body.cursor-hover .cursor-follower {
   letter-spacing: 0.15em;
   color: var(--color-text-muted);
   margin-top: 2px;
+  text-align: center;
 }
 
 .nav-logo:hover .nav-logo-main { color: var(--color-accent); }
@@ -941,10 +925,7 @@ body.cursor-hover .cursor-follower {
 }
 
 .lightbox-title {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 4px 0 6px;
+  display: none; /* hidden — data-title kept in HTML for future descriptions */
 }
 
 .lightbox-placeholder-note {
