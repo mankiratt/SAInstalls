@@ -230,20 +230,24 @@
 
 
 /* ============================================================
-   6. HERO PARALLAX — grid drifts very subtly on scroll
+   6. HERO SLIDESHOW — rotates the three hero background photos
 ============================================================ */
-(function initParallax() {
+(function initHeroSlideshow() {
+  const slides = Array.from(document.querySelectorAll('.hero-slide'));
+  if (slides.length < 2) return;
+
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
 
-  const grid = document.querySelector('.hero-grid');
-  if (!grid) return;
+  let current = 0;
+  const HOLD = prefersReduced ? 999999 : 6000; // pause indefinitely if reduced motion
 
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (scrollY > window.innerHeight) return;
-    grid.style.transform = `translateY(${scrollY * 0.08}px)`;
-  }, { passive: true });
+  function nextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(nextSlide, HOLD);
 })();
 
 

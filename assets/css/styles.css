@@ -253,6 +253,9 @@ body.cursor-hover .cursor-follower {
   right: 0;
   z-index: 1000;
   padding: 0;
+  background: rgba(13, 13, 13, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: background var(--transition-slow), backdrop-filter var(--transition-slow), box-shadow var(--transition-slow), padding var(--transition-slow);
 }
 
@@ -428,7 +431,7 @@ body.cursor-hover .cursor-follower {
   background: var(--color-bg);
 }
 
-/* Grid pattern background */
+/* Photo slideshow background */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -436,16 +439,41 @@ body.cursor-hover .cursor-follower {
   z-index: 0;
 }
 
-.hero-grid {
+.hero-slides {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(to right,  rgba(201, 185, 154, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(201, 185, 154, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-  /* fade-edges mask: visible at centre, transparent at edges */
-  mask-image: radial-gradient(ellipse 80% 80% at center, black 20%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at center, black 20%, transparent 80%);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  animation: heroSlideZoom 22s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+@keyframes heroSlideZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
+}
+
+/* Dark tint over the photos */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.52) 0%,
+    rgba(0, 0, 0, 0.45) 60%,
+    rgba(13, 13, 13, 0.85) 100%
+  );
 }
 
 .hero-content {
@@ -462,6 +490,7 @@ body.cursor-hover .cursor-follower {
   line-height: 1.25;
   margin-bottom: var(--space-md);
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* Cycling word slot — inline container sized by the invisible spacer.
@@ -535,11 +564,12 @@ body.cursor-hover .cursor-follower {
 
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--color-text-muted);
+  color: rgba(240, 237, 232, 0.8);
   max-width: 600px;
   margin-inline: auto;
   margin-bottom: var(--space-lg);
   line-height: 1.6;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
 .hero-ctas {

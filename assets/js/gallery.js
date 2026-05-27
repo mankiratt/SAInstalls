@@ -156,16 +156,12 @@
     lbTitle.textContent = title;
     lbCat.textContent   = category;
 
-    // Re-create the placeholder content (swap for <img> when real photos are added)
-    lbImage.innerHTML = `
-      <div class="lightbox-image-placeholder">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span>${title}</span>
-      </div>
-    `;
+    const imgEl = item.querySelector('img');
+    if (imgEl) {
+      lbImage.innerHTML = `<img src="${imgEl.src}" alt="${imgEl.alt}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    } else {
+      lbImage.innerHTML = `<div class="lightbox-image-placeholder"><span>${title}</span></div>`;
+    }
 
     // Update prev/next button states
     lbPrev.disabled = currentIndex <= 0;

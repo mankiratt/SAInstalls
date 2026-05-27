@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="S&A Installs & Joinery — Bespoke kitchens, wardrobes and joinery across Melbourne's south east. 60 years of combined experience.">
+  <meta name="description" content="S&A Installs & Joinery — Bespoke kitchens, wardrobes and joinery across Melbourne. 60 years of combined experience.">
   <meta name="keywords" content="custom kitchens Melbourne, built-in wardrobes, joinery Melbourne, Clyde North, Berwick, Cranbourne, Narre Warren">
   <meta property="og:title" content="S&A Installs &amp; Joinery | Premium Custom Joinery Melbourne">
   <meta property="og:description" content="Handcrafted kitchens, wardrobes and joinery in Melbourne's south east. 30+ years experience.">
@@ -49,7 +49,7 @@
 
       <!-- CTA + hamburger -->
       <div class="nav-actions">
-        <a href="#contact" class="btn btn-accent nav-cta">Get a Free Quote</a>
+        <a href="#contact" class="btn btn-accent nav-cta">Get a Quote</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -63,7 +63,7 @@
       <a href="#about" class="nav-mobile-link">About</a>
       <a href="#reviews" class="nav-mobile-link">Reviews</a>
       <a href="#contact" class="nav-mobile-link">Contact</a>
-      <a href="#contact" class="btn btn-accent nav-mobile-cta">Get a Free Quote</a>
+      <a href="#contact" class="btn btn-accent nav-mobile-cta">Get a Quote</a>
     </div>
   </header>
 
@@ -74,9 +74,16 @@
     ============================================================ -->
     <section class="hero" id="home" aria-label="Hero">
 
-      <!-- Grid pattern background -->
+      <!-- Rotating photo background -->
       <div class="hero-bg" aria-hidden="true">
-        <div class="hero-grid"></div>
+        <div class="hero-slides">
+          <div class="hero-slide active" style="background-image: url('assets/images/heroimage1.jpg')"></div>
+          <div class="hero-slide" style="background-image: url('assets/images/heroimage2.jpg')"></div>
+          <div class="hero-slide" style="background-image: url('assets/images/heroimage3.jpg')"></div>
+          <div class="hero-slide" style="background-image: url('assets/images/heroimage4.jpg')"></div>
+
+        </div>
+        <div class="hero-overlay"></div>
       </div>
 
       <div class="hero-content container">
@@ -91,10 +98,10 @@
             <em class="hero-word">home.</em>
           </span>
         </h1>
-        <p class="hero-sub animate-element">Bespoke kitchens, wardrobes and joinery across Melbourne's south east.<br>60 years of combined experience.</p>
+        <p class="hero-sub animate-element">Bespoke kitchens, wardrobes and joinery across Melbourne.<br>60 years of combined experience.</p>
         <div class="hero-ctas animate-element">
           <a href="#gallery" class="btn btn-outline">View Our Work</a>
-          <a href="#contact" class="btn btn-accent">Get a Free Quote</a>
+          <a href="#contact" class="btn btn-accent">Get a Quote</a>
         </div>
       </div>
 
@@ -202,7 +209,7 @@
               </svg>
             </div>
             <h3 class="service-title">Design &amp; Consultation</h3>
-            <p class="service-desc">We come to you. Free measure and quote, design collaboration, and expert advice — all before a single piece of timber is cut.</p>
+            <p class="service-desc">We come to you. No-obligation quote, design collaboration, 3D visualisations, and expert advice — all before a single piece of timber is cut.</p>
           </article>
 
         </div>
@@ -233,114 +240,191 @@
         <!-- Gallery grid -->
         <div class="gallery-grid" id="gallery-grid" role="tabpanel">
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 01" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 01">
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&h=900&q=80" alt="Modern custom kitchen with white cabinetry" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 01</span></div>
+          <!-- Classic White Kitchen -->
+          <div class="gallery-item" data-category="kitchen" data-title="Classic Kitchen — 01" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen1.jpg" alt="Classic kitchen with marble island benchtop" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 01</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 02" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 02">
-            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=800&h=600&q=80" alt="Contemporary kitchen interior" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 02</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 02" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen2.jpg" alt="Classic white kitchen with custom cabinetry" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 02</span></div>
           </div>
 
-          <div class="gallery-item" data-category="wardrobe" data-title="Wardrobe Project 01" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Wardrobe Project 01">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&h=600&q=80" alt="Walk-in wardrobe with custom shelving" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Wardrobe Project 01</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 03" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen3.jpg" alt="Classic white kitchen detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 03</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 03" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 03">
-            <img src="https://images.unsplash.com/photo-1556741533-6e21e3e8eb13?auto=format&fit=crop&w=800&h=600&q=80" alt="Kitchen with island bench and pendant lighting" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 03</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 04" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen4.jpg" alt="Classic white kitchen cabinetry detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 04</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bathroom" data-title="Bathroom Project 01" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Bathroom Project 01">
-            <img src="https://images.unsplash.com/photo-1552321554-5fec1897a18d?auto=format&fit=crop&w=800&h=900&q=80" alt="Modern bathroom with custom vanity" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Bathroom Project 01</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 05" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen4.jpg" alt="Classic white kitchen with timber flooring" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 05</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 04" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 04">
-            <img src="https://images.unsplash.com/photo-1484154152905-8be9d20281f7?auto=format&fit=crop&w=800&h=600&q=80" alt="Kitchen with stone benchtop and custom cabinetry" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 04</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 06" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen5.jpg" alt="Classic white kitchen with subway tile splashback" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 06</span></div>
           </div>
 
-          <div class="gallery-item" data-category="wardrobe" data-title="Wardrobe Project 02" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Wardrobe Project 02">
-            <img src="https://images.unsplash.com/photo-1595526051059-4b7f3e8e34de?auto=format&fit=crop&w=800&h=900&q=80" alt="Built-in wardrobe with sliding doors" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Wardrobe Project 02</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 07" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen6.jpg" alt="Classic white kitchen open plan" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 07</span></div>
           </div>
 
-          <div class="gallery-item" data-category="commercial" data-title="Commercial Project 01" data-label="Commercial" tabindex="0" role="button" aria-label="View Commercial Project 01">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&h=600&q=80" alt="Commercial office joinery fitout" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span><span class="gallery-overlay-title">Commercial Project 01</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 08" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/kitchen7.jpg" alt="Classic white kitchen storage" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 08</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bathroom" data-title="Bathroom Project 02" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Bathroom Project 02">
-            <img src="https://images.unsplash.com/photo-1552567005-da773e6b6b97?auto=format&fit=crop&w=800&h=600&q=80" alt="Bathroom vanity with double basin" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Bathroom Project 02</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 09" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0038.jpg" alt="Classic white kitchen hardware detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 09</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 05" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 05">
-            <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=800&h=900&q=80" alt="Luxury kitchen with integrated appliances" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 05</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 10" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0039.jpg" alt="Classic white kitchen benchtop and sink" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 10</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bedroom" data-title="Bedroom Project 01" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Bedroom Project 01">
-            <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&w=800&h=600&q=80" alt="Master bedroom with custom joinery" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Bedroom Project 01</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 11" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0040.jpg" alt="Classic white kitchen overhead view" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 11</span></div>
           </div>
 
-          <div class="gallery-item" data-category="commercial" data-title="Commercial Project 02" data-label="Commercial" tabindex="0" role="button" aria-label="View Commercial Project 02">
-            <img src="https://images.unsplash.com/photo-1497366754035-3efad51eaf60?auto=format&fit=crop&w=800&h=600&q=80" alt="Commercial fitout with custom cabinetry" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span><span class="gallery-overlay-title">Commercial Project 02</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 12" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0041.jpg" alt="Classic white kitchen with range cooker" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 12</span></div>
           </div>
 
-          <div class="gallery-item" data-category="wardrobe" data-title="Wardrobe Project 03" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Wardrobe Project 03">
-            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&h=600&q=80" alt="Custom wardrobe with internal organisation" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Wardrobe Project 03</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 13" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0042.jpg" alt="Classic white kitchen island" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 13</span></div>
           </div>
 
-          <div class="gallery-item" data-category="commercial" data-title="Commercial Project 03" data-label="Commercial" tabindex="0" role="button" aria-label="View Commercial Project 03">
-            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&h=900&q=80" alt="Commercial hospitality joinery" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span><span class="gallery-overlay-title">Commercial Project 03</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 14" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0043.jpg" alt="Classic white kitchen upper cabinets" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 14</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 06" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 06">
-            <img src="https://images.unsplash.com/photo-1507089947277-9b28f1944e90?auto=format&fit=crop&w=800&h=600&q=80" alt="Open-plan kitchen with custom joinery" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 06</span></div>
+          <div class="gallery-item" data-category="kitchen" data-title="Classic White Kitchen — 15" data-label="Kitchens" tabindex="0" role="button" aria-label="View Classic White Kitchen">
+            <img src="assets/images/IMG-20260115-WA0044.jpg" alt="Classic white kitchen finished view" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Classic White Kitchen — 15</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bathroom" data-title="Bathroom Project 03" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Bathroom Project 03">
-            <img src="https://images.unsplash.com/photo-1552568301-fd6bbcf0db5f?auto=format&fit=crop&w=800&h=600&q=80" alt="Ensuite with floating vanity" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Bathroom Project 03</span></div>
+          <!-- Timber Kitchen -->
+          <div class="gallery-item" data-category="kitchen" data-title="Timber Kitchen" data-label="Kitchens" tabindex="0" role="button" aria-label="View Timber Kitchen">
+            <img src="assets/images/20260115_104733.jpg" alt="Custom timber kitchen with dark hardware" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Timber Kitchen</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bedroom" data-title="Bedroom Project 02" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Bedroom Project 02">
-            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&h=600&q=80" alt="Bedroom with built-in storage solutions" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Bedroom Project 02</span></div>
+          <!-- White Built-In Wardrobe -->
+          <div class="gallery-item" data-category="wardrobe" data-title="White Built-In Wardrobe — 01" data-label="Wardrobes" tabindex="0" role="button" aria-label="View White Built-In Wardrobe">
+            <img src="assets/images/20260520_143230.jpg" alt="White built-in wardrobe with shaker doors" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">White Built-In Wardrobe — 01</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 07" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 07">
-            <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&h=900&q=80" alt="Dark kitchen with handleless cabinetry" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 07</span></div>
+          <div class="gallery-item" data-category="wardrobe" data-title="White Built-In Wardrobe — 02" data-label="Wardrobes" tabindex="0" role="button" aria-label="View White Built-In Wardrobe">
+            <img src="assets/images/20260520_143237.jpg" alt="White built-in wardrobe detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">White Built-In Wardrobe — 02</span></div>
           </div>
 
-          <div class="gallery-item" data-category="wardrobe" data-title="Wardrobe Project 04" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Wardrobe Project 04">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&h=600&q=80" alt="Floor-to-ceiling wardrobe fitout" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Wardrobe Project 04</span></div>
+          <div class="gallery-item" data-category="wardrobe" data-title="White Built-In Wardrobe — 03" data-label="Wardrobes" tabindex="0" role="button" aria-label="View White Built-In Wardrobe">
+            <img src="assets/images/20260520_143246.jpg" alt="White built-in wardrobe interior shelving" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">White Built-In Wardrobe — 03</span></div>
           </div>
 
-          <div class="gallery-item" data-category="bathroom" data-title="Bathroom Project 04" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Bathroom Project 04">
-            <img src="https://images.unsplash.com/photo-1552568010-7d42c9fea1b2?auto=format&fit=crop&w=800&h=600&q=80" alt="Bathroom with custom timber vanity" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Bathroom Project 04</span></div>
+          <div class="gallery-item" data-category="wardrobe" data-title="White Built-In Wardrobe — 04" data-label="Wardrobes" tabindex="0" role="button" aria-label="View White Built-In Wardrobe">
+            <img src="assets/images/20260520_143306.jpg" alt="White built-in wardrobe with fold-down desk" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">White Built-In Wardrobe — 04</span></div>
           </div>
 
-          <div class="gallery-item" data-category="commercial" data-title="Commercial Project 04" data-label="Commercial" tabindex="0" role="button" aria-label="View Commercial Project 04">
-            <img src="https://images.unsplash.com/photo-1497366858526-2e1a62a2aca1?auto=format&fit=crop&w=800&h=600&q=80" alt="Retail and commercial joinery installation" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span><span class="gallery-overlay-title">Commercial Project 04</span></div>
+          <div class="gallery-item" data-category="wardrobe" data-title="White Built-In Wardrobe — 05" data-label="Wardrobes" tabindex="0" role="button" aria-label="View White Built-In Wardrobe">
+            <img src="assets/images/20260520_143331.jpg" alt="White built-in wardrobe full view" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">White Built-In Wardrobe — 05</span></div>
           </div>
 
-          <div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 08" data-label="Kitchens" tabindex="0" role="button" aria-label="View Kitchen Project 08">
-            <img src="https://images.unsplash.com/photo-1556909011-b6a40b9a2b31?auto=format&fit=crop&w=800&h=600&q=80" alt="Kitchen cabinetry detail and hardware" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span><span class="gallery-overlay-title">Kitchen Project 08</span></div>
+          <div class="gallery-item" data-category="wardrobe" data-title="Laundry & Wardrobe — 01" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Laundry & Wardrobe project">
+            <img src="assets/images/20260520_143446.jpg" alt="White wardrobe with integrated ironing board" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Laundry &amp; Wardrobe — 01</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Laundry & Wardrobe — 02" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Laundry & Wardrobe project">
+            <img src="assets/images/20260520_143503.jpg" alt="White wardrobe ironing board open" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Laundry &amp; Wardrobe — 02</span></div>
+          </div>
+
+          <!-- Dark Shelving & Walk-In -->
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 01" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0001.jpg" alt="Custom dark shelving unit with lighting" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 01</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 02" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0002.jpg" alt="Custom shelving detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 02</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 03" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0003(1).jpg" alt="Custom shelving fitout" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 03</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 04" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0003.jpg" alt="Custom shelving with open storage" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 04</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 05" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0004.jpg" alt="Custom shelving full installation" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 05</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="wardrobe" data-title="Custom Shelving — 06" data-label="Wardrobes" tabindex="0" role="button" aria-label="View Custom Shelving project">
+            <img src="assets/images/IMG-20260409-WA0005.jpg" alt="Custom shelving finished view" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span><span class="gallery-overlay-title">Custom Shelving — 06</span></div>
+          </div>
+
+          <!-- Bathroom -->
+          <div class="gallery-item" data-category="bathroom" data-title="Custom Bathroom Vanity" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Custom Bathroom Vanity">
+            <img src="assets/images/20260115_104747.jpg" alt="Custom bathroom vanity with timber and dark accents" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Custom Bathroom Vanity</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="bathroom" data-title="Bathroom Mirrors" data-label="Bathrooms" tabindex="0" role="button" aria-label="View Bathroom Mirrors installation">
+            <img src="assets/images/20260115_124932.jpg" alt="Custom bathroom mirror installation" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span><span class="gallery-overlay-title">Bathroom Mirrors</span></div>
+          </div>
+
+          <!-- Entertainment Unit & Living Room Joinery -->
+          <div class="gallery-item" data-category="bedroom" data-title="Entertainment Unit — 01" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Entertainment Unit project">
+            <img src="assets/images/IMG-20260501-WA0000.jpg" alt="Custom built-in entertainment unit with shelving and fireplace" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Entertainment Unit — 01</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="bedroom" data-title="Entertainment Unit — 02" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Entertainment Unit project">
+            <img src="assets/images/IMG-20260501-WA0001.jpg" alt="Custom built-in entertainment unit detail" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Entertainment Unit — 02</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="bedroom" data-title="Entertainment Unit — 03" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Entertainment Unit project">
+            <img src="assets/images/IMG-20260501-WA0003.jpg" alt="Custom built-in entertainment unit finished" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Entertainment Unit — 03</span></div>
+          </div>
+
+          <!-- Living & Dining -->
+          <div class="gallery-item" data-category="bedroom" data-title="Living & Dining — 01" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Living & Dining project">
+            <img src="assets/images/20260115_104738.jpg" alt="Custom joinery in dining and living space" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Living &amp; Dining — 01</span></div>
+          </div>
+
+          <div class="gallery-item" data-category="bedroom" data-title="Living & Dining — 02" data-label="Bedrooms" tabindex="0" role="button" aria-label="View Living & Dining project">
+            <img src="assets/images/20260115_104742.jpg" alt="Custom joinery lounge area" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span><span class="gallery-overlay-title">Living &amp; Dining — 02</span></div>
           </div>
 
         </div><!-- end gallery-grid -->
@@ -367,8 +451,8 @@
             </div>
             <div class="about-body animate-element">
               <p>S&amp;A Installs &amp; Joinery was built on a simple belief — that every home deserves quality craftsmanship that stands the test of time. With over 30 years of personal experience and a combined 60 years between our team, we bring unmatched knowledge and skill to every project we take on.</p>
-              <p>Every piece we build is handcrafted to your exact specifications. We use only premium materials and hardware — including Blum and Hafele — because we believe the details matter. From the first consultation to the final installation, we treat every home like our own.</p>
-              <p>Based in Melbourne's south east, we service <strong>Clyde North, Berwick, Cranbourne, Narre Warren, Pakenham, Dandenong</strong> and surrounding suburbs.</p>
+              <p>Every piece we build is handcrafted to your exact specifications. We use only premium materials and hardware because we believe the details matter. From the first consultation to the final installation, we treat every home like our own.</p>
+              <p>Based in Melbourne, we service all suburbs across the city and surrounds.</p>
             </div>
             <div class="about-stats animate-element">
               <div class="about-stat">
@@ -452,8 +536,8 @@
                 <line x1="3" y1="10" x2="21" y2="10"/>
               </svg>
             </div>
-            <h3>Free Measure &amp; Quote</h3>
-            <p>No obligation consultation at your home. We measure up, listen to your vision, and provide a clear, detailed quote.</p>
+            <h3>Measure &amp; Quote</h3>
+            <p>A no-obligation consultation at your home. We measure up, listen to your vision, and provide a clear, detailed quote.</p>
           </div>
 
           <div class="why-card animate-element">
@@ -581,7 +665,7 @@
             <div class="process-number" aria-hidden="true">02</div>
             <div class="process-connector" aria-hidden="true"></div>
             <h3 class="process-title">Design &amp; Quote</h3>
-            <p class="process-desc">We visit your home, take precise measurements, and provide a detailed, obligation-free quote with design suggestions.</p>
+            <p class="process-desc">We visit your home, take precise measurements, and provide a detailed quote with 3D designs so you can visualise exactly how your space will look.</p>
           </div>
 
           <div class="process-step animate-element" role="listitem">
@@ -614,7 +698,7 @@
             <div class="animate-element">
               <span class="eyebrow">GET IN TOUCH</span>
               <h2 id="contact-heading" class="section-heading">Ready to transform your space?</h2>
-              <p class="contact-sub">Free measure and quote. No obligation. We'll get back to you within 24 hours.</p>
+              <p class="contact-sub">No-obligation quote — we come to you. We'll get back to you within 24 hours.</p>
             </div>
             <ul class="contact-details animate-element">
               <li class="contact-detail">
@@ -656,7 +740,7 @@
                 </div>
                 <div>
                   <span class="contact-detail-label">Service Area</span>
-                  <span class="contact-detail-value">Melbourne's Eastern &amp; South Eastern suburbs</span>
+                  <span class="contact-detail-value">Servicing all of Melbourne</span>
                 </div>
               </li>
               <li class="contact-detail">
@@ -856,8 +940,7 @@
         <div class="lightbox-info">
           <span class="lightbox-cat" id="lightbox-cat"></span>
           <h3 class="lightbox-title" id="lightbox-title"></h3>
-          <p class="lightbox-placeholder-note">Replace this placeholder with the actual project photo.</p>
-        </div>
+          </div>
       </div>
       <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next project">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
