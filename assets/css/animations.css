@@ -34,29 +34,40 @@
 
 /* ============================================================
    2. PAGE LOAD SEQUENCE
-   Hero content animates in on page load.
+   Hero content animates in on page load via a pure-CSS animation
+   (NOT gated on JavaScript). This is critical for performance:
+   the hero heading is the Largest Contentful Paint element, so it
+   must render immediately rather than wait for a script to add a
+   class. The heading animates its POSITION only and stays at full
+   opacity, so the LCP fires on the very first paint.
 ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
-  /* Eyebrow label */
-  .hero .eyebrow.animate-element {
-    transition-delay: 0.1s;
+  /* Override the generic hidden-until-in-view state for hero content:
+     hero is above the fold, so it should paint straight away. */
+  .hero .animate-element {
+    opacity: 1;
+    transform: none;
   }
 
-  /* Headline */
+  /* Headline (LCP) — slide up only, never fade, so it paints instantly. */
   .hero .hero-heading.animate-element {
-    transition-delay: 0.25s;
+    animation: heroRiseSolid 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* Subheading */
-  .hero .hero-sub.animate-element {
-    transition-delay: 0.4s;
+  /* Supporting lines can gently fade + rise (they are not LCP-critical). */
+  .hero .eyebrow.animate-element   { animation: heroRise 0.6s ease 0.08s both; }
+  .hero .hero-sub.animate-element  { animation: heroRise 0.6s ease 0.26s both; }
+  .hero .hero-ctas.animate-element { animation: heroRise 0.6s ease 0.4s both; }
+
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
   }
 
-  /* CTAs */
-  .hero .hero-ctas.animate-element {
-    transition-delay: 0.55s;
+  @keyframes heroRiseSolid {
+    from { transform: translateY(20px); }
+    to   { transform: none; }
   }
-
 }
 
 /* ============================================================

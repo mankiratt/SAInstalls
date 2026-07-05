@@ -49,7 +49,7 @@
     "telephone": "+61478671407",
     "email": "info@sajoinery.com.au",
     "priceRange": "$$",
-    "description": "S&A Joinery specialises in custom kitchen renovations, built-in wardrobes, bathroom vanities, bedroom joinery and commercial fitouts across Melbourne. Over 30 years of experience and 60 years combined. Handcrafted to your exact specifications.",
+    "description": "S&A Joinery specialises in custom kitchen renovations, built-in wardrobes, bathroom vanities, bedroom joinery and commercial fitouts across Melbourne. Over 30 years of experience. Handcrafted to your exact specifications.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Factory 5/19 Technology Circuit",
@@ -114,7 +114,7 @@
       { "@type": "Question", "name": "What areas of Melbourne does S&A Joinery service?", "acceptedAnswer": { "@type": "Answer", "text": "S&A Joinery services all of Melbourne, including the south east suburbs such as Hallam, Berwick, Clyde North, Cranbourne, Narre Warren and Pakenham, as well as Melbourne's inner and eastern suburbs." } },
       { "@type": "Question", "name": "What services does S&A Joinery offer?", "acceptedAnswer": { "@type": "Answer", "text": "We offer custom kitchen renovations, built-in wardrobes, bathroom vanities, bedroom and living space joinery, commercial fitouts, and bespoke custom cabinetry across Melbourne." } },
       { "@type": "Question", "name": "How much does a custom kitchen cost in Melbourne?", "acceptedAnswer": { "@type": "Answer", "text": "Every kitchen is custom built to your specifications, so pricing varies based on size, materials and finishes. We provide a detailed, no-obligation quote after an in-home measure. Call 0478 671 407 to arrange yours." } },
-      { "@type": "Question", "name": "How experienced is S&A Joinery?", "acceptedAnswer": { "@type": "Answer", "text": "S&A Joinery has over 30 years of personal experience and 60 years combined across the team, with 500+ completed projects and a 5.0 Google rating." } }
+      { "@type": "Question", "name": "How experienced is S&A Joinery?", "acceptedAnswer": { "@type": "Answer", "text": "S&A Joinery has over 30 years of personal experience, with 500+ completed projects and a 5.0 Google rating." } }
     ]
   }
   </script>
@@ -123,10 +123,20 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="shortcut icon" href="assets/logo.png">
 
-  <!-- Google Fonts -->
+  <!-- Preload the LCP hero image (responsive: phones get the smaller file) -->
+  <link rel="preload" as="image" href="assets/images/heroimage1-1000.webp" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/heroimage1-1600.webp" media="(min-width: 769px)" fetchpriority="high">
+
+  <!-- Google Fonts — loaded asynchronously so they never block first paint.
+       font-display: swap (in the URL) paints text instantly in a fallback, then swaps. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap">
+  </noscript>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/animations.css">
@@ -189,10 +199,10 @@
       <!-- Rotating photo background -->
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-slides">
-          <div class="hero-slide active" style="background-image: url('assets/images/heroimage1.jpg')"></div>
-          <div class="hero-slide" style="background-image: url('assets/images/heroimage2.jpg')"></div>
-          <div class="hero-slide" style="background-image: url('assets/images/heroimage3.jpg')"></div>
-          <div class="hero-slide" style="background-image: url('assets/images/heroimage4.jpg')"></div>
+          <div class="hero-slide hero-slide--1 active"></div>
+          <div class="hero-slide hero-slide--2"></div>
+          <div class="hero-slide hero-slide--3"></div>
+          <div class="hero-slide hero-slide--4"></div>
 
         </div>
         <div class="hero-overlay"></div>
@@ -211,7 +221,7 @@
             <em class="hero-word">home.</em>
           </span>
         </div>
-        <p class="hero-sub animate-element">Bespoke kitchens, wardrobes and joinery across Melbourne.<br>60 years of combined experience.</p>
+        <p class="hero-sub animate-element">Your local south-east Melbourne cabinet maker — bespoke kitchens, built-in wardrobes and custom joinery.<br>More than 30 years of experience.</p>
         <div class="hero-ctas animate-element">
           <a href="#gallery" class="btn btn-outline">View Our Work</a>
           <a href="#contact" class="btn btn-accent">Get a Quote</a>
@@ -236,6 +246,7 @@
         <div class="section-header animate-element">
           <span class="eyebrow">WHAT WE DO</span>
           <h2 id="services-heading" class="section-heading">Every space. Every style.</h2>
+          <p class="section-intro">Melbourne cabinet makers crafting custom kitchens, built-in wardrobes, bathroom vanities and bespoke joinery — built by hand, tailored to your home.</p>
         </div>
 
         <div class="services-grid">
@@ -356,173 +367,173 @@
 
           <!-- Kitchens -->
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen1.jpg" alt="Custom kitchen renovation Melbourne with stone benchtop" width="800" height="800" loading="eager" fetchpriority="high">
+            <img src="assets/images/kitchen1.webp" srcset="assets/images/kitchen1-400.webp 400w, assets/images/kitchen1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom kitchen renovation Melbourne with stone benchtop" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen2.jpg" alt="Modern white custom kitchen cabinetry Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen2.webp" srcset="assets/images/kitchen2-400.webp 400w, assets/images/kitchen2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Modern white custom kitchen cabinetry Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen3.jpg" alt="Handcrafted timber kitchen joinery Clyde North" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen3.webp" srcset="assets/images/kitchen3-400.webp 400w, assets/images/kitchen3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Handcrafted timber kitchen joinery Clyde North" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen4.jpg" alt="Contemporary custom kitchen design Hallam" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen4.webp" srcset="assets/images/kitchen4-400.webp 400w, assets/images/kitchen4.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Contemporary custom kitchen design Hallam" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen5.jpg" alt="Shaker-style custom kitchen Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen5.webp" srcset="assets/images/kitchen5-400.webp 400w, assets/images/kitchen5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Shaker-style custom kitchen Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen6.jpg" alt="Two-tone custom kitchen cabinetry Narre Warren" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen6.webp" srcset="assets/images/kitchen6-400.webp 400w, assets/images/kitchen6.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Two-tone custom kitchen cabinetry Narre Warren" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen7.jpg" alt="Dark handleless kitchen renovation south east Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen7.webp" srcset="assets/images/kitchen7-400.webp 400w, assets/images/kitchen7.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Dark handleless kitchen renovation south east Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen8.jpg" alt="Open-plan custom kitchen joinery Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen8.webp" srcset="assets/images/kitchen8-400.webp 400w, assets/images/kitchen8.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Open-plan custom kitchen joinery Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen9.jpg" alt="Custom island kitchen with stone top Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen9.webp" srcset="assets/images/kitchen9-400.webp 400w, assets/images/kitchen9.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom island kitchen with stone top Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen10.jpg" alt="Scullery kitchen renovation Melbourne south east" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen10.webp" srcset="assets/images/kitchen10-400.webp 400w, assets/images/kitchen10.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Scullery kitchen renovation Melbourne south east" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen11.jpg" alt="Custom overhead cabinetry kitchen Hallam" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen11.webp" srcset="assets/images/kitchen11-400.webp 400w, assets/images/kitchen11.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom overhead cabinetry kitchen Hallam" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
           <div class="gallery-item" data-category="kitchen" data-title="" data-label="Kitchens" tabindex="0" role="button" aria-label="View kitchen project">
-            <img src="assets/images/kitchen12.jpg" alt="Timber veneer custom kitchen Clyde North" width="800" height="800" loading="lazy">
+            <img src="assets/images/kitchen12.webp" srcset="assets/images/kitchen12-400.webp 400w, assets/images/kitchen12.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Timber veneer custom kitchen Clyde North" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Kitchens</span></div>
           </div>
 
           <!-- Wardrobes -->
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe1.jpg" alt="Custom built-in wardrobe Melbourne bedroom storage" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe1.webp" srcset="assets/images/wadrobe1-400.webp 400w, assets/images/wadrobe1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom built-in wardrobe Melbourne bedroom storage" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe2.jpg" alt="Walk-in wardrobe joinery Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe2.webp" srcset="assets/images/wadrobe2-400.webp 400w, assets/images/wadrobe2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Walk-in wardrobe joinery Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe3.jpg" alt="Floor-to-ceiling built-in wardrobe Narre Warren" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe3.webp" srcset="assets/images/wadrobe3-400.webp 400w, assets/images/wadrobe3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Floor-to-ceiling built-in wardrobe Narre Warren" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe5.jpg" alt="Custom sliding wardrobe with mirror Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe5.webp" srcset="assets/images/wadrobe5-400.webp 400w, assets/images/wadrobe5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom sliding wardrobe with mirror Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe6.jpg" alt="Timber built-in wardrobe system Clyde North" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe6.webp" srcset="assets/images/wadrobe6-400.webp 400w, assets/images/wadrobe6.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Timber built-in wardrobe system Clyde North" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
           <div class="gallery-item" data-category="wardrobe" data-title="" data-label="Wardrobes" tabindex="0" role="button" aria-label="View wardrobe project">
-            <img src="assets/images/wadrobe7.jpg" alt="Custom wardrobe with integrated drawers Hallam" width="800" height="800" loading="lazy">
+            <img src="assets/images/wadrobe7.webp" srcset="assets/images/wadrobe7-400.webp 400w, assets/images/wadrobe7.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom wardrobe with integrated drawers Hallam" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Wardrobes</span></div>
           </div>
 
           <!-- Bathrooms -->
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom1.jpg" alt="Custom bathroom vanity Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom1.webp" srcset="assets/images/bathroom1-400.webp 400w, assets/images/bathroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom bathroom vanity Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom2.jpg" alt="Floating timber vanity Clyde North" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom2.webp" srcset="assets/images/bathroom2-400.webp 400w, assets/images/bathroom2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Floating timber vanity Clyde North" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom3.jpg" alt="Custom dual sink bathroom vanity Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom3.webp" srcset="assets/images/bathroom3-400.webp 400w, assets/images/bathroom3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom dual sink bathroom vanity Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom4.jpg" alt="Shaker-style bathroom vanity Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom4.webp" srcset="assets/images/bathroom4-400.webp 400w, assets/images/bathroom4.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Shaker-style bathroom vanity Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom5.jpg" alt="Built-in bathroom storage and vanity Narre Warren" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom5.webp" srcset="assets/images/bathroom5-400.webp 400w, assets/images/bathroom5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Built-in bathroom storage and vanity Narre Warren" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bathroom" data-title="" data-label="Bathrooms" tabindex="0" role="button" aria-label="View bathroom project">
-            <img src="assets/images/bathroom6.jpg" alt="Custom wall-hung vanity south east Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/bathroom6.webp" srcset="assets/images/bathroom6-400.webp 400w, assets/images/bathroom6.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom wall-hung vanity south east Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bathrooms</span></div>
           </div>
 
           <!-- Bedrooms -->
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom1.jpg" alt="Custom bedroom joinery and storage Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom1.webp" srcset="assets/images/bedroom1-400.webp 400w, assets/images/bedroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom bedroom joinery and storage Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom2.jpg" alt="Built-in bedhead and side tables Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom2.webp" srcset="assets/images/bedroom2-400.webp 400w, assets/images/bedroom2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Built-in bedhead and side tables Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom3.jpg" alt="Custom bedroom cabinetry and shelving Clyde North" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom3.webp" srcset="assets/images/bedroom3-400.webp 400w, assets/images/bedroom3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom bedroom cabinetry and shelving Clyde North" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom4.jpg" alt="Bespoke bedroom joinery Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom4.webp" srcset="assets/images/bedroom4-400.webp 400w, assets/images/bedroom4.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Bespoke bedroom joinery Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom5.jpg" alt="Custom floating bedside and dresser Narre Warren" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom5.webp" srcset="assets/images/bedroom5-400.webp 400w, assets/images/bedroom5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom floating bedside and dresser Narre Warren" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
           <div class="gallery-item" data-category="bedroom" data-title="" data-label="Bedrooms" tabindex="0" role="button" aria-label="View bedroom project">
-            <img src="assets/images/bedroom6.jpg" alt="Timber bedroom joinery suite Hallam" width="800" height="800" loading="lazy">
+            <img src="assets/images/bedroom6.webp" srcset="assets/images/bedroom6-400.webp 400w, assets/images/bedroom6.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Timber bedroom joinery suite Hallam" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Bedrooms</span></div>
           </div>
 
           <!-- Living Spaces -->
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living1.jpg" alt="Custom entertainment unit joinery Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/living1.webp" srcset="assets/images/living1-400.webp 400w, assets/images/living1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom entertainment unit joinery Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living2.jpg" alt="Built-in shelving living room Hallam" width="800" height="800" loading="lazy">
+            <img src="assets/images/living2.webp" srcset="assets/images/living2-400.webp 400w, assets/images/living2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Built-in shelving living room Hallam" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living3.jpg" alt="Floor-to-ceiling custom bookcase Melbourne south east" width="800" height="800" loading="lazy">
+            <img src="assets/images/living3.webp" srcset="assets/images/living3-400.webp 400w, assets/images/living3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Floor-to-ceiling custom bookcase Melbourne south east" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living4.jpg" alt="Custom media wall joinery Berwick" width="800" height="800" loading="lazy">
+            <img src="assets/images/living4.webp" srcset="assets/images/living4-400.webp 400w, assets/images/living4.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom media wall joinery Berwick" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living5.jpg" alt="Built-in study nook joinery Cranbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/living5.webp" srcset="assets/images/living5-400.webp 400w, assets/images/living5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Built-in study nook joinery Cranbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
           <div class="gallery-item" data-category="living" data-title="" data-label="Living Spaces" tabindex="0" role="button" aria-label="View living spaces project">
-            <img src="assets/images/living6.jpg" alt="Custom display shelving and joinery Narre Warren" width="800" height="800" loading="lazy">
+            <img src="assets/images/living6.webp" srcset="assets/images/living6-400.webp 400w, assets/images/living6.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom display shelving and joinery Narre Warren" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Living Spaces</span></div>
           </div>
 
           <!-- Commercial -->
           <div class="gallery-item" data-category="commercial" data-title="" data-label="Commercial" tabindex="0" role="button" aria-label="View commercial project">
-            <img src="assets/images/commercial1.jpg" alt="Commercial joinery fitout Melbourne CBD" width="800" height="800" loading="lazy">
+            <img src="assets/images/commercial1.webp" srcset="assets/images/commercial1-400.webp 400w, assets/images/commercial1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Commercial joinery fitout Melbourne CBD" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span></div>
           </div>
           <div class="gallery-item" data-category="commercial" data-title="" data-label="Commercial" tabindex="0" role="button" aria-label="View commercial project">
-            <img src="assets/images/commercial2.jpg" alt="Retail shopfitting Melbourne south east" width="800" height="800" loading="lazy">
+            <img src="assets/images/commercial2.webp" srcset="assets/images/commercial2-400.webp 400w, assets/images/commercial2.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Retail shopfitting Melbourne south east" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span></div>
           </div>
           <div class="gallery-item" data-category="commercial" data-title="" data-label="Commercial" tabindex="0" role="button" aria-label="View commercial project">
-            <img src="assets/images/commercial3.jpg" alt="Custom commercial cabinetry Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/commercial3.webp" srcset="assets/images/commercial3-400.webp 400w, assets/images/commercial3.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Custom commercial cabinetry Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span></div>
           </div>
           <div class="gallery-item" data-category="commercial" data-title="" data-label="Commercial" tabindex="0" role="button" aria-label="View commercial project">
-            <img src="assets/images/commercial5.jpg" alt="Office joinery and fitout Melbourne" width="800" height="800" loading="lazy">
+            <img src="assets/images/commercial5.webp" srcset="assets/images/commercial5-400.webp 400w, assets/images/commercial5.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 1024px) 31vw, 380px" alt="Office joinery and fitout Melbourne" width="800" height="800" loading="lazy" decoding="async">
             <div class="gallery-overlay"><span class="gallery-overlay-cat">Commercial</span></div>
           </div>
 
@@ -549,18 +560,14 @@
               <h2 id="about-heading" class="section-heading">30 years of craft.<br><em>A lifetime of dedication.</em></h2>
             </div>
             <div class="about-body animate-element">
-              <p>S&amp;A Joinery was built on a simple belief — that every home deserves quality craftsmanship that stands the test of time. With over 30 years of personal experience and a combined 60 years between our team, we bring unmatched knowledge and skill to every project we take on.</p>
+              <p>S&amp;A Joinery was built on a simple belief — that every home deserves quality craftsmanship that stands the test of time. As Melbourne cabinet makers with more than 30 years of experience, we bring unmatched knowledge and skill to every project we take on.</p>
               <p>Every piece we build is handcrafted to your exact specifications. We use only premium materials and hardware because we believe the details matter. From the first consultation to the final installation, we treat every home like our own.</p>
-              <p>Based in Hallam, we service all of Melbourne — from the south east suburbs of Berwick, Clyde North, Cranbourne, Narre Warren and Pakenham through to the inner city and eastern suburbs.</p>
+              <p>Based in Hallam, we're the local cabinet maker of choice for homeowners right across south-east Melbourne — from Berwick, Clyde North, Cranbourne, Narre Warren and Pakenham through to Glen Waverley, the inner city and the eastern suburbs.</p>
             </div>
             <div class="about-stats animate-element">
               <div class="about-stat">
                 <span class="about-stat-number">30<span class="stat-plus">+</span></span>
                 <span class="about-stat-label">Years Experience</span>
-              </div>
-              <div class="about-stat">
-                <span class="about-stat-number">60</span>
-                <span class="about-stat-label">Years Combined</span>
               </div>
               <div class="about-stat">
                 <span class="about-stat-number">500<span class="stat-plus">+</span></span>
@@ -955,7 +962,7 @@
 
         <!-- Quick links -->
         <nav class="footer-col" aria-label="Quick links">
-          <h4 class="footer-col-heading">Quick Links</h4>
+          <h3 class="footer-col-heading">Quick Links</h3>
           <ul class="footer-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#gallery">Gallery</a></li>
@@ -967,7 +974,7 @@
 
         <!-- Services -->
         <nav class="footer-col" aria-label="Services">
-          <h4 class="footer-col-heading">Services</h4>
+          <h3 class="footer-col-heading">Services</h3>
           <ul class="footer-links">
             <li><a href="#services">Custom Kitchens</a></li>
             <li><a href="#services">Built-in Wardrobes</a></li>
@@ -980,7 +987,7 @@
 
         <!-- Contact info -->
         <div class="footer-col">
-          <h4 class="footer-col-heading">Contact</h4>
+          <h3 class="footer-col-heading">Contact</h3>
           <ul class="footer-contact">
             <li><a href="tel:0478671407">0478 671 407</a></li>
             <li><a href="mailto:info@sajoinery.com.au">info@sajoinery.com.au</a></li>
@@ -1047,8 +1054,8 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/gallery.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- Scripts — deferred so they never block rendering of the page -->
+  <script src="assets/js/gallery.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -12,9 +12,9 @@
   --color-bg:             #0d0d0d;
   --color-surface:        #141414;
   --color-surface-2:      #1a1a1a;
-  --color-accent:         #ff6b2b;
-  --color-accent-hover:   #ff8c55;
-  --color-accent-soft:    rgba(255, 107, 43, 0.08);
+  --color-accent:         #E8500A;
+  --color-accent-hover:   #FF6A2E;
+  --color-accent-soft:    rgba(232, 80, 10, 0.08);
   --color-text:           #f0ede8;
   --color-text-muted:     #888880;
   --color-border:         #242424;
@@ -162,6 +162,19 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: var(--space-xl);
 }
 
+/* Optional intro line under a section heading */
+.section-intro {
+  max-width: 620px;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+/* Tighten the heading-to-intro gap only where an intro is present */
+.section-header:has(.section-intro) .section-heading {
+  margin-bottom: var(--space-sm);
+}
+
 /* ============================================================
    5. BUTTONS
 ============================================================ */
@@ -181,14 +194,16 @@ p:last-child { margin-bottom: 0; }
 
 .btn-accent {
   background: var(--color-accent);
-  color: #fff;
+  /* Near-black text on orange = 6.6:1 contrast (WCAG AA). White text on this
+     orange only reaches 2.84:1, which fails. Keeps the brand orange intact. */
+  color: #171310;
   border: 2px solid var(--color-accent);
 }
 .btn-accent:hover, .btn-accent:focus-visible {
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.3);
+  box-shadow: 0 8px 24px rgba(232, 80, 10, 0.3);
 }
 
 .btn-outline {
@@ -443,6 +458,20 @@ body.cursor-hover .cursor {
   opacity: 1;
 }
 
+/* Slide background photos (WebP). Full desktop resolution by default;
+   phones load the lighter 1000px file via the media query below. */
+.hero-slide--1 { background-image: url('../images/heroimage1-1600.webp'); }
+.hero-slide--2 { background-image: url('../images/heroimage2-1600.webp'); }
+.hero-slide--3 { background-image: url('../images/heroimage3-1600.webp'); }
+.hero-slide--4 { background-image: url('../images/heroimage4-1600.webp'); }
+
+@media (max-width: 768px) {
+  .hero-slide--1 { background-image: url('../images/heroimage1-1000.webp'); }
+  .hero-slide--2 { background-image: url('../images/heroimage2-1000.webp'); }
+  .hero-slide--3 { background-image: url('../images/heroimage3-1000.webp'); }
+  .hero-slide--4 { background-image: url('../images/heroimage4-1000.webp'); }
+}
+
 @keyframes heroSlideZoom {
   from { transform: scale(1); }
   to   { transform: scale(1.07); }
@@ -620,7 +649,7 @@ body.cursor-hover .cursor {
 
 .service-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 0 1px var(--color-accent), 0 16px 40px rgba(255, 107, 43, 0.12);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 16px 40px rgba(232, 80, 10, 0.12);
   border-color: var(--color-accent);
 }
 
@@ -689,7 +718,8 @@ body.cursor-hover .cursor {
 .gallery-filter.active {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: #fff;
+  /* Dark text for AA contrast on the orange fill (see .btn-accent note). */
+  color: #171310;
 }
 
 /* Gallery grid — 3 columns, uniform 16:9 */
@@ -1149,8 +1179,8 @@ body.cursor-hover .cursor {
 .why-us {
   padding: var(--space-xxl) 0;
   background: var(--color-accent-soft);
-  border-top: 1px solid rgba(255, 107, 43, 0.15);
-  border-bottom: 1px solid rgba(255, 107, 43, 0.15);
+  border-top: 1px solid rgba(232, 80, 10, 0.15);
+  border-bottom: 1px solid rgba(232, 80, 10, 0.15);
 }
 
 .why-us-grid {
@@ -1301,7 +1331,7 @@ body.cursor-hover .cursor {
   height: 38px;
   border-radius: 50%;
   background: var(--color-accent-soft);
-  border: 1px solid rgba(255, 107, 43, 0.2);
+  border: 1px solid rgba(232, 80, 10, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1463,7 +1493,7 @@ body.cursor-hover .cursor {
   width: 40px;
   height: 40px;
   background: var(--color-accent-soft);
-  border: 1px solid rgba(255, 107, 43, 0.15);
+  border: 1px solid rgba(232, 80, 10, 0.15);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -1658,7 +1688,7 @@ a.contact-detail-value:hover {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.12);
+  box-shadow: 0 0 0 3px rgba(232, 80, 10, 0.12);
 }
 
 /* Error state */
@@ -1782,6 +1812,7 @@ a.contact-detail-value:hover {
 .footer-col-heading {
   font-family: var(--font-mono);
   font-size: 0.7rem;
+  font-weight: 500; /* locked so the h4->h3 change (for heading order) keeps the same look */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -1881,12 +1912,12 @@ a.contact-detail-value:hover {
 .fab-call {
   background: var(--color-accent);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(255, 107, 43, 0.35);
+  box-shadow: 0 4px 16px rgba(232, 80, 10, 0.35);
 }
 
 .fab-call:hover {
   transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.45);
+  box-shadow: 0 8px 24px rgba(232, 80, 10, 0.45);
   background: var(--color-accent-hover);
 }
 
