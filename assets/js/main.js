@@ -382,3 +382,48 @@
 
   window.addEventListener('scroll', hideIndicator, { passive: true });
 })();
+
+
+/* ============================================================
+   11. PHONE CALL CONVERSION TRACKING
+   Fires a Google Ads "Click to call" conversion when a visitor
+   taps any tel: link (Call Now FAB, Contact section, footer).
+
+   Unlike the lead form, a phone call has no server response to
+   wait for — click is the only signal we get, so click is the
+   correct and only trigger point here.
+
+   IMPORTANT: the call must never depend on tracking succeeding.
+   If gtag.js is blocked (ad blockers, Brave Shields, corporate
+   firewalls all block googletagmanager.com by default), nothing
+   would ever call back and the dialer would silently never open.
+   The setTimeout fallback guarantees the call always goes through,
+   tracked or not — losing a lead is worse than losing a data point.
+============================================================ */
+(function initCallTracking() {
+  const callLinks = document.querySelectorAll('a[href^="tel:"]');
+  if (!callLinks.length) return;
+
+  callLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (typeof gtag !== 'function') return; // tag never loaded — let the call proceed untracked
+
+      e.preventDefault();
+      let dialed = false;
+      const dial = () => {
+        if (dialed) return;
+        dialed = true;
+        window.location = link.href;
+      };
+
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17979716484/EuIHCIHH5ugcEITnsv1C',
+        'value': 1.0,
+        'currency': 'AUD',
+        'event_callback': dial
+      });
+
+      setTimeout(dial, 2000); // safety net if the beacon is blocked or slow
+    });
+  });
+})();
