@@ -338,6 +338,15 @@
         if (res.ok) {
           form.hidden = true;
           if (success) success.hidden = false;
+
+          // Google Ads conversion tracking ("Submit lead form") — fires only
+          // on a confirmed successful submission (not on click), so failed/
+          // invalid submissions are never counted as leads.
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17979716484/3ZkrCP3p2-gcEITnsv1C'
+            });
+          }
         } else {
           res.json().then(data => {
             const msg = (data.errors || []).map(e => e.message).join(', ') || 'Something went wrong. Please try again.';
