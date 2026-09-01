@@ -1337,7 +1337,9 @@ body.cursor-hover .cursor {
   justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--color-accent);
+  /* Lighter orange: the base accent only reaches 4.3:1 on this tinted
+     circle, which fails WCAG AA. This tint clears it at 5.7:1. */
+  color: var(--color-accent-hover);
   flex-shrink: 0;
 }
 
@@ -1957,3 +1959,379 @@ a.contact-detail-value:hover {
   white-space: nowrap;
   border: 0;
 }
+
+/* ============================================================
+   20. INNER PAGE HEADER
+   The band under the nav on every page except the homepage.
+============================================================ */
+.page-header {
+  padding-top: calc(var(--nav-height) + var(--space-xl));
+  padding-bottom: var(--space-lg);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(232, 80, 10, 0.07), transparent 62%),
+    var(--color-bg);
+}
+
+.page-header .section-heading {
+  margin-bottom: var(--space-sm);
+}
+
+.page-header-intro {
+  max-width: 640px;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Breadcrumb trail */
+.breadcrumb {
+  margin-bottom: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb li::after {
+  content: '/';
+  margin-left: 0.5rem;
+  opacity: 0.4;
+}
+
+.breadcrumb li:last-child::after { content: none; }
+.breadcrumb a { color: var(--color-text-muted); transition: color var(--transition); }
+.breadcrumb a:hover { color: var(--color-accent); }
+.breadcrumb [aria-current="page"] { color: var(--color-text); }
+
+/* Generic section spacing, matching the existing sections. */
+.section {
+  padding: var(--space-xxl) 0;
+  background: var(--color-bg);
+}
+
+/* ============================================================
+   21. CATEGORY CARDS
+   Used on the Our Work index and the homepage work preview.
+============================================================ */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+@media (max-width: 900px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .category-grid { grid-template-columns: 1fr; } }
+
+.category-card {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  aspect-ratio: 4 / 3;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.category-card:hover,
+.category-card:focus-visible {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.category-card:hover img { transform: scale(1.04); }
+
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.25) 45%, transparent 72%);
+}
+
+.category-card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.category-card-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   22. PROJECTS  (before/after slider + photo gallery)
+============================================================ */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+}
+
+.project-head { margin-bottom: var(--space-md); }
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.project-desc {
+  margin-top: 0.35rem;
+  color: var(--color-text-muted);
+  max-width: 62ch;
+}
+
+/* ---- Before / after slider ---- */
+.ba { margin-bottom: var(--space-md); }
+
+.ba-frame {
+  --ba-pos: 50%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;          /* fixed, so nothing shifts while images load */
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  cursor: ew-resize;
+  touch-action: pan-y;          /* vertical page scroll still works on mobile */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-drag: none;
+}
+
+/* The "before" photo, revealed from the left edge up to the divider. */
+.ba-clip {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--ba-pos)) 0 0);
+}
+
+.ba-label {
+  position: absolute;
+  top: var(--space-sm);
+  z-index: 2;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  background: rgba(13, 13, 13, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+.ba-label--before { left: var(--space-sm); }
+.ba-label--after  { right: var(--space-sm); }
+
+/* The divider + grab handle */
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--ba-pos);
+  z-index: 3;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-text);
+  touch-action: none;
+}
+
+.ba-handle-grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;                  /* 44px touch target */
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-text);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.ba-handle-grip svg { width: 20px; height: 20px; }
+
+.ba-handle:focus-visible {
+  outline: none;
+}
+
+.ba-handle:focus-visible .ba-handle-grip {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(232, 80, 10, 0.35);
+}
+
+.ba-frame.is-dragging { cursor: grabbing; }
+
+/* ---- Project photo gallery ---- */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 900px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .project-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+
+.project-thumb {
+  position: relative;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface);
+  aspect-ratio: 3 / 2;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-thumb:hover,
+.project-thumb:focus-visible {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* When a project has no before photo, the gallery is the whole story —
+   let the first photo run full width so the page still feels composed. */
+.project:not(:has(.ba)) .project-gallery {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.project:not(:has(.ba)) .project-gallery .project-thumb:only-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+/* Empty state, if a category has no projects yet */
+.projects-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-xl) 0;
+}
+
+/* The shared lightbox shows real project titles on these pages. */
+.lightbox-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   23. CTA BAND
+   Closing call-to-action used at the foot of the inner pages.
+============================================================ */
+.cta-band {
+  padding: var(--space-xxl) 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(232, 80, 10, 0.09), transparent 62%),
+    var(--color-surface);
+}
+
+.cta-band-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.cta-band-sub {
+  max-width: 560px;
+  margin-inline: auto;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+.cta-band-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Button row sitting under a grid or stat row */
+.cta-after-grid { margin-top: var(--space-lg); }
+
+/* Centred variant of the stats row (homepage about teaser) */
+.about-stats--centred { justify-content: center; }
+
+/* Heading above the enquiry form on the Get a Quote page */
+.contact-form-heading {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+/* ============================================================
+   24. THANK YOU PAGE
+============================================================ */
+.thank-you-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-md);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(232, 80, 10, 0.35);
+}
+
+.thank-you-icon svg { width: 30px; height: 30px; }
