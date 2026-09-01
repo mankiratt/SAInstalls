@@ -73,33 +73,14 @@
 ============================================================ */
 (function initNav() {
   const nav = document.getElementById('nav');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('main section[id], header[id]');
+  if (!nav) return;
 
-  // Add .scrolled class when user scrolls past 60px
+  /* The site is multi-page now, so the active nav link is set in the HTML
+     at build time (see build.mjs -> markActiveNav). The old scroll-spy that
+     used to highlight links by section is gone — it would have fought with
+     the build-time state and cleared it on the first scroll. */
   function onScroll() {
-    if (window.scrollY > 60) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-    updateActiveLink();
-  }
-
-  // Highlight the nav link whose section is currently in view
-  function updateActiveLink() {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.scrollY >= sectionTop) {
-        current = section.id;
-      }
-    });
-
-    navLinks.forEach(link => {
-      const target = link.getAttribute('href').replace('#', '');
-      link.classList.toggle('active', target === current);
-    });
+    nav.classList.toggle('scrolled', window.scrollY > 60);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -336,16 +317,37 @@
     })
       .then(res => {
         if (res.ok) {
+          // Show the confirmation immediately, then move to /thank-you/.
           form.hidden = true;
           if (success) success.hidden = false;
 
           // Google Ads conversion tracking ("Submit lead form") — fires only
           // on a confirmed successful submission (not on click), so failed/
           // invalid submissions are never counted as leads.
+          //
+          // NOTE: if you ever paste the conversion snippet into the
+          // /thank-you/ page instead, DELETE this block — otherwise every
+          // lead is counted twice. See README.md.
+          //
+          // We wait for the tracking beacon to be sent before navigating,
+          // because leaving the page can cancel an in-flight request. The
+          // timeout guarantees we still redirect if the beacon is blocked
+          // (ad blockers, privacy browsers) or simply slow.
+          let moved = false;
+          const goToThankYou = () => {
+            if (moved) return;
+            moved = true;
+            window.location.href = '/thank-you/';
+          };
+
           if (typeof gtag === 'function') {
             gtag('event', 'conversion', {
-              'send_to': 'AW-17979716484/3ZkrCP3p2-gcEITnsv1C'
+              'send_to': 'AW-17979716484/3ZkrCP3p2-gcEITnsv1C',
+              'event_callback': goToThankYou
             });
+            setTimeout(goToThankYou, 1500);
+          } else {
+            goToThankYou();
           }
         } else {
           res.json().then(data => {

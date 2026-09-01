@@ -3,132 +3,252 @@
 A complete editing guide for everyone involved in maintaining this site.
 No coding experience required for most tasks — just follow the steps below.
 
+The site is plain HTML, CSS and JavaScript. There is no framework and no
+dependencies to install. The only tool it uses is one small script,
+`build.mjs`, which stitches the shared header and footer into every page
+so you only have to edit them once.
+
 ---
 
-## File Structure
+## Contents
+
+- [Previewing the site](#previewing-the-site)
+- [The build step — read this first](#the-build-step--read-this-first)
+- [File structure](#file-structure)
+- [**Adding or editing a project**](#adding-or-editing-a-project) ← the common task
+- [How before/after photos work](#how-beforeafter-photos-work)
+- [Editing the menu, footer or contact details](#editing-the-menu-footer-or-contact-details)
+- [Adding a review](#adding-a-review)
+- [Changing brand colours](#changing-brand-colours)
+- [The enquiry form](#the-enquiry-form)
+- [**Google Ads conversion tracking — action needed**](#google-ads-conversion-tracking--action-needed)
+- [Deploying](#deploying)
+- [What changed in the multi-page refactor](#what-changed-in-the-multi-page-refactor)
+
+---
+
+## Previewing the site
+
+The site now has real pages in folders, so you can't just double-click
+`index.html` any more — links like `/about/` need a proper web server.
+
+You need [Node.js](https://nodejs.org) installed. Then, in this folder:
+
+```bash
+node build.mjs
+```
+
+```bash
+npx serve .
+```
+
+Then open the address it prints (usually <http://localhost:3000>).
+
+Any static server works. If you have Python instead of Node's `serve`:
+
+```bash
+python -m http.server 3000
+```
+
+---
+
+## The build step — read this first
+
+**After editing anything in `src/` or `assets/js/projects.js`, run:**
+
+```bash
+node build.mjs
+```
+
+That command regenerates the finished pages and `sitemap.xml`.
+
+| You edit… | Do you need to run the build? |
+|---|---|
+| `src/partials/header.html` or `footer.html` | **Yes** |
+| `src/pages/*.html` (page content) | **Yes** |
+| `assets/js/projects.js` (the project list) | **Yes** |
+| `assets/css/*.css` | No |
+| `assets/js/main.js`, `project-showcase.js` | No |
+| Photos in `assets/images/` | No (unless you also edited `projects.js`) |
+
+**Never edit the generated pages directly** — `index.html`, `about/index.html`,
+`our-work/kitchens/index.html` and so on. They are overwritten every build.
+Edit the matching file in `src/` instead.
+
+---
+
+## File structure
 
 ```
-index.html              ← The entire website (open this in a browser to preview)
+build.mjs                  ← run this after editing src/ or projects.js
+src/
+  partials/
+    header.html            ← the menu. EDIT ONCE, applies to every page
+    footer.html            ← the footer. EDIT ONCE, applies to every page
+    shell.html             ← the page wrapper (meta tags, fonts, scripts)
+    tail.html              ← the floating Call button
+    schema-*.html          ← Google structured data
+  pages/                   ← the unique content of each page
+    index.html             → /
+    our-work.html          → /our-work/
+    about.html             → /about/
+    reviews.html           → /reviews/
+    get-a-quote.html       → /get-a-quote/
+    thank-you.html         → /thank-you/
+  templates/
+    category.html          ← the layout shared by all six category pages
 assets/
-  css/
-    styles.css          ← All visual styles (colours, fonts, layout)
-    animations.css      ← Motion and animation styles
-  js/
-    main.js             ← Navigation, cursor, form, scroll effects
-    gallery.js          ← Gallery filter tabs and lightbox
-  images/               ← All photos go here (see images/README.md for full list)
-    README.md           ← Photo naming guide
-README.md               ← This file
+  css/styles.css           ← all visual styles (colours, fonts, layout)
+  css/animations.css       ← motion
+  js/projects.js           ← THE PROJECT LIST — edit this to change Our Work
+  js/main.js               ← nav, form, hero animation
+  js/project-showcase.js   ← before/after slider + photo lightbox
+  images/                  ← all photos (.webp)
+
+  ↓ everything below is GENERATED — do not edit ↓
+index.html, about/, reviews/, get-a-quote/, thank-you/,
+our-work/ (+ kitchens/, wardrobes/, bathrooms/, bedrooms/,
+           living-spaces/, commercial/), sitemap.xml
 ```
+
+### The pages
+
+| Page | URL |
+|---|---|
+| Home | `/` |
+| Our Work (category picker) | `/our-work/` |
+| Kitchens | `/our-work/kitchens/` |
+| Wardrobes | `/our-work/wardrobes/` |
+| Bathrooms | `/our-work/bathrooms/` |
+| Bedrooms | `/our-work/bedrooms/` |
+| Living Spaces | `/our-work/living-spaces/` |
+| Commercial | `/our-work/commercial/` |
+| About | `/about/` |
+| Reviews | `/reviews/` |
+| Get a Quote | `/get-a-quote/` |
+| Thank You (after the form is sent) | `/thank-you/` |
 
 ---
 
-## How to Preview the Site
+## Adding or editing a project
 
-1. Double-click `index.html` to open it in a browser, OR
-2. For live reloading while editing, use a local server (VS Code → Live Server extension → "Go Live").
+Everything on the Our Work pages comes from **one file**:
+`assets/js/projects.js`. You never edit the category pages themselves.
+
+**1. Add your photos** to `assets/images/`, named clearly:
+
+```
+kitchen13.webp          ← the finished photo  ("after")
+kitchen13-before.webp   ← the "before" photo  (optional)
+kitchen13-b.webp        ← any extra photos    (optional)
+```
+
+**2. Copy an existing block** in `projects.js` into the right category and
+edit it:
+
+```js
+{
+  id: 'kitchen-13',
+  title: 'Galley Kitchen — Pakenham',
+  category: 'kitchens',
+  beforeImage: '/assets/images/kitchen13-before.webp',  // or null
+  afterImage: '/assets/images/kitchen13.webp',
+  gallery: ['/assets/images/kitchen13-b.webp'],         // extra photos, or []
+  alt: 'Custom galley kitchen renovation Pakenham',
+  description: 'Optional one-line description.',
+},
+```
+
+**3. Run the build and reload:**
+
+```bash
+node build.mjs
+```
+
+### The fields
+
+| Field | What it does |
+|---|---|
+| `id` | Unique short name, used internally. |
+| `title` | Shown above the project. Keep the "What — Suburb" shape; it reads well and helps local search. |
+| `category` | One of: `kitchens`, `wardrobes`, `bathrooms`, `bedrooms`, `living-spaces`, `commercial`. |
+| `beforeImage` | The "before" photo, or `null` if you don't have one. |
+| `afterImage` | The finished photo. **Required.** |
+| `gallery` | *Extra* photos beyond `afterImage`. Can be `[]`. |
+| `alt` | Plain description of the photo, for screen readers and Google. **Required.** |
+| `description` | Optional one-liner under the title. |
+
+> **Photo sizes.** Photos are displayed in a 3:2 box and cropped to fill it,
+> so landscape shots work best. Keep them as `.webp` and around 800px wide —
+> that's what the existing ones are, and it's why the site loads fast.
 
 ---
 
-## Changing Brand Colours
+## How before/after photos work
 
-All colours are defined as variables at the top of `assets/css/styles.css`.
-**Edit the `:root` block only** — changes apply to the entire site automatically.
+If a project has a `beforeImage`, it gets a **slider**: the before photo on
+the left, the finished photo on the right, and a divider you drag across.
+It works with mouse, touch and keyboard.
 
-```css
-:root {
-  --color-accent:  #ff6b2b;   /* ← Change this to update the orange throughout */
-  --color-bg:      #0d0d0d;   /* ← Main background */
-  /* etc. */
-}
-```
+If `beforeImage` is `null`, the project simply shows its photos instead —
+no slider. Add a before photo later and the slider appears automatically.
 
----
+For the slider to look right, the before and after photos should be taken
+from **roughly the same position**.
 
-## Replacing Placeholder Photos
+### ⚠️ Placeholder before-photos are currently in place
 
-### 1. Add your photo
-Copy the photo into `assets/images/gallery/` with the correct filename.
-See `assets/images/README.md` for the full list of required files.
+We don't have real "before" photos yet, so **two** projects
+(`kitchen-1` and `wardrobe-1`) point at a grey placeholder image
+(`/assets/images/placeholder-before.webp`) purely so you can see how the
+slider looks and behaves.
 
-### 2. Replace the placeholder in index.html
-Find the gallery item you want to update. Each one looks like this:
-
-```html
-<!-- BEFORE (placeholder): -->
-<div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 01" ...>
-  <div class="gallery-placeholder gallery-placeholder--kitchen">
-    <svg ...></svg>
-    <span>Kitchen Project 01</span>
-  </div>
-  <div class="gallery-overlay">...</div>
-</div>
-
-<!-- AFTER (real photo): -->
-<div class="gallery-item" data-category="kitchen" data-title="Kitchen Project 01" ...>
-  <img src="assets/images/kitchen-01.jpg"
-       alt="Custom kitchen — white cabinetry with stone benchtop"
-       loading="lazy">
-  <div class="gallery-overlay">...</div>
-</div>
-```
-
-**Important:** Keep the `<div class="gallery-overlay">` block — it's the hover effect.
-
-### 3. Add this CSS for real images (add to styles.css)
-
-```css
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-```
+**Before this goes live**, either swap in real before photos or set those
+two back to `beforeImage: null`. They are marked with a `DEMO` comment in
+`projects.js`.
 
 ---
 
-## Adding a New Gallery Item
+## Editing the menu, footer or contact details
 
-Copy this HTML block and paste it inside the `<div class="gallery-grid">`:
+The menu and footer are shared across every page. Edit them **once**:
 
-```html
-<div class="gallery-item" 
-     data-category="kitchen"
-     data-title="Kitchen Project 09"
-     data-label="Kitchens"
-     tabindex="0"
-     role="button"
-     aria-label="View Kitchen Project 09">
-  <img src="assets/images/kitchen-09.jpg"
-       alt="Describe the photo here"
-       loading="lazy">
-  <div class="gallery-overlay">
-    <span class="gallery-overlay-cat">Kitchens</span>
-    <span class="gallery-overlay-title">Kitchen Project 09</span>
-  </div>
-</div>
-```
+- Menu → `src/partials/header.html`
+- Footer → `src/partials/footer.html`
 
-**data-category options:** `kitchen` / `wardrobe` / `bathroom` / `bedroom` / `commercial`
+Then run `node build.mjs`.
 
-**To make an item taller** (spans 2 rows), add the class `gallery-item--tall`:
-```html
-<div class="gallery-item gallery-item--tall" ...>
-```
+### Phone number and email
+
+The phone number `0478 671 407` appears in:
+
+| Where | File |
+|---|---|
+| Footer | `src/partials/footer.html` |
+| Floating "Call Now" button | `src/partials/tail.html` |
+| Contact section + closing CTAs | `src/pages/get-a-quote.html`, and the `CTA` blocks in the other `src/pages/*.html` |
+| Structured data (for Google) | `src/partials/schema-business.html` |
+
+Search the `src/` folder for `0478671407` and `0478 671 407` to catch them all,
+then run the build.
+
+Email `info@sajoinery.com.au` lives in `src/partials/footer.html`,
+`src/pages/get-a-quote.html` and `src/partials/schema-business.html`.
 
 ---
 
-## Adding a New Review
+## Adding a review
 
-Copy this HTML block and paste it inside the `<div class="reviews-grid">`:
+Reviews appear on the home page and on `/reviews/`. Both come from
+`src/pages/index.html` and `src/pages/reviews.html`. Paste this inside
+`<div class="reviews-grid">` in whichever you're updating:
 
 ```html
 <article class="review-card animate-element" aria-label="Review by Full Name">
   <div class="review-stars" aria-label="5 stars">★★★★★</div>
   <blockquote class="review-text">"Paste the review text here."</blockquote>
   <footer class="review-author">
-    <div class="review-avatar" aria-hidden="true">AB</div>  <!-- Use initials -->
+    <div class="review-avatar" aria-hidden="true">AB</div>  <!-- initials -->
     <div>
       <cite class="review-name">Full Name</cite>
       <span class="review-source">Google Review</span>
@@ -137,84 +257,163 @@ Copy this HTML block and paste it inside the `<div class="reviews-grid">`:
 </article>
 ```
 
----
-
-## Updating Contact Details
-
-The phone number and email appear in **multiple places**. Update all of them:
-
-### Phone number (0478 671 407)
-Search `index.html` for `0478671407` and `0478 671 407` — update each instance:
-
-| Section            | What to change                                      |
-|--------------------|-----------------------------------------------------|
-| Contact section    | `<a href="tel:0478671407">0478 671 407</a>`         |
-| Footer             | `<a href="tel:0478671407">0478 671 407</a>`         |
-| FAB (Call button)  | `<a href="tel:0478671407" class="fab fab-call">`    |
-| WhatsApp FAB       | `<a href="https://wa.me/61478671407" ...>`          |
-
-**WhatsApp format:** `61` + number without leading zero = `61478671407`
-
-### Email address (info@sainstalls.com.au)
-Search for `info@sainstalls.com.au` — update both the `href` and visible text:
-
-| Section            | What to change                                                |
-|--------------------|---------------------------------------------------------------|
-| Contact section    | `<a href="mailto:info@sainstalls.com.au">info@sainstalls.com.au</a>` |
-| Footer             | `<a href="mailto:info@sainstalls.com.au">info@sainstalls.com.au</a>` |
+If you change the number of reviews, also update the `reviewCount` in
+`src/partials/schema-business.html` and `src/partials/schema-reviews.html`
+so Google is told the truth. Then run the build.
 
 ---
 
-## Wiring Up the Contact Form
+## Changing brand colours
 
-The form currently shows a success message without sending anything.
-To actually receive enquiries, connect one of these services:
+All colours are defined at the top of `assets/css/styles.css`.
+**Edit the `:root` block only** — changes apply to the whole site.
 
-### Option A: Netlify Forms (if hosted on Netlify — free)
-Add `data-netlify="true"` and `name="contact"` to the `<form>` tag:
-```html
-<form class="contact-form" id="contact-form" data-netlify="true" name="contact" novalidate>
+```css
+:root {
+  --color-accent:  #E8500A;   /* the orange */
+  --color-bg:      #0d0d0d;   /* main background */
+  /* etc. */
+}
 ```
 
-### Option B: Formspree (works anywhere — free tier available)
-1. Sign up at formspree.io
-2. Create a form and get your endpoint URL
-3. Change the form's action: `<form ... action="https://formspree.io/f/YOUR_ID" method="POST">`
-4. Remove the JS `e.preventDefault()` from main.js (or replace with Formspree's AJAX approach)
+No rebuild needed for CSS changes — just reload.
 
-### Option C: EmailJS (sends email without a backend)
-Follow the EmailJS documentation at emailjs.com
+> **Careful with the orange.** Buttons use dark text on the orange because
+> white text on it fails accessibility contrast. If you make the orange
+> much darker, re-check the buttons.
 
 ---
 
-## Changing the Google Review Link
+## The enquiry form
 
-Find `https://g.page/r/review` in index.html and replace with your actual Google Business review URL.
-It appears in the reviews section CTA and the footer Google icon link.
+The form on `/get-a-quote/` sends to **Formspree**
+(`https://formspree.io/f/mwvzwapj`). On success it now redirects the
+visitor to `/thank-you/`.
 
----
+Nothing about how the form sends has changed — same endpoint, same fields
+(`first_name`, `last_name`, `phone`, `email`, `service`, `suburb`,
+`message`). Only the "what happens next" changed, so there's a real page
+load for conversion tracking.
 
-## Updating Service Area / Hours
-
-These appear in the **Contact section** and **Footer**. Search for:
-- `Melbourne's Eastern &amp; South Eastern suburbs` — to change service area
-- `Mon–Fri 9am–5pm` — to change hours
-
----
-
-## Hosting Options
-
-| Option      | Cost  | Notes                                              |
-|-------------|-------|----------------------------------------------------|
-| Netlify     | Free  | Drag-and-drop deploy. Best for static sites.       |
-| Vercel      | Free  | Similarly easy. Good performance.                  |
-| Cloudflare Pages | Free | Very fast global delivery.                    |
-| cPanel / FTP | Varies | Upload files via FTP to your web host folder.  |
-
-For Netlify: drag the entire project folder to app.netlify.com/drop
+The redirect lives in `assets/js/main.js`, in the contact-form section.
 
 ---
 
-## Questions?
+## Google Ads conversion tracking — action needed
 
-Any changes beyond what's covered here (new sections, integrations, SEO) — contact your web developer.
+> **⚠️ One decision is waiting for you. Nothing is broken right now.**
+
+**How it works today (unchanged and working):** when the form submits
+successfully, `assets/js/main.js` fires the "Submit lead form" conversion
+directly, then redirects to `/thank-you/`. Click-to-call conversions fire
+from the phone links. Both are live and tested.
+
+**What's new:** `/thank-you/` is a real page now, so you *can* move the
+conversion to fire on that page's load instead — which is the setup Google
+Ads describes in its own instructions. There's a clearly marked slot for it
+in `src/pages/thank-you.html`:
+
+```html
+<!-- GOOGLE ADS CONVERSION SNIPPET GOES HERE — fires on this page's load -->
+```
+
+**I deliberately did NOT remove the existing tracking.** If I had removed it
+and the new snippet wasn't pasted in yet, you'd have stopped counting leads
+without noticing.
+
+### If you want to switch to page-load tracking
+
+Do both of these **at the same time**:
+
+1. Paste the "Submit lead form" event snippet into the slot in
+   `src/pages/thank-you.html`, then run `node build.mjs`.
+2. Delete the conversion block in `assets/js/main.js` — search for
+   `Google Ads conversion tracking`. Keep the redirect itself.
+
+If you do step 1 without step 2, **every lead is counted twice.**
+
+Either setup works. The current one is already verified, so switching is
+optional.
+
+---
+
+## Deploying
+
+**Do not deploy this branch until you've reviewed it.** To review:
+
+```bash
+node build.mjs
+```
+
+then serve the folder and click through every page.
+
+Once you're happy, deploy the whole folder as a static site. The generated
+HTML *is* the site — there is no separate build output folder.
+
+| Host | Cost | Notes |
+|---|---|---|
+| Netlify | Free | Drag-and-drop the folder to app.netlify.com/drop |
+| Vercel | Free | Also fine. Connect the repo or drag the folder. |
+| Cloudflare Pages | Free | Very fast globally. |
+| cPanel / FTP | Varies | Upload the folder contents to your web root. |
+
+**Important:** make sure the host serves `/about/` from `about/index.html`.
+Netlify, Vercel and Cloudflare Pages all do this automatically.
+
+**Also make sure text compression (gzip or Brotli) is switched on** — the
+speed scores below depend on it. The three hosts above do it automatically.
+
+---
+
+## What changed in the multi-page refactor
+
+### Kept exactly as it was
+
+Colours, fonts, spacing, dark theme, every component's styling; the hero
+rotating-word animation, hero photo slideshow and scroll animations; the
+custom cursor, sticky nav, mobile menu, floating Call button and
+back-to-top; all copy and business facts (30+ years, 500+ projects, 5.0
+Google rating, Hallam address, phone, service list, testimonials, socials);
+the Formspree endpoint and field names; the Google Ads tag and both
+conversions; WebP photos, lazy loading and image dimensions.
+
+### What's new
+
+- Six real category pages instead of one filterable grid.
+- A before/after slider and a photo lightbox, used identically everywhere.
+- One project list (`assets/js/projects.js`) driving all of it.
+- A shared header and footer, edited in one place.
+- A real `/thank-you/` page.
+- Per-page titles, descriptions, canonicals and breadcrumbs; a regenerated
+  `sitemap.xml`.
+
+### Speed and accessibility after the change
+
+Measured with Lighthouse, mobile, with compression on:
+
+| Page | Performance | Accessibility | SEO |
+|---|---|---|---|
+| Home | 99 | 100 | 100 |
+| Our Work | 100 | 100 | 100 |
+| Kitchens | 100 | 100 | 100 |
+| About | 100 | 100 | 100 |
+| Reviews | 100 | 100 | 100 |
+| Get a Quote | 100 | 100 | 100 |
+| Thank You | 98 | 100 | n/a — deliberately hidden from Google |
+
+Two notes:
+
+- **Best Practices scores 79 on every page.** This is the Google Ads tag
+  setting third-party cookies, not the refactor — the current live site
+  scores 79 too. It's unavoidable while Ads conversion tracking is on.
+- **The `/thank-you/` page has a `noindex` tag** so it never shows up in
+  search results, which is what you want. Lighthouse's SEO score flags that
+  as a problem; here it's intentional.
+
+### One known rough edge
+
+On `/thank-you/` the layout-shift score is 0.09. Everywhere else it's
+effectively zero. The cause is the web font swapping in and reflowing the
+heading, which is more noticeable on a short page. It's still inside
+Google's "good" range (under 0.10). Self-hosting the fonts would remove it
+entirely — worth doing one day, not urgent.

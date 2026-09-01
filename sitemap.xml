@@ -2,8 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sajoinery.com.au/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-01</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/about/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/get-a-quote/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/bathrooms/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/bedrooms/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/commercial/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/kitchens/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/living-spaces/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/our-work/wardrobes/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sajoinery.com.au/reviews/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
