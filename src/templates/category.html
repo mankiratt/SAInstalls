@@ -1,0 +1,50 @@
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/our-work/">Our Work</a></li>
+            <li><span aria-current="page">{{CATEGORY_NAME}}</span></li>
+          </ol>
+        </nav>
+        <span class="eyebrow">{{EYEBROW}}</span>
+        <h1 class="section-heading">{{HEADING}}</h1>
+        <p class="page-header-intro">{{INTRO}}</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+         Written in at build time from assets/js/projects.js.
+         To change what appears here, edit projects.js and re-run
+         `node build.mjs` — do not edit the generated page.
+    ============================================================ -->
+    <section class="section" aria-label="{{CATEGORY_NAME}} projects">
+      <div class="container">
+        <div class="projects" data-projects="{{CATEGORY_KEY}}">
+{{PROJECTS}}
+        </div>
+        <p class="projects-empty"{{EMPTY_HIDDEN}}>
+          Projects for this category are on their way. In the meantime,
+          <a href="/get-a-quote/">get in touch</a> and we'll talk you through
+          recent work in person.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CLOSING CTA
+    ============================================================ -->
+    <section class="cta-band">
+      <div class="container">
+        <h2 class="cta-band-heading">Planning something similar?</h2>
+        <p class="cta-band-sub">Tell us what you have in mind. We'll come to you, measure up and give you a clear, no-obligation quote.</p>
+        <div class="cta-band-actions">
+          <a href="/get-a-quote/" class="btn btn-accent">Get a Quote</a>
+          <a href="/our-work/" class="btn btn-outline">See All Our Work</a>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,42 @@
+  <!-- ============================================================
+       NAVIGATION  —  SHARED ACROSS EVERY PAGE
+       Edit this file only. Run `node build.mjs` to apply the change
+       to all pages. Do not edit the nav inside a generated page.
+  ============================================================ -->
+  <header class="nav" id="nav" role="banner">
+    <div class="nav-inner container">
+
+      <!-- Logo -->
+      <a href="/" class="nav-logo" aria-label="S&amp;A Joinery — home">
+        <span class="nav-logo-main">S&amp;A</span>
+        <span class="nav-logo-sub">JOINERY</span>
+      </a>
+
+      <!-- Desktop links -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/" data-nav="home" class="nav-link">Home</a>
+        <a href="/our-work/" data-nav="our-work" class="nav-link">Our Work</a>
+        <a href="/about/" data-nav="about" class="nav-link">About</a>
+        <a href="/reviews/" data-nav="reviews" class="nav-link">Reviews</a>
+        <a href="/get-a-quote/" data-nav="quote" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- CTA + hamburger -->
+      <div class="nav-actions">
+        <a href="/get-a-quote/" class="btn btn-accent nav-cta">Get a Quote</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div class="nav-mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="/" data-nav="home" class="nav-mobile-link">Home</a>
+      <a href="/our-work/" data-nav="our-work" class="nav-mobile-link">Our Work</a>
+      <a href="/about/" data-nav="about" class="nav-mobile-link">About</a>
+      <a href="/reviews/" data-nav="reviews" class="nav-mobile-link">Reviews</a>
+      <a href="/get-a-quote/" data-nav="quote" class="nav-mobile-link">Contact</a>
+      <a href="/get-a-quote/" class="btn btn-accent nav-mobile-cta">Get a Quote</a>
+    </div>
+  </header>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — conversion tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17979716484"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17979716484');
+  </script>
+
+  <!-- Primary SEO -->
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="author" content="S&amp;A Joinery">
+  <meta name="robots" content="{{ROBOTS}}">
+  <meta name="theme-color" content="#0f0d0a">
+  <link rel="canonical" href="{{CANONICAL}}">
+
+  <!-- Geo targeting -->
+  <meta name="geo.region" content="AU-VIC">
+  <meta name="geo.placename" content="Hallam, Melbourne">
+  <meta name="geo.position" content="-38.0115;145.2621">
+  <meta name="ICBM" content="-38.0115, 145.2621">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="https://sajoinery.com.au/assets/images/kitchen1.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="S&amp;A Joinery">
+  <meta property="og:locale" content="en_AU">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <meta name="twitter:image" content="https://sajoinery.com.au/assets/images/kitchen1.jpg">
+
+{{STRUCTURED_DATA}}
+{{EXTRA_HEAD}}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="shortcut icon" href="/assets/logo.png">
+
+  <!-- Google Fonts — loaded asynchronously so they never block first paint.
+       font-display: swap (in the URL) paints text instantly in a fallback, then swaps. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap">
+  </noscript>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Custom cursor (hidden on touch devices via CSS) -->
+  <div class="cursor" aria-hidden="true"></div>
+
+{{HEADER}}
+
+  <main id="main">
+{{BODY}}
+  </main>
+
+{{FOOTER}}
+{{TAIL}}
+{{EXTRA_SCRIPTS}}
+</body>
+</html>
