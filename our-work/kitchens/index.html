@@ -197,205 +197,641 @@
          To change what appears here, edit projects.js and re-run
          `node build.mjs` — do not edit the generated page.
     ============================================================ -->
-    <section class="section" aria-label="Kitchens projects">
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="projects" data-projects="kitchens">
-        <article class="project animate-element" id="kitchen-1"
-                 data-title="Stone Benchtop Kitchen — Melbourne" data-alt="Custom kitchen renovation Melbourne with stone benchtop"
-                 data-photos="[&quot;/assets/images/kitchen1.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Stone Benchtop Kitchen — Melbourne</h2>
-            <p class="project-desc">Full kitchen rebuild with a stone benchtop and integrated appliances.</p>
-          </div>
-          <div class="ba">
-            <div class="ba-frame" data-ba-frame>
-              <img class="ba-img" src="/assets/images/kitchen1.webp" alt="Custom kitchen renovation Melbourne with stone benchtop"
-                   width="800" height="535" loading="lazy" decoding="async" draggable="false">
-              <div class="ba-clip">
-                <img class="ba-img" src="/assets/images/placeholder-before.webp" alt="Custom kitchen renovation Melbourne with stone benchtop — before the renovation"
-                     width="800" height="535" loading="lazy" decoding="async" draggable="false">
+        <h2 class="visually-hidden" id="gallery-heading">Kitchens projects</h2>
+        <p class="filter-hint filter-hint--solo">Click a project to open it</p>
+
+        <div class="tile-grid">
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom kitchen renovation Melbourne with stone benchtop" width="800" height="535"
+                     loading="eager" decoding="async">
               </div>
-              <span class="ba-label ba-label--before" aria-hidden="true">Before</span>
-              <span class="ba-label ba-label--after" aria-hidden="true">After</span>
-              <div class="ba-handle" data-ba-handle role="slider" tabindex="0"
-                   aria-label="Before and after comparison for Stone Benchtop Kitchen — Melbourne"
-                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
-                   aria-valuetext="50% before, 50% after">
-                <span class="ba-handle-grip" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="10 8 6 12 10 16"/><polyline points="14 8 18 12 14 16"/>
-                  </svg>
-                </span>
+              <button type="button" class="tile-expand" data-open-project="kitchen-1"
+                      aria-label="Open Stone Benchtop Kitchen — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-1">Stone Benchtop Kitchen — Melbourne</button>
+              </h3>
+              <p class="tile-desc">Full kitchen rebuild with a stone benchtop and integrated appliances.</p>
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen2.webp" srcset="/assets/images/kitchen2-400.webp 400w, /assets/images/kitchen2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Modern white custom kitchen cabinetry Berwick" width="800" height="642"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-2"
+                      aria-label="Open Modern White Kitchen — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-2">Modern White Kitchen — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen3.webp" srcset="/assets/images/kitchen3-400.webp 400w, /assets/images/kitchen3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Handcrafted timber kitchen joinery Clyde North" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-3"
+                      aria-label="Open Timber Kitchen Joinery — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-3">Timber Kitchen Joinery — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen4.webp" srcset="/assets/images/kitchen4-400.webp 400w, /assets/images/kitchen4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Contemporary custom kitchen design Hallam" width="800" height="1199"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-4"
+                      aria-label="Open Contemporary Kitchen — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-4">Contemporary Kitchen — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen5.webp" srcset="/assets/images/kitchen5-400.webp 400w, /assets/images/kitchen5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Shaker-style custom kitchen Cranbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-5"
+                      aria-label="Open Shaker-Style Kitchen — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-5">Shaker-Style Kitchen — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen6.webp" srcset="/assets/images/kitchen6-400.webp 400w, /assets/images/kitchen6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Two-tone custom kitchen cabinetry Narre Warren" width="800" height="1190"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-6"
+                      aria-label="Open Two-Tone Cabinetry — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-6">Two-Tone Cabinetry — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen7.webp" srcset="/assets/images/kitchen7-400.webp 400w, /assets/images/kitchen7.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Dark handleless kitchen renovation south east Melbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-7"
+                      aria-label="Open Handleless Kitchen — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-7">Handleless Kitchen — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen8.webp" srcset="/assets/images/kitchen8-400.webp 400w, /assets/images/kitchen8.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Open-plan custom kitchen joinery Berwick" width="800" height="598"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-8"
+                      aria-label="Open Open-Plan Kitchen — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-8">Open-Plan Kitchen — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen9.webp" srcset="/assets/images/kitchen9-400.webp 400w, /assets/images/kitchen9.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom island kitchen with stone top Cranbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-9"
+                      aria-label="Open Island Kitchen — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-9">Island Kitchen — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen10.webp" srcset="/assets/images/kitchen10-400.webp 400w, /assets/images/kitchen10.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Scullery kitchen renovation Melbourne south east" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-10"
+                      aria-label="Open Scullery &amp; Kitchen — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-10">Scullery &amp; Kitchen — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen11.webp" srcset="/assets/images/kitchen11-400.webp 400w, /assets/images/kitchen11.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom overhead cabinetry kitchen Hallam" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-11"
+                      aria-label="Open Overhead Cabinetry Kitchen — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-11">Overhead Cabinetry Kitchen — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen12.webp" srcset="/assets/images/kitchen12-400.webp 400w, /assets/images/kitchen12.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Timber veneer custom kitchen Clyde North" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-12"
+                      aria-label="Open Timber Veneer Kitchen — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-12">Timber Veneer Kitchen — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-modals">
+      <div class="pm" data-project-modal="kitchen-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-1">Stone Benchtop Kitchen — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom kitchen renovation Melbourne with stone benchtop"
+                     width="800" height="535" loading="lazy" decoding="async">
+              </figure>
+              <p class="pm-desc">Full kitchen rebuild with a stone benchtop and integrated appliances.</p>
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
               </div>
             </div>
           </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-2"
-                 data-title="Modern White Kitchen — Berwick" data-alt="Modern white custom kitchen cabinetry Berwick"
-                 data-photos="[&quot;/assets/images/kitchen2.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Modern White Kitchen — Berwick</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Modern White Kitchen — Berwick">
-              <img src="/assets/images/kitchen2.webp" alt="Modern white custom kitchen cabinetry Berwick" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-3"
-                 data-title="Timber Kitchen Joinery — Clyde North" data-alt="Handcrafted timber kitchen joinery Clyde North"
-                 data-photos="[&quot;/assets/images/kitchen3.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Timber Kitchen Joinery — Clyde North</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Timber Kitchen Joinery — Clyde North">
-              <img src="/assets/images/kitchen3.webp" alt="Handcrafted timber kitchen joinery Clyde North" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-4"
-                 data-title="Contemporary Kitchen — Hallam" data-alt="Contemporary custom kitchen design Hallam"
-                 data-photos="[&quot;/assets/images/kitchen4.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Contemporary Kitchen — Hallam</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Contemporary Kitchen — Hallam">
-              <img src="/assets/images/kitchen4.webp" alt="Contemporary custom kitchen design Hallam" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-5"
-                 data-title="Shaker-Style Kitchen — Cranbourne" data-alt="Shaker-style custom kitchen Cranbourne"
-                 data-photos="[&quot;/assets/images/kitchen5.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Shaker-Style Kitchen — Cranbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Shaker-Style Kitchen — Cranbourne">
-              <img src="/assets/images/kitchen5.webp" alt="Shaker-style custom kitchen Cranbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-6"
-                 data-title="Two-Tone Cabinetry — Narre Warren" data-alt="Two-tone custom kitchen cabinetry Narre Warren"
-                 data-photos="[&quot;/assets/images/kitchen6.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Two-Tone Cabinetry — Narre Warren</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Two-Tone Cabinetry — Narre Warren">
-              <img src="/assets/images/kitchen6.webp" alt="Two-tone custom kitchen cabinetry Narre Warren" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-7"
-                 data-title="Handleless Kitchen — South East Melbourne" data-alt="Dark handleless kitchen renovation south east Melbourne"
-                 data-photos="[&quot;/assets/images/kitchen7.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Handleless Kitchen — South East Melbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Handleless Kitchen — South East Melbourne">
-              <img src="/assets/images/kitchen7.webp" alt="Dark handleless kitchen renovation south east Melbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-8"
-                 data-title="Open-Plan Kitchen — Berwick" data-alt="Open-plan custom kitchen joinery Berwick"
-                 data-photos="[&quot;/assets/images/kitchen8.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Open-Plan Kitchen — Berwick</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Open-Plan Kitchen — Berwick">
-              <img src="/assets/images/kitchen8.webp" alt="Open-plan custom kitchen joinery Berwick" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-9"
-                 data-title="Island Kitchen — Cranbourne" data-alt="Custom island kitchen with stone top Cranbourne"
-                 data-photos="[&quot;/assets/images/kitchen9.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Island Kitchen — Cranbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Island Kitchen — Cranbourne">
-              <img src="/assets/images/kitchen9.webp" alt="Custom island kitchen with stone top Cranbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-10"
-                 data-title="Scullery &amp; Kitchen — South East Melbourne" data-alt="Scullery kitchen renovation Melbourne south east"
-                 data-photos="[&quot;/assets/images/kitchen10.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Scullery &amp; Kitchen — South East Melbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Scullery &amp; Kitchen — South East Melbourne">
-              <img src="/assets/images/kitchen10.webp" alt="Scullery kitchen renovation Melbourne south east" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-11"
-                 data-title="Overhead Cabinetry Kitchen — Hallam" data-alt="Custom overhead cabinetry kitchen Hallam"
-                 data-photos="[&quot;/assets/images/kitchen11.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Overhead Cabinetry Kitchen — Hallam</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Overhead Cabinetry Kitchen — Hallam">
-              <img src="/assets/images/kitchen11.webp" alt="Custom overhead cabinetry kitchen Hallam" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="kitchen-12"
-                 data-title="Timber Veneer Kitchen — Clyde North" data-alt="Timber veneer custom kitchen Clyde North"
-                 data-photos="[&quot;/assets/images/kitchen12.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Timber Veneer Kitchen — Clyde North</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Timber Veneer Kitchen — Clyde North">
-              <img src="/assets/images/kitchen12.webp" alt="Timber veneer custom kitchen Clyde North" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
         </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-2">Modern White Kitchen — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen2.webp" srcset="/assets/images/kitchen2-400.webp 400w, /assets/images/kitchen2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Modern white custom kitchen cabinetry Berwick"
+                     width="800" height="642" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-3">Timber Kitchen Joinery — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen3.webp" srcset="/assets/images/kitchen3-400.webp 400w, /assets/images/kitchen3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Handcrafted timber kitchen joinery Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-4">Contemporary Kitchen — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen4.webp" srcset="/assets/images/kitchen4-400.webp 400w, /assets/images/kitchen4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Contemporary custom kitchen design Hallam"
+                     width="800" height="1199" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-5">Shaker-Style Kitchen — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen5.webp" srcset="/assets/images/kitchen5-400.webp 400w, /assets/images/kitchen5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Shaker-style custom kitchen Cranbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-6">Two-Tone Cabinetry — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen6.webp" srcset="/assets/images/kitchen6-400.webp 400w, /assets/images/kitchen6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Two-tone custom kitchen cabinetry Narre Warren"
+                     width="800" height="1190" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-7" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-7" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-7">Handleless Kitchen — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen7.webp" srcset="/assets/images/kitchen7-400.webp 400w, /assets/images/kitchen7.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Dark handleless kitchen renovation south east Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-8" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-8" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-8">Open-Plan Kitchen — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen8.webp" srcset="/assets/images/kitchen8-400.webp 400w, /assets/images/kitchen8.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Open-plan custom kitchen joinery Berwick"
+                     width="800" height="598" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-9" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-9" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-9">Island Kitchen — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen9.webp" srcset="/assets/images/kitchen9-400.webp 400w, /assets/images/kitchen9.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom island kitchen with stone top Cranbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-10" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-10" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-10">Scullery &amp; Kitchen — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen10.webp" srcset="/assets/images/kitchen10-400.webp 400w, /assets/images/kitchen10.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Scullery kitchen renovation Melbourne south east"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-11" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-11" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-11">Overhead Cabinetry Kitchen — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen11.webp" srcset="/assets/images/kitchen11-400.webp 400w, /assets/images/kitchen11.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom overhead cabinetry kitchen Hallam"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-12" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-12" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-12">Timber Veneer Kitchen — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen12.webp" srcset="/assets/images/kitchen12-400.webp 400w, /assets/images/kitchen12.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Timber veneer custom kitchen Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
         <p class="projects-empty" hidden>
           Projects for this category are on their way. In the meantime,
           <a href="/get-a-quote/">get in touch</a> and we'll talk you through

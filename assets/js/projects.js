@@ -42,16 +42,28 @@
    description  Optional one-liner shown under the title.
 
    ------------------------------------------------------------
-   ABOUT THE "BEFORE" PHOTOS
+   THE BEFORE/AFTER SLIDERS ARE CURRENTLY OFF
    ------------------------------------------------------------
-   We don't have real before photos yet, so every project below
-   has `beforeImage: null` except the two marked DEMO, which point
-   at a grey placeholder image so you can see how the before/after
-   slider looks and behaves.
-
-   >> Before this goes live, either add real before photos or set
-   >> those two DEMO projects back to `beforeImage: null`. <<
+   See SA_FEATURES below. Every project shows its finished photo
+   only. When you have real "before" photos, fill in `beforeImage`
+   and flip the switch — nothing else needs to change.
 ============================================================ */
+
+/* ============================================================
+   FEATURE SWITCHES
+============================================================ */
+window.SA_FEATURES = {
+  /* Before/after comparison sliders.
+     OFF because we do not have real "before" photos yet. To turn
+     them back on:
+       1. add the before photos to /assets/images/
+       2. set `beforeImage` on the projects that have one
+       3. change this to true
+       4. run `node build.mjs`
+     Projects without a `beforeImage` keep showing just their
+     finished photo, so it is safe to switch on part-way through. */
+  beforeAfter: false,
+};
 
 window.SA_PROJECTS = [
 
@@ -60,8 +72,7 @@ window.SA_PROJECTS = [
     id: 'kitchen-1',
     title: 'Stone Benchtop Kitchen — Melbourne',
     category: 'kitchens',
-    // DEMO placeholder — replace with a real photo or set to null before launch.
-    beforeImage: '/assets/images/placeholder-before.webp',
+    beforeImage: null,
     afterImage: '/assets/images/kitchen1.webp',
     gallery: [],
     alt: 'Custom kitchen renovation Melbourne with stone benchtop',
@@ -183,8 +194,7 @@ window.SA_PROJECTS = [
     id: 'wardrobe-1',
     title: 'Built-In Wardrobe — Melbourne',
     category: 'wardrobes',
-    // DEMO placeholder — replace with a real photo or set to null before launch.
-    beforeImage: '/assets/images/placeholder-before.webp',
+    beforeImage: null,
     afterImage: '/assets/images/wadrobe1.webp',
     gallery: [],
     alt: 'Custom built-in wardrobe Melbourne bedroom storage',

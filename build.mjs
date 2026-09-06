@@ -157,70 +157,182 @@ const esc = (s) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-/** All photos for a project, in the order the lightbox shows them. */
+/** All photos for a project, in the order the modal shows them. */
 const photosOf = (p) => [p.afterImage, ...(p.gallery || [])].filter(Boolean);
 
-function renderProjects(categoryKey) {
-  const list = ALL_PROJECTS.filter((p) => p.category === categoryKey);
-  if (!list.length) return '';
+/** Human label for a category key, e.g. "living-spaces" -> "Living Spaces". */
+const categoryName = (key) => (CATEGORIES.find((c) => c.key === key) || {}).name || key;
 
-  return list
-    .map((p) => {
-      const photos = photosOf(p);
-      const hasBefore = Boolean(p.beforeImage);
+const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
-      const slider = hasBefore
-        ? `
-          <div class="ba">
-            <div class="ba-frame" data-ba-frame>
-              <img class="ba-img" src="${esc(p.afterImage)}" alt="${esc(p.alt)}"
-                   width="800" height="535" loading="lazy" decoding="async" draggable="false">
-              <div class="ba-clip">
-                <img class="ba-img" src="${esc(p.beforeImage)}" alt="${esc(p.alt)} — before the renovation"
-                     width="800" height="535" loading="lazy" decoding="async" draggable="false">
+/* Photos are shown in a 4:3 frame: one column on a phone, two on a
+   tablet, three on a desktop. */
+const TILE_SIZES = '(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw';
+
+/** Builds the srcset for one of our WebP photos (we ship 400w and 800w). */
+function srcsetFor(src) {
+  const small = src.replace(/\.webp$/, '-400.webp');
+  return `${esc(small)} 400w, ${esc(src)} 800w`;
+}
+
+/* ------------------------------------------------------------------
+   Real image dimensions
+   The photos are not all the same shape — some are landscape, some
+   portrait. Guessing a size makes the browser reserve the wrong box
+   (and Lighthouse flags the mismatch), so we read the actual width
+   and height out of each WebP file at build time.
+------------------------------------------------------------------ */
+function readWebpSize(b) {
+  if (b.toString('ascii', 0, 4) !== 'RIFF' || b.toString('ascii', 8, 12) !== 'WEBP') return null;
+  const fourcc = b.toString('ascii', 12, 16);
+  if (fourcc === 'VP8 ') {
+    return { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+  }
+  if (fourcc === 'VP8L') {
+    const bits = b.readUInt32LE(21);
+    return { w: (bits & 0x3fff) + 1, h: ((bits >> 14) & 0x3fff) + 1 };
+  }
+  if (fourcc === 'VP8X') {
+    return {
+      w: 1 + (b[24] | (b[25] << 8) | (b[26] << 16)),
+      h: 1 + (b[27] | (b[28] << 8) | (b[29] << 16)),
+    };
+  }
+  return null;
+}
+
+const sizeCache = new Map();
+function imageSize(webPath) {
+  if (sizeCache.has(webPath)) return sizeCache.get(webPath);
+  let dims = { w: 800, h: 600 };
+  try {
+    dims = readWebpSize(readFileSync(join(ROOT, webPath.replace(/^\//, '')))) || dims;
+  } catch {
+    console.warn(`  ! could not read size of ${webPath} — falling back to 800x600`);
+  }
+  sizeCache.set(webPath, dims);
+  return dims;
+}
+
+const ICON_EXPAND =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+const ICON_ARROW =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const ICON_LAYERS =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>';
+const ICON_CLOSE =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+/** One tile in the project grid. */
+function renderTile(p, i) {
+  const photos = photosOf(p);
+  const cat = categoryName(p.category);
+  const d = imageSize(p.afterImage);
+  return `          <article class="tile animate-element" data-project-tile data-category="${esc(p.category)}">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="${esc(p.afterImage)}" srcset="${srcsetFor(p.afterImage)}" sizes="${TILE_SIZES}"
+                     alt="${esc(p.alt)}" width="${d.w}" height="${d.h}"
+                     loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async">
               </div>
-              <span class="ba-label ba-label--before" aria-hidden="true">Before</span>
-              <span class="ba-label ba-label--after" aria-hidden="true">After</span>
-              <div class="ba-handle" data-ba-handle role="slider" tabindex="0"
-                   aria-label="Before and after comparison for ${esc(p.title)}"
-                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
-                   aria-valuetext="50% before, 50% after">
-                <span class="ba-handle-grip" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="10 8 6 12 10 16"/><polyline points="14 8 18 12 14 16"/>
-                  </svg>
-                </span>
+              <button type="button" class="tile-expand" data-open-project="${esc(p.id)}"
+                      aria-label="Open ${esc(p.title)}, ${plural(photos.length, 'photo')}">${ICON_EXPAND}</button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat">${ICON_LAYERS}${esc(cat)}</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="${esc(p.id)}">${esc(p.title)}</button>
+              </h3>
+              ${p.description ? `<p class="tile-desc">${esc(p.description)}</p>` : ''}
+              <p class="tile-foot">
+                <span class="tile-count">${plural(photos.length, 'photo')}</span>
+                <span class="tile-cue">View project${ICON_ARROW}</span>
+              </p>
+            </div>
+          </article>`;
+}
+
+/** The full-screen viewer for one project. Rendered up front, hidden. */
+function renderModal(p) {
+  const photos = photosOf(p);
+  const extra = photos.slice(1);
+  const cat = categoryName(p.category);
+  const lead = imageSize(p.afterImage);
+
+  return `      <div class="pm" data-project-modal="${esc(p.id)}" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-${esc(p.id)}" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">${esc(cat)}</p>
+              <h2 class="pm-title" id="pm-title-${esc(p.id)}">${esc(p.title)}</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span>${ICON_CLOSE}
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="${esc(p.afterImage)}" srcset="${srcsetFor(p.afterImage)}"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="${esc(p.alt)}"
+                     width="${lead.w}" height="${lead.h}" loading="lazy" decoding="async">
+              </figure>
+              ${p.description ? `<p class="pm-desc">${esc(p.description)}</p>` : ''}
+              ${
+                extra.length
+                  ? `<div class="pm-gallery">
+                <h3 class="pm-sub">More from this project</h3>
+                <div class="pm-photos">
+                  ${extra
+                    .map(
+                      (src, i) => `<figure class="pm-figure">${''}
+                    <img src="${esc(src)}" srcset="${srcsetFor(src)}" sizes="(min-width: 1100px) 960px, 94vw"
+                         alt="${esc(p.title)}, photo ${i + 2} of ${photos.length}"
+                         width="${imageSize(src).w}" height="${imageSize(src).h}" loading="lazy" decoding="async">
+                  </figure>`
+                    )
+                    .join('\n                  ')}
+                </div>
+              </div>`
+                  : ''
+              }
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
               </div>
             </div>
-          </div>`
-        : '';
+          </div>
+        </div>
+      </div>`;
+}
 
-      /* When the slider is shown the finished photo is already on screen,
-         so the thumbnails start from the extra photos instead of repeating it. */
-      const thumbs = photos
-        .map((src, i) => ({ src, i }))
-        .slice(hasBefore ? 1 : 0)
-        .map(
-          ({ src, i }) => `
-            <button type="button" class="project-thumb" data-photo="${i}"
-                    aria-label="View photo ${i + 1} of ${photos.length} — ${esc(p.title)}">
-              <img src="${esc(src)}" alt="${esc(p.alt)}" width="800" height="535" loading="lazy" decoding="async">
-            </button>`
-        )
-        .join('');
+/** Filter chips for the Our Work index. */
+function renderFilters() {
+  const chips = [
+    `            <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All work<span class="chip-count">${ALL_PROJECTS.length}</span></button>`,
+    ...CATEGORIES.map((c) => {
+      const n = ALL_PROJECTS.filter((p) => p.category === c.key).length;
+      return `            <button type="button" class="chip" data-filter="${c.key}" aria-pressed="false">${esc(c.name)}<span class="chip-count">${n}</span></button>`;
+    }),
+  ];
+  return chips.join('\n');
+}
 
-      const gallery = thumbs ? `\n          <div class="project-gallery">${thumbs}\n          </div>` : '';
+/** The grid + hidden modals for a set of projects. */
+function renderGrid(list) {
+  if (!list.length) return '';
+  const grid = list.map(renderTile).join('\n');
+  const modals = list.map(renderModal).join('\n');
+  return (
+    `        <div class="tile-grid">\n${grid}\n        </div>\n\n` +
+    `        <div class="project-modals">\n${modals}\n        </div>`
+  );
+}
 
-      return `        <article class="project animate-element" id="${esc(p.id)}"
-                 data-title="${esc(p.title)}" data-alt="${esc(p.alt)}"
-                 data-photos="${esc(JSON.stringify(photos))}">
-          <div class="project-head">
-            <h2 class="project-title">${esc(p.title)}</h2>
-            ${p.description ? `<p class="project-desc">${esc(p.description)}</p>` : ''}
-          </div>${slider}${gallery}
-        </article>`;
-    })
-    .join('\n\n');
+function renderProjects(categoryKey) {
+  return renderGrid(ALL_PROJECTS.filter((p) => p.category === categoryKey));
 }
 
 /* ------------------------------------------------------------------
@@ -242,6 +354,21 @@ function markActiveNav(html, navKey) {
 function buildPage({ out, url, title, description, body, navKey, schemas = ['business'], extraHead = '', extraScripts = '', noindex = false }) {
   const canonical = url === '/' ? `${SITE}/` : `${SITE}${url}`;
   const structured = schemas.map((k) => schema[k]).join('\n');
+
+  // Tokens a page can use to drop in the whole project gallery.
+  body = body
+    .replace(/{{FILTERS}}/g, renderFilters())
+    .replace(/{{ALL_PROJECTS}}/g, renderGrid(ALL_PROJECTS))
+    .replace(/{{PROJECT_COUNT}}/g, String(ALL_PROJECTS.length));
+
+  /* Any page that ended up with project tiles needs the gallery behaviour
+     (filter chips + the project viewer). Detected from the finished markup
+     so a new gallery page can never be built without its script. */
+  if (body.includes('data-project-tile') && !extraScripts.includes('project-showcase')) {
+    extraScripts +=
+      (extraScripts ? '\n' : '') +
+      '  <script src="/assets/js/project-showcase.js" defer></script>';
+  }
 
   const html = shell
     .replace(/{{ROBOTS}}/g, noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
@@ -315,7 +442,7 @@ for (const cat of CATEGORIES) {
       // Behaviour for the before/after slider and the lightbox. The project
       // markup itself is already in the HTML (rendered above), so this only
       // needs to attach interactivity — no data file ships to the browser.
-      extraScripts: '  <script src="/assets/js/project-showcase.js" defer></script>',
+
     })
   );
 }

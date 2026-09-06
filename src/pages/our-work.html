@@ -4,10 +4,13 @@
   "url": "/our-work/",
   "navKey": "our-work",
   "title": "Our Work | Custom Joinery Projects Melbourne | S&amp;A Joinery",
-  "description": "Browse S&amp;A Joinery's completed work across Melbourne \u2014 custom kitchens, built-in wardrobes, bathroom vanities, bedroom and living joinery, and commercial fitouts."
+  "description": "Browse S&amp;A Joinery's completed work across Melbourne — custom kitchens, built-in wardrobes, bathroom vanities, bedroom and living joinery, and commercial fitouts."
 }
 PAGE-->
-<section class="page-header">
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol>
@@ -17,56 +20,32 @@ PAGE-->
         </nav>
         <span class="eyebrow">OUR WORK</span>
         <h1 class="section-heading">Built with pride.<br><em>Finished to perfection.</em></h1>
-        <p class="page-header-intro">Every project below was designed, built and installed by our own team. Choose a category to see the full gallery.</p>
+        <p class="page-header-intro">{{PROJECT_COUNT}} completed projects across six categories, all designed, built and installed by our own team. Open any one of them to see it full size.</p>
       </div>
     </section>
 
-    <section class="section" aria-label="Project categories">
+    <!-- ============================================================
+         PROJECT GALLERY
+         The tiles and their viewers are written in at build time from
+         assets/js/projects.js. Edit that file, then run `node build.mjs`.
+    ============================================================ -->
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="category-grid">
-          <a href="/our-work/kitchens/" class="category-card">
-            <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Kitchens joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">12 projects</span>
-              <span class="category-card-title">Kitchens</span>
-            </span>
-          </a>
-          <a href="/our-work/wardrobes/" class="category-card">
-            <img src="/assets/images/wadrobe1.webp" srcset="/assets/images/wadrobe1-400.webp 400w, /assets/images/wadrobe1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Wardrobes joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Wardrobes</span>
-            </span>
-          </a>
-          <a href="/our-work/bathrooms/" class="category-card">
-            <img src="/assets/images/bathroom1.webp" srcset="/assets/images/bathroom1-400.webp 400w, /assets/images/bathroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Bathrooms joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Bathrooms</span>
-            </span>
-          </a>
-          <a href="/our-work/bedrooms/" class="category-card">
-            <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Bedrooms joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Bedrooms</span>
-            </span>
-          </a>
-          <a href="/our-work/living-spaces/" class="category-card">
-            <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Living Spaces joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Living Spaces</span>
-            </span>
-          </a>
-          <a href="/our-work/commercial/" class="category-card">
-            <img src="/assets/images/commercial1.webp" srcset="/assets/images/commercial1-400.webp 400w, /assets/images/commercial1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Commercial joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">4 projects</span>
-              <span class="category-card-title">Commercial</span>
-            </span>
-          </a>
+        <h2 class="visually-hidden" id="gallery-heading">Project gallery</h2>
+
+        <div class="filter-bar">
+          <div class="filters" role="group" aria-label="Filter projects by category">
+{{FILTERS}}
+          </div>
+          <p class="filter-hint">Click a project to open it</p>
         </div>
+
+{{ALL_PROJECTS}}
+
+        <p class="projects-empty" data-empty hidden>
+          Nothing in that category yet. <a href="/get-a-quote/">Get in touch</a>
+          and we'll talk you through recent work in person.
+        </p>
       </div>
     </section>
 
@@ -75,8 +54,8 @@ PAGE-->
     ============================================================ -->
     <section class="cta-band">
       <div class="container">
-        <h2 class="cta-band-heading">Ready to transform your space?</h2>
-        <p class="cta-band-sub">No-obligation quote &mdash; we come to you. We'll get back to you within 24 hours.</p>
+        <h2 class="cta-band-heading">See something you like?</h2>
+        <p class="cta-band-sub">Tell us about your space. We'll come to you, measure up and give you a clear, no-obligation quote.</p>
         <div class="cta-band-actions">
           <a href="/get-a-quote/" class="btn btn-accent">Get a Quote</a>
           <a href="tel:0478671407" class="btn btn-outline">Call 0478 671 407</a>

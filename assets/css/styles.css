@@ -2086,187 +2086,427 @@ a.contact-detail-value:hover {
 }
 
 /* ============================================================
-   22. PROJECTS  (before/after slider + photo gallery)
+   22. PROJECT GALLERY  (filter chips, tiles, project viewer)
 ============================================================ */
-.projects {
+
+/* ---- Filter chips ---- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.chip.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  /* Dark text on orange — white only reaches 2.8:1 and fails AA. */
+  color: #171310;
+}
+
+/* The count sits on a tinted pill, so it needs its own colour rather than
+   inheriting the chip's muted grey — that only reached 4.4:1 against the
+   pill, just under AA. */
+.chip-count {
+  padding: 0.1rem 0.4rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.09);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text);
+}
+
+/* On the active (orange) chip, lighten the pill so the dark text keeps
+   its contrast. Darkening it dropped the pair to 3.5:1. */
+.chip.is-active .chip-count {
+  background: rgba(255, 255, 255, 0.34);
+  color: #171310;
+}
+
+.filter-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* On the category pages there are no chips, so the hint stands alone. */
+.filter-hint--solo {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---- Tile grid ---- */
+.tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 700px) {
+  .tile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1080px) {
+  .tile-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.tile {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xxl);
-}
-
-.project-head { margin-bottom: var(--space-md); }
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--color-text);
-}
-
-.project-desc {
-  margin-top: 0.35rem;
-  color: var(--color-text-muted);
-  max-width: 62ch;
-}
-
-/* ---- Before / after slider ---- */
-.ba { margin-bottom: var(--space-md); }
-
-.ba-frame {
-  --ba-pos: 50%;
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 2;          /* fixed, so nothing shifts while images load */
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface-2);
-  cursor: ew-resize;
-  touch-action: pan-y;          /* vertical page scroll still works on mobile */
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.ba-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
   height: 100%;
-  object-fit: cover;
-  -webkit-user-drag: none;
-}
-
-/* The "before" photo, revealed from the left edge up to the divider. */
-.ba-clip {
-  position: absolute;
-  inset: 0;
-  clip-path: inset(0 calc(100% - var(--ba-pos)) 0 0);
-}
-
-.ba-label {
-  position: absolute;
-  top: var(--space-sm);
-  z-index: 2;
-  padding: 0.3rem 0.7rem;
-  border-radius: 100px;
-  background: rgba(13, 13, 13, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text);
-  pointer-events: none;
-}
-
-.ba-label--before { left: var(--space-sm); }
-.ba-label--after  { right: var(--space-sm); }
-
-/* The divider + grab handle */
-.ba-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--ba-pos);
-  z-index: 3;
-  width: 2px;
-  margin-left: -1px;
-  background: var(--color-text);
-  touch-action: none;
-}
-
-.ba-handle-grip {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px;                  /* 44px touch target */
-  height: 44px;
-  border-radius: 50%;
-  background: var(--color-bg);
-  border: 2px solid var(--color-text);
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-}
-
-.ba-handle-grip svg { width: 20px; height: 20px; }
-
-.ba-handle:focus-visible {
-  outline: none;
-}
-
-.ba-handle:focus-visible .ba-handle-grip {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(232, 80, 10, 0.35);
-}
-
-.ba-frame.is-dragging { cursor: grabbing; }
-
-/* ---- Project photo gallery ---- */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-@media (max-width: 900px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 600px) { .project-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
-
-.project-thumb {
-  position: relative;
-  padding: 0;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
   background: var(--color-surface);
-  aspect-ratio: 3 / 2;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
   transition: border-color var(--transition), transform var(--transition);
 }
 
-.project-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-thumb:hover,
-.project-thumb:focus-visible {
+.tile:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
-/* When a project has no before photo, the gallery is the whole story —
-   let the first photo run full width so the page still feels composed. */
-.project:not(:has(.ba)) .project-gallery {
-  grid-template-columns: repeat(3, 1fr);
+.tile[hidden] { display: none; }
+
+.tile-media { position: relative; }
+
+.tile-photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-surface-2);
 }
 
-.project:not(:has(.ba)) .project-gallery .project-thumb:only-child {
-  grid-column: 1 / -1;
-  aspect-ratio: 16 / 9;
+.tile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
-/* Empty state, if a category has no projects yet */
+.tile:hover .tile-photo img { transform: scale(1.04); }
+
+/* Expand button over the photo */
+.tile-expand {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(13, 13, 13, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+}
+
+/* Always visible on touch, where there is no hover to reveal it. */
+@media (hover: none) {
+  .tile-expand { opacity: 1; transform: none; }
+}
+
+.tile:hover .tile-expand,
+.tile-expand:focus-visible { opacity: 1; transform: none; }
+
+.tile-expand:hover { background: var(--color-accent); color: #171310; }
+.tile-expand svg { width: 16px; height: 16px; }
+
+.tile-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  padding: var(--space-sm) var(--space-sm) var(--space-md);
+}
+
+.tile-cat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-hover);
+}
+
+.tile-cat svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.tile-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* The title is the way into the project, so it is a real button. */
+.tile-open {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: color var(--transition);
+}
+
+/* Stretches the hit area across the tile body without swallowing the photo. */
+.tile-open::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.tile:hover .tile-open { color: var(--color-accent-hover); }
+
+.tile-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.tile-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin: 0;
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  font-size: 0.85rem;
+}
+
+.tile-count {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.tile-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--color-accent-hover);
+}
+
+.tile-cue svg { width: 15px; height: 15px; transition: transform var(--transition); }
+.tile:hover .tile-cue svg { transform: translateX(4px); }
+
+/* Empty state when a filter matches nothing */
 .projects-empty {
+  margin-top: var(--space-lg);
   text-align: center;
   color: var(--color-text-muted);
-  padding: var(--space-xl) 0;
 }
 
-/* The shared lightbox shows real project titles on these pages. */
-.lightbox-title {
+.projects-empty a { color: var(--color-accent-hover); text-decoration: underline; }
+.projects-empty[hidden] { display: none; }
+
+/* ============================================================
+   22b. PROJECT VIEWER  (full-screen panel)
+============================================================ */
+.pm {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+}
+
+.pm[hidden] { display: none; }
+
+.pm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  cursor: pointer;
+}
+
+.pm-dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(1000px, 100%);
+  max-height: min(92vh, 900px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.pm-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.pm-cat {
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-hover);
+}
+
+.pm-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.pm-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.pm-close:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #171310;
+}
+
+.pm-close svg { width: 20px; height: 20px; }
+
+.pm-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pm-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+
+.pm-lead,
+.pm-figure {
+  margin: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+
+.pm-lead img,
+.pm-figure img {
+  width: 100%;
+  height: auto;
   display: block;
+}
+
+.pm-desc {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.pm-sub {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.pm-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 700px) {
+  .pm-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.pm-cta {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  text-align: center;
+}
+
+.pm-cta-title {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 500;
-  margin-top: 2px;
+  margin-bottom: 0.35rem;
 }
+
+.pm-cta-text {
+  max-width: 46ch;
+  margin: 0 auto var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
 
 /* ============================================================
    23. CTA BAND

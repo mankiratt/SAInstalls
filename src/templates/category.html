@@ -22,11 +22,13 @@
          To change what appears here, edit projects.js and re-run
          `node build.mjs` — do not edit the generated page.
     ============================================================ -->
-    <section class="section" aria-label="{{CATEGORY_NAME}} projects">
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="projects" data-projects="{{CATEGORY_KEY}}">
+        <h2 class="visually-hidden" id="gallery-heading">{{CATEGORY_NAME}} projects</h2>
+        <p class="filter-hint filter-hint--solo">Click a project to open it</p>
+
 {{PROJECTS}}
-        </div>
+
         <p class="projects-empty"{{EMPTY_HIDDEN}}>
           Projects for this category are on their way. In the meantime,
           <a href="/get-a-quote/">get in touch</a> and we'll talk you through

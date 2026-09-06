@@ -197,99 +197,329 @@
          To change what appears here, edit projects.js and re-run
          `node build.mjs` — do not edit the generated page.
     ============================================================ -->
-    <section class="section" aria-label="Living Spaces projects">
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="projects" data-projects="living-spaces">
-        <article class="project animate-element" id="living-1"
-                 data-title="Entertainment Unit — Melbourne" data-alt="Custom entertainment unit joinery Melbourne"
-                 data-photos="[&quot;/assets/images/living1.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Entertainment Unit — Melbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Entertainment Unit — Melbourne">
-              <img src="/assets/images/living1.webp" alt="Custom entertainment unit joinery Melbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
+        <h2 class="visually-hidden" id="gallery-heading">Living Spaces projects</h2>
+        <p class="filter-hint filter-hint--solo">Click a project to open it</p>
 
-        <article class="project animate-element" id="living-2"
-                 data-title="Built-In Shelving — Hallam" data-alt="Built-in shelving living room Hallam"
-                 data-photos="[&quot;/assets/images/living2.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Built-In Shelving — Hallam</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Built-In Shelving — Hallam">
-              <img src="/assets/images/living2.webp" alt="Built-in shelving living room Hallam" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="living-3"
-                 data-title="Floor-to-Ceiling Bookcase — South East Melbourne" data-alt="Floor-to-ceiling custom bookcase Melbourne south east"
-                 data-photos="[&quot;/assets/images/living3.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Floor-to-Ceiling Bookcase — South East Melbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Floor-to-Ceiling Bookcase — South East Melbourne">
-              <img src="/assets/images/living3.webp" alt="Floor-to-ceiling custom bookcase Melbourne south east" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="living-4"
-                 data-title="Media Wall Joinery — Berwick" data-alt="Custom media wall joinery Berwick"
-                 data-photos="[&quot;/assets/images/living4.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Media Wall Joinery — Berwick</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Media Wall Joinery — Berwick">
-              <img src="/assets/images/living4.webp" alt="Custom media wall joinery Berwick" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="living-5"
-                 data-title="Built-In Study Nook — Cranbourne" data-alt="Built-in study nook joinery Cranbourne"
-                 data-photos="[&quot;/assets/images/living5.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Built-In Study Nook — Cranbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Built-In Study Nook — Cranbourne">
-              <img src="/assets/images/living5.webp" alt="Built-in study nook joinery Cranbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="living-6"
-                 data-title="Display Shelving — Narre Warren" data-alt="Custom display shelving and joinery Narre Warren"
-                 data-photos="[&quot;/assets/images/living6.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Display Shelving — Narre Warren</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Display Shelving — Narre Warren">
-              <img src="/assets/images/living6.webp" alt="Custom display shelving and joinery Narre Warren" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
+        <div class="tile-grid">
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom entertainment unit joinery Melbourne" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-1"
+                      aria-label="Open Entertainment Unit — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-1">Entertainment Unit — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living2.webp" srcset="/assets/images/living2-400.webp 400w, /assets/images/living2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in shelving living room Hallam" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-2"
+                      aria-label="Open Built-In Shelving — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-2">Built-In Shelving — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living3.webp" srcset="/assets/images/living3-400.webp 400w, /assets/images/living3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Floor-to-ceiling custom bookcase Melbourne south east" width="800" height="533"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-3"
+                      aria-label="Open Floor-to-Ceiling Bookcase — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-3">Floor-to-Ceiling Bookcase — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living4.webp" srcset="/assets/images/living4-400.webp 400w, /assets/images/living4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom media wall joinery Berwick" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-4"
+                      aria-label="Open Media Wall Joinery — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-4">Media Wall Joinery — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living5.webp" srcset="/assets/images/living5-400.webp 400w, /assets/images/living5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in study nook joinery Cranbourne" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-5"
+                      aria-label="Open Built-In Study Nook — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-5">Built-In Study Nook — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living6.webp" srcset="/assets/images/living6-400.webp 400w, /assets/images/living6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom display shelving and joinery Narre Warren" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-6"
+                      aria-label="Open Display Shelving — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-6">Display Shelving — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
         </div>
+
+        <div class="project-modals">
+      <div class="pm" data-project-modal="living-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-1">Entertainment Unit — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom entertainment unit joinery Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-2">Built-In Shelving — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living2.webp" srcset="/assets/images/living2-400.webp 400w, /assets/images/living2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in shelving living room Hallam"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-3">Floor-to-Ceiling Bookcase — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living3.webp" srcset="/assets/images/living3-400.webp 400w, /assets/images/living3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Floor-to-ceiling custom bookcase Melbourne south east"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-4">Media Wall Joinery — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living4.webp" srcset="/assets/images/living4-400.webp 400w, /assets/images/living4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom media wall joinery Berwick"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-5">Built-In Study Nook — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living5.webp" srcset="/assets/images/living5-400.webp 400w, /assets/images/living5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in study nook joinery Cranbourne"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-6">Display Shelving — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living6.webp" srcset="/assets/images/living6-400.webp 400w, /assets/images/living6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom display shelving and joinery Narre Warren"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
         <p class="projects-empty" hidden>
           Projects for this category are on their way. In the meantime,
           <a href="/get-a-quote/">get in touch</a> and we'll talk you through

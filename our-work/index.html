@@ -168,7 +168,10 @@
 
 
   <main id="main">
-<section class="page-header">
+<!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol>
@@ -178,56 +181,2122 @@
         </nav>
         <span class="eyebrow">OUR WORK</span>
         <h1 class="section-heading">Built with pride.<br><em>Finished to perfection.</em></h1>
-        <p class="page-header-intro">Every project below was designed, built and installed by our own team. Choose a category to see the full gallery.</p>
+        <p class="page-header-intro">40 completed projects across six categories, all designed, built and installed by our own team. Open any one of them to see it full size.</p>
       </div>
     </section>
 
-    <section class="section" aria-label="Project categories">
+    <!-- ============================================================
+         PROJECT GALLERY
+         The tiles and their viewers are written in at build time from
+         assets/js/projects.js. Edit that file, then run `node build.mjs`.
+    ============================================================ -->
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="category-grid">
-          <a href="/our-work/kitchens/" class="category-card">
-            <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Kitchens joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">12 projects</span>
-              <span class="category-card-title">Kitchens</span>
-            </span>
-          </a>
-          <a href="/our-work/wardrobes/" class="category-card">
-            <img src="/assets/images/wadrobe1.webp" srcset="/assets/images/wadrobe1-400.webp 400w, /assets/images/wadrobe1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Wardrobes joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Wardrobes</span>
-            </span>
-          </a>
-          <a href="/our-work/bathrooms/" class="category-card">
-            <img src="/assets/images/bathroom1.webp" srcset="/assets/images/bathroom1-400.webp 400w, /assets/images/bathroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Bathrooms joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Bathrooms</span>
-            </span>
-          </a>
-          <a href="/our-work/bedrooms/" class="category-card">
-            <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Bedrooms joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Bedrooms</span>
-            </span>
-          </a>
-          <a href="/our-work/living-spaces/" class="category-card">
-            <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Living Spaces joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">6 projects</span>
-              <span class="category-card-title">Living Spaces</span>
-            </span>
-          </a>
-          <a href="/our-work/commercial/" class="category-card">
-            <img src="/assets/images/commercial1.webp" srcset="/assets/images/commercial1-400.webp 400w, /assets/images/commercial1.webp 800w" sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 380px" alt="Commercial joinery by S&amp;A Joinery" width="800" height="535" loading="lazy" decoding="async">
-            <span class="category-card-overlay">
-              <span class="category-card-count">4 projects</span>
-              <span class="category-card-title">Commercial</span>
-            </span>
-          </a>
+        <h2 class="visually-hidden" id="gallery-heading">Project gallery</h2>
+
+        <div class="filter-bar">
+          <div class="filters" role="group" aria-label="Filter projects by category">
+            <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All work<span class="chip-count">40</span></button>
+            <button type="button" class="chip" data-filter="kitchens" aria-pressed="false">Kitchens<span class="chip-count">12</span></button>
+            <button type="button" class="chip" data-filter="wardrobes" aria-pressed="false">Wardrobes<span class="chip-count">6</span></button>
+            <button type="button" class="chip" data-filter="bathrooms" aria-pressed="false">Bathrooms<span class="chip-count">6</span></button>
+            <button type="button" class="chip" data-filter="bedrooms" aria-pressed="false">Bedrooms<span class="chip-count">6</span></button>
+            <button type="button" class="chip" data-filter="living-spaces" aria-pressed="false">Living Spaces<span class="chip-count">6</span></button>
+            <button type="button" class="chip" data-filter="commercial" aria-pressed="false">Commercial<span class="chip-count">4</span></button>
+          </div>
+          <p class="filter-hint">Click a project to open it</p>
         </div>
+
+        <div class="tile-grid">
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom kitchen renovation Melbourne with stone benchtop" width="800" height="535"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-1"
+                      aria-label="Open Stone Benchtop Kitchen — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-1">Stone Benchtop Kitchen — Melbourne</button>
+              </h3>
+              <p class="tile-desc">Full kitchen rebuild with a stone benchtop and integrated appliances.</p>
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen2.webp" srcset="/assets/images/kitchen2-400.webp 400w, /assets/images/kitchen2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Modern white custom kitchen cabinetry Berwick" width="800" height="642"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-2"
+                      aria-label="Open Modern White Kitchen — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-2">Modern White Kitchen — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen3.webp" srcset="/assets/images/kitchen3-400.webp 400w, /assets/images/kitchen3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Handcrafted timber kitchen joinery Clyde North" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-3"
+                      aria-label="Open Timber Kitchen Joinery — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-3">Timber Kitchen Joinery — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen4.webp" srcset="/assets/images/kitchen4-400.webp 400w, /assets/images/kitchen4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Contemporary custom kitchen design Hallam" width="800" height="1199"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-4"
+                      aria-label="Open Contemporary Kitchen — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-4">Contemporary Kitchen — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen5.webp" srcset="/assets/images/kitchen5-400.webp 400w, /assets/images/kitchen5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Shaker-style custom kitchen Cranbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-5"
+                      aria-label="Open Shaker-Style Kitchen — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-5">Shaker-Style Kitchen — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen6.webp" srcset="/assets/images/kitchen6-400.webp 400w, /assets/images/kitchen6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Two-tone custom kitchen cabinetry Narre Warren" width="800" height="1190"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-6"
+                      aria-label="Open Two-Tone Cabinetry — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-6">Two-Tone Cabinetry — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen7.webp" srcset="/assets/images/kitchen7-400.webp 400w, /assets/images/kitchen7.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Dark handleless kitchen renovation south east Melbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-7"
+                      aria-label="Open Handleless Kitchen — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-7">Handleless Kitchen — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen8.webp" srcset="/assets/images/kitchen8-400.webp 400w, /assets/images/kitchen8.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Open-plan custom kitchen joinery Berwick" width="800" height="598"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-8"
+                      aria-label="Open Open-Plan Kitchen — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-8">Open-Plan Kitchen — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen9.webp" srcset="/assets/images/kitchen9-400.webp 400w, /assets/images/kitchen9.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom island kitchen with stone top Cranbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-9"
+                      aria-label="Open Island Kitchen — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-9">Island Kitchen — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen10.webp" srcset="/assets/images/kitchen10-400.webp 400w, /assets/images/kitchen10.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Scullery kitchen renovation Melbourne south east" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-10"
+                      aria-label="Open Scullery &amp; Kitchen — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-10">Scullery &amp; Kitchen — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen11.webp" srcset="/assets/images/kitchen11-400.webp 400w, /assets/images/kitchen11.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom overhead cabinetry kitchen Hallam" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-11"
+                      aria-label="Open Overhead Cabinetry Kitchen — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-11">Overhead Cabinetry Kitchen — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="kitchens">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/kitchen12.webp" srcset="/assets/images/kitchen12-400.webp 400w, /assets/images/kitchen12.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Timber veneer custom kitchen Clyde North" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="kitchen-12"
+                      aria-label="Open Timber Veneer Kitchen — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Kitchens</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="kitchen-12">Timber Veneer Kitchen — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe1.webp" srcset="/assets/images/wadrobe1-400.webp 400w, /assets/images/wadrobe1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom built-in wardrobe Melbourne bedroom storage" width="800" height="543"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-1"
+                      aria-label="Open Built-In Wardrobe — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-1">Built-In Wardrobe — Melbourne</button>
+              </h3>
+              <p class="tile-desc">Floor-to-ceiling storage built into an existing bedroom recess.</p>
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe2.webp" srcset="/assets/images/wadrobe2-400.webp 400w, /assets/images/wadrobe2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Walk-in wardrobe joinery Berwick" width="800" height="800"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-2"
+                      aria-label="Open Walk-In Wardrobe — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-2">Walk-In Wardrobe — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe3.webp" srcset="/assets/images/wadrobe3-400.webp 400w, /assets/images/wadrobe3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Floor-to-ceiling built-in wardrobe Narre Warren" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-3"
+                      aria-label="Open Floor-to-Ceiling Wardrobe — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-3">Floor-to-Ceiling Wardrobe — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe5.webp" srcset="/assets/images/wadrobe5-400.webp 400w, /assets/images/wadrobe5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom sliding wardrobe with mirror Cranbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-5"
+                      aria-label="Open Sliding Mirrored Wardrobe — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-5">Sliding Mirrored Wardrobe — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe6.webp" srcset="/assets/images/wadrobe6-400.webp 400w, /assets/images/wadrobe6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Timber built-in wardrobe system Clyde North" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-6"
+                      aria-label="Open Timber Wardrobe System — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-6">Timber Wardrobe System — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="wardrobes">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/wadrobe7.webp" srcset="/assets/images/wadrobe7-400.webp 400w, /assets/images/wadrobe7.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom wardrobe with integrated drawers Hallam" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="wardrobe-7"
+                      aria-label="Open Wardrobe with Integrated Drawers — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Wardrobes</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="wardrobe-7">Wardrobe with Integrated Drawers — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom1.webp" srcset="/assets/images/bathroom1-400.webp 400w, /assets/images/bathroom1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom bathroom vanity Melbourne" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-1"
+                      aria-label="Open Custom Vanity — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-1">Custom Vanity — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom2.webp" srcset="/assets/images/bathroom2-400.webp 400w, /assets/images/bathroom2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Floating timber vanity Clyde North" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-2"
+                      aria-label="Open Floating Timber Vanity — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-2">Floating Timber Vanity — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom3.webp" srcset="/assets/images/bathroom3-400.webp 400w, /assets/images/bathroom3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom dual sink bathroom vanity Berwick" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-3"
+                      aria-label="Open Dual Sink Vanity — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-3">Dual Sink Vanity — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom4.webp" srcset="/assets/images/bathroom4-400.webp 400w, /assets/images/bathroom4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Shaker-style bathroom vanity Cranbourne" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-4"
+                      aria-label="Open Shaker-Style Vanity — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-4">Shaker-Style Vanity — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom5.webp" srcset="/assets/images/bathroom5-400.webp 400w, /assets/images/bathroom5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in bathroom storage and vanity Narre Warren" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-5"
+                      aria-label="Open Built-In Bathroom Storage — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-5">Built-In Bathroom Storage — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bathrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bathroom6.webp" srcset="/assets/images/bathroom6-400.webp 400w, /assets/images/bathroom6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom wall-hung vanity south east Melbourne" width="800" height="538"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bathroom-6"
+                      aria-label="Open Wall-Hung Vanity — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bathrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bathroom-6">Wall-Hung Vanity — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom bedroom joinery and storage Melbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-1"
+                      aria-label="Open Bedroom Joinery &amp; Storage — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-1">Bedroom Joinery &amp; Storage — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom2.webp" srcset="/assets/images/bedroom2-400.webp 400w, /assets/images/bedroom2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in bedhead and side tables Berwick" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-2"
+                      aria-label="Open Built-In Bedhead &amp; Bedsides — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-2">Built-In Bedhead &amp; Bedsides — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom3.webp" srcset="/assets/images/bedroom3-400.webp 400w, /assets/images/bedroom3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom bedroom cabinetry and shelving Clyde North" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-3"
+                      aria-label="Open Bedroom Cabinetry &amp; Shelving — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-3">Bedroom Cabinetry &amp; Shelving — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom4.webp" srcset="/assets/images/bedroom4-400.webp 400w, /assets/images/bedroom4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Bespoke bedroom joinery Cranbourne" width="800" height="543"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-4"
+                      aria-label="Open Bespoke Bedroom Joinery — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-4">Bespoke Bedroom Joinery — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom5.webp" srcset="/assets/images/bedroom5-400.webp 400w, /assets/images/bedroom5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom floating bedside and dresser Narre Warren" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-5"
+                      aria-label="Open Floating Bedside &amp; Dresser — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-5">Floating Bedside &amp; Dresser — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom6.webp" srcset="/assets/images/bedroom6-400.webp 400w, /assets/images/bedroom6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Timber bedroom joinery suite Hallam" width="800" height="565"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-6"
+                      aria-label="Open Timber Bedroom Suite — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-6">Timber Bedroom Suite — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom entertainment unit joinery Melbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-1"
+                      aria-label="Open Entertainment Unit — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-1">Entertainment Unit — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living2.webp" srcset="/assets/images/living2-400.webp 400w, /assets/images/living2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in shelving living room Hallam" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-2"
+                      aria-label="Open Built-In Shelving — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-2">Built-In Shelving — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living3.webp" srcset="/assets/images/living3-400.webp 400w, /assets/images/living3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Floor-to-ceiling custom bookcase Melbourne south east" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-3"
+                      aria-label="Open Floor-to-Ceiling Bookcase — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-3">Floor-to-Ceiling Bookcase — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living4.webp" srcset="/assets/images/living4-400.webp 400w, /assets/images/living4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom media wall joinery Berwick" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-4"
+                      aria-label="Open Media Wall Joinery — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-4">Media Wall Joinery — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living5.webp" srcset="/assets/images/living5-400.webp 400w, /assets/images/living5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in study nook joinery Cranbourne" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-5"
+                      aria-label="Open Built-In Study Nook — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-5">Built-In Study Nook — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="living-spaces">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/living6.webp" srcset="/assets/images/living6-400.webp 400w, /assets/images/living6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom display shelving and joinery Narre Warren" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="living-6"
+                      aria-label="Open Display Shelving — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Living Spaces</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="living-6">Display Shelving — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="commercial">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/commercial1.webp" srcset="/assets/images/commercial1-400.webp 400w, /assets/images/commercial1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Commercial joinery fitout Melbourne CBD" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="commercial-1"
+                      aria-label="Open Commercial Fitout — Melbourne CBD, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Commercial</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="commercial-1">Commercial Fitout — Melbourne CBD</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="commercial">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/commercial2.webp" srcset="/assets/images/commercial2-400.webp 400w, /assets/images/commercial2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Retail shopfitting Melbourne south east" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="commercial-2"
+                      aria-label="Open Retail Shopfitting — South East Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Commercial</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="commercial-2">Retail Shopfitting — South East Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="commercial">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/commercial3.webp" srcset="/assets/images/commercial3-400.webp 400w, /assets/images/commercial3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom commercial cabinetry Melbourne" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="commercial-3"
+                      aria-label="Open Commercial Cabinetry — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Commercial</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="commercial-3">Commercial Cabinetry — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="commercial">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/commercial5.webp" srcset="/assets/images/commercial5-400.webp 400w, /assets/images/commercial5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Office joinery and fitout Melbourne" width="800" height="533"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="commercial-5"
+                      aria-label="Open Office Joinery &amp; Fitout — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Commercial</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="commercial-5">Office Joinery &amp; Fitout — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-modals">
+      <div class="pm" data-project-modal="kitchen-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-1">Stone Benchtop Kitchen — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen1.webp" srcset="/assets/images/kitchen1-400.webp 400w, /assets/images/kitchen1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom kitchen renovation Melbourne with stone benchtop"
+                     width="800" height="535" loading="lazy" decoding="async">
+              </figure>
+              <p class="pm-desc">Full kitchen rebuild with a stone benchtop and integrated appliances.</p>
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-2">Modern White Kitchen — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen2.webp" srcset="/assets/images/kitchen2-400.webp 400w, /assets/images/kitchen2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Modern white custom kitchen cabinetry Berwick"
+                     width="800" height="642" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-3">Timber Kitchen Joinery — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen3.webp" srcset="/assets/images/kitchen3-400.webp 400w, /assets/images/kitchen3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Handcrafted timber kitchen joinery Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-4">Contemporary Kitchen — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen4.webp" srcset="/assets/images/kitchen4-400.webp 400w, /assets/images/kitchen4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Contemporary custom kitchen design Hallam"
+                     width="800" height="1199" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-5">Shaker-Style Kitchen — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen5.webp" srcset="/assets/images/kitchen5-400.webp 400w, /assets/images/kitchen5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Shaker-style custom kitchen Cranbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-6">Two-Tone Cabinetry — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen6.webp" srcset="/assets/images/kitchen6-400.webp 400w, /assets/images/kitchen6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Two-tone custom kitchen cabinetry Narre Warren"
+                     width="800" height="1190" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-7" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-7" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-7">Handleless Kitchen — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen7.webp" srcset="/assets/images/kitchen7-400.webp 400w, /assets/images/kitchen7.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Dark handleless kitchen renovation south east Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-8" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-8" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-8">Open-Plan Kitchen — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen8.webp" srcset="/assets/images/kitchen8-400.webp 400w, /assets/images/kitchen8.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Open-plan custom kitchen joinery Berwick"
+                     width="800" height="598" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-9" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-9" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-9">Island Kitchen — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen9.webp" srcset="/assets/images/kitchen9-400.webp 400w, /assets/images/kitchen9.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom island kitchen with stone top Cranbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-10" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-10" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-10">Scullery &amp; Kitchen — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen10.webp" srcset="/assets/images/kitchen10-400.webp 400w, /assets/images/kitchen10.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Scullery kitchen renovation Melbourne south east"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-11" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-11" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-11">Overhead Cabinetry Kitchen — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen11.webp" srcset="/assets/images/kitchen11-400.webp 400w, /assets/images/kitchen11.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom overhead cabinetry kitchen Hallam"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="kitchen-12" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-kitchen-12" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Kitchens</p>
+              <h2 class="pm-title" id="pm-title-kitchen-12">Timber Veneer Kitchen — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/kitchen12.webp" srcset="/assets/images/kitchen12-400.webp 400w, /assets/images/kitchen12.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Timber veneer custom kitchen Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-1">Built-In Wardrobe — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe1.webp" srcset="/assets/images/wadrobe1-400.webp 400w, /assets/images/wadrobe1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom built-in wardrobe Melbourne bedroom storage"
+                     width="800" height="543" loading="lazy" decoding="async">
+              </figure>
+              <p class="pm-desc">Floor-to-ceiling storage built into an existing bedroom recess.</p>
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-2">Walk-In Wardrobe — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe2.webp" srcset="/assets/images/wadrobe2-400.webp 400w, /assets/images/wadrobe2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Walk-in wardrobe joinery Berwick"
+                     width="800" height="800" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-3">Floor-to-Ceiling Wardrobe — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe3.webp" srcset="/assets/images/wadrobe3-400.webp 400w, /assets/images/wadrobe3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Floor-to-ceiling built-in wardrobe Narre Warren"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-5">Sliding Mirrored Wardrobe — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe5.webp" srcset="/assets/images/wadrobe5-400.webp 400w, /assets/images/wadrobe5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom sliding wardrobe with mirror Cranbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-6">Timber Wardrobe System — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe6.webp" srcset="/assets/images/wadrobe6-400.webp 400w, /assets/images/wadrobe6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Timber built-in wardrobe system Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="wardrobe-7" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-wardrobe-7" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Wardrobes</p>
+              <h2 class="pm-title" id="pm-title-wardrobe-7">Wardrobe with Integrated Drawers — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/wadrobe7.webp" srcset="/assets/images/wadrobe7-400.webp 400w, /assets/images/wadrobe7.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom wardrobe with integrated drawers Hallam"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-1">Custom Vanity — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom1.webp" srcset="/assets/images/bathroom1-400.webp 400w, /assets/images/bathroom1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom bathroom vanity Melbourne"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-2">Floating Timber Vanity — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom2.webp" srcset="/assets/images/bathroom2-400.webp 400w, /assets/images/bathroom2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Floating timber vanity Clyde North"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-3">Dual Sink Vanity — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom3.webp" srcset="/assets/images/bathroom3-400.webp 400w, /assets/images/bathroom3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom dual sink bathroom vanity Berwick"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-4">Shaker-Style Vanity — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom4.webp" srcset="/assets/images/bathroom4-400.webp 400w, /assets/images/bathroom4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Shaker-style bathroom vanity Cranbourne"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-5">Built-In Bathroom Storage — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom5.webp" srcset="/assets/images/bathroom5-400.webp 400w, /assets/images/bathroom5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in bathroom storage and vanity Narre Warren"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bathroom-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bathroom-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bathrooms</p>
+              <h2 class="pm-title" id="pm-title-bathroom-6">Wall-Hung Vanity — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bathroom6.webp" srcset="/assets/images/bathroom6-400.webp 400w, /assets/images/bathroom6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom wall-hung vanity south east Melbourne"
+                     width="800" height="538" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-1">Bedroom Joinery &amp; Storage — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom bedroom joinery and storage Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-2">Built-In Bedhead &amp; Bedsides — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom2.webp" srcset="/assets/images/bedroom2-400.webp 400w, /assets/images/bedroom2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in bedhead and side tables Berwick"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-3">Bedroom Cabinetry &amp; Shelving — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom3.webp" srcset="/assets/images/bedroom3-400.webp 400w, /assets/images/bedroom3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom bedroom cabinetry and shelving Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-4">Bespoke Bedroom Joinery — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom4.webp" srcset="/assets/images/bedroom4-400.webp 400w, /assets/images/bedroom4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Bespoke bedroom joinery Cranbourne"
+                     width="800" height="543" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-5">Floating Bedside &amp; Dresser — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom5.webp" srcset="/assets/images/bedroom5-400.webp 400w, /assets/images/bedroom5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom floating bedside and dresser Narre Warren"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-6">Timber Bedroom Suite — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom6.webp" srcset="/assets/images/bedroom6-400.webp 400w, /assets/images/bedroom6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Timber bedroom joinery suite Hallam"
+                     width="800" height="565" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-1">Entertainment Unit — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living1.webp" srcset="/assets/images/living1-400.webp 400w, /assets/images/living1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom entertainment unit joinery Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-2">Built-In Shelving — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living2.webp" srcset="/assets/images/living2-400.webp 400w, /assets/images/living2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in shelving living room Hallam"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-3">Floor-to-Ceiling Bookcase — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living3.webp" srcset="/assets/images/living3-400.webp 400w, /assets/images/living3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Floor-to-ceiling custom bookcase Melbourne south east"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-4">Media Wall Joinery — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living4.webp" srcset="/assets/images/living4-400.webp 400w, /assets/images/living4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom media wall joinery Berwick"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-5">Built-In Study Nook — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living5.webp" srcset="/assets/images/living5-400.webp 400w, /assets/images/living5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in study nook joinery Cranbourne"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="living-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-living-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Living Spaces</p>
+              <h2 class="pm-title" id="pm-title-living-6">Display Shelving — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/living6.webp" srcset="/assets/images/living6-400.webp 400w, /assets/images/living6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom display shelving and joinery Narre Warren"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="commercial-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-commercial-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Commercial</p>
+              <h2 class="pm-title" id="pm-title-commercial-1">Commercial Fitout — Melbourne CBD</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/commercial1.webp" srcset="/assets/images/commercial1-400.webp 400w, /assets/images/commercial1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Commercial joinery fitout Melbourne CBD"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="commercial-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-commercial-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Commercial</p>
+              <h2 class="pm-title" id="pm-title-commercial-2">Retail Shopfitting — South East Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/commercial2.webp" srcset="/assets/images/commercial2-400.webp 400w, /assets/images/commercial2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Retail shopfitting Melbourne south east"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="commercial-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-commercial-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Commercial</p>
+              <h2 class="pm-title" id="pm-title-commercial-3">Commercial Cabinetry — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/commercial3.webp" srcset="/assets/images/commercial3-400.webp 400w, /assets/images/commercial3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom commercial cabinetry Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="commercial-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-commercial-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Commercial</p>
+              <h2 class="pm-title" id="pm-title-commercial-5">Office Joinery &amp; Fitout — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/commercial5.webp" srcset="/assets/images/commercial5-400.webp 400w, /assets/images/commercial5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Office joinery and fitout Melbourne"
+                     width="800" height="533" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
+        <p class="projects-empty" data-empty hidden>
+          Nothing in that category yet. <a href="/get-a-quote/">Get in touch</a>
+          and we'll talk you through recent work in person.
+        </p>
       </div>
     </section>
 
@@ -236,8 +2305,8 @@
     ============================================================ -->
     <section class="cta-band">
       <div class="container">
-        <h2 class="cta-band-heading">Ready to transform your space?</h2>
-        <p class="cta-band-sub">No-obligation quote &mdash; we come to you. We'll get back to you within 24 hours.</p>
+        <h2 class="cta-band-heading">See something you like?</h2>
+        <p class="cta-band-sub">Tell us about your space. We'll come to you, measure up and give you a clear, no-obligation quote.</p>
         <div class="cta-band-actions">
           <a href="/get-a-quote/" class="btn btn-accent">Get a Quote</a>
           <a href="tel:0478671407" class="btn btn-outline">Call 0478 671 407</a>
@@ -346,6 +2415,6 @@
   <!-- Scripts — deferred so they never block rendering of the page -->
   <script src="/assets/js/main.js" defer></script>
 
-
+  <script src="/assets/js/project-showcase.js" defer></script>
 </body>
 </html>

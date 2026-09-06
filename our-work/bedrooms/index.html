@@ -197,99 +197,329 @@
          To change what appears here, edit projects.js and re-run
          `node build.mjs` — do not edit the generated page.
     ============================================================ -->
-    <section class="section" aria-label="Bedrooms projects">
+    <section class="section" aria-labelledby="gallery-heading">
       <div class="container">
-        <div class="projects" data-projects="bedrooms">
-        <article class="project animate-element" id="bedroom-1"
-                 data-title="Bedroom Joinery &amp; Storage — Melbourne" data-alt="Custom bedroom joinery and storage Melbourne"
-                 data-photos="[&quot;/assets/images/bedroom1.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Bedroom Joinery &amp; Storage — Melbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Bedroom Joinery &amp; Storage — Melbourne">
-              <img src="/assets/images/bedroom1.webp" alt="Custom bedroom joinery and storage Melbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
+        <h2 class="visually-hidden" id="gallery-heading">Bedrooms projects</h2>
+        <p class="filter-hint filter-hint--solo">Click a project to open it</p>
 
-        <article class="project animate-element" id="bedroom-2"
-                 data-title="Built-In Bedhead &amp; Bedsides — Berwick" data-alt="Built-in bedhead and side tables Berwick"
-                 data-photos="[&quot;/assets/images/bedroom2.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Built-In Bedhead &amp; Bedsides — Berwick</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Built-In Bedhead &amp; Bedsides — Berwick">
-              <img src="/assets/images/bedroom2.webp" alt="Built-in bedhead and side tables Berwick" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="bedroom-3"
-                 data-title="Bedroom Cabinetry &amp; Shelving — Clyde North" data-alt="Custom bedroom cabinetry and shelving Clyde North"
-                 data-photos="[&quot;/assets/images/bedroom3.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Bedroom Cabinetry &amp; Shelving — Clyde North</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Bedroom Cabinetry &amp; Shelving — Clyde North">
-              <img src="/assets/images/bedroom3.webp" alt="Custom bedroom cabinetry and shelving Clyde North" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="bedroom-4"
-                 data-title="Bespoke Bedroom Joinery — Cranbourne" data-alt="Bespoke bedroom joinery Cranbourne"
-                 data-photos="[&quot;/assets/images/bedroom4.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Bespoke Bedroom Joinery — Cranbourne</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Bespoke Bedroom Joinery — Cranbourne">
-              <img src="/assets/images/bedroom4.webp" alt="Bespoke bedroom joinery Cranbourne" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="bedroom-5"
-                 data-title="Floating Bedside &amp; Dresser — Narre Warren" data-alt="Custom floating bedside and dresser Narre Warren"
-                 data-photos="[&quot;/assets/images/bedroom5.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Floating Bedside &amp; Dresser — Narre Warren</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Floating Bedside &amp; Dresser — Narre Warren">
-              <img src="/assets/images/bedroom5.webp" alt="Custom floating bedside and dresser Narre Warren" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
-
-        <article class="project animate-element" id="bedroom-6"
-                 data-title="Timber Bedroom Suite — Hallam" data-alt="Timber bedroom joinery suite Hallam"
-                 data-photos="[&quot;/assets/images/bedroom6.webp&quot;]">
-          <div class="project-head">
-            <h2 class="project-title">Timber Bedroom Suite — Hallam</h2>
-            
-          </div>
-          <div class="project-gallery">
-            <button type="button" class="project-thumb" data-photo="0"
-                    aria-label="View photo 1 of 1 — Timber Bedroom Suite — Hallam">
-              <img src="/assets/images/bedroom6.webp" alt="Timber bedroom joinery suite Hallam" width="800" height="535" loading="lazy" decoding="async">
-            </button>
-          </div>
-        </article>
+        <div class="tile-grid">
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom bedroom joinery and storage Melbourne" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-1"
+                      aria-label="Open Bedroom Joinery &amp; Storage — Melbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-1">Bedroom Joinery &amp; Storage — Melbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom2.webp" srcset="/assets/images/bedroom2-400.webp 400w, /assets/images/bedroom2.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Built-in bedhead and side tables Berwick" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-2"
+                      aria-label="Open Built-In Bedhead &amp; Bedsides — Berwick, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-2">Built-In Bedhead &amp; Bedsides — Berwick</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom3.webp" srcset="/assets/images/bedroom3-400.webp 400w, /assets/images/bedroom3.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom bedroom cabinetry and shelving Clyde North" width="800" height="534"
+                     loading="eager" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-3"
+                      aria-label="Open Bedroom Cabinetry &amp; Shelving — Clyde North, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-3">Bedroom Cabinetry &amp; Shelving — Clyde North</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom4.webp" srcset="/assets/images/bedroom4-400.webp 400w, /assets/images/bedroom4.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Bespoke bedroom joinery Cranbourne" width="800" height="543"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-4"
+                      aria-label="Open Bespoke Bedroom Joinery — Cranbourne, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-4">Bespoke Bedroom Joinery — Cranbourne</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom5.webp" srcset="/assets/images/bedroom5-400.webp 400w, /assets/images/bedroom5.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Custom floating bedside and dresser Narre Warren" width="800" height="534"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-5"
+                      aria-label="Open Floating Bedside &amp; Dresser — Narre Warren, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-5">Floating Bedside &amp; Dresser — Narre Warren</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
+          <article class="tile animate-element" data-project-tile data-category="bedrooms">
+            <div class="tile-media">
+              <div class="tile-photo">
+                <img src="/assets/images/bedroom6.webp" srcset="/assets/images/bedroom6-400.webp 400w, /assets/images/bedroom6.webp 800w" sizes="(min-width: 1080px) 360px, (min-width: 700px) 44vw, 92vw"
+                     alt="Timber bedroom joinery suite Hallam" width="800" height="565"
+                     loading="lazy" decoding="async">
+              </div>
+              <button type="button" class="tile-expand" data-open-project="bedroom-6"
+                      aria-label="Open Timber Bedroom Suite — Hallam, 1 photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+            </div>
+            <div class="tile-body">
+              <p class="tile-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Bedrooms</p>
+              <h3 class="tile-title">
+                <button type="button" class="tile-open" data-open-project="bedroom-6">Timber Bedroom Suite — Hallam</button>
+              </h3>
+              
+              <p class="tile-foot">
+                <span class="tile-count">1 photo</span>
+                <span class="tile-cue">View project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </p>
+            </div>
+          </article>
         </div>
+
+        <div class="project-modals">
+      <div class="pm" data-project-modal="bedroom-1" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-1" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-1">Bedroom Joinery &amp; Storage — Melbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom1.webp" srcset="/assets/images/bedroom1-400.webp 400w, /assets/images/bedroom1.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom bedroom joinery and storage Melbourne"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-2" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-2" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-2">Built-In Bedhead &amp; Bedsides — Berwick</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom2.webp" srcset="/assets/images/bedroom2-400.webp 400w, /assets/images/bedroom2.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Built-in bedhead and side tables Berwick"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-3" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-3" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-3">Bedroom Cabinetry &amp; Shelving — Clyde North</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom3.webp" srcset="/assets/images/bedroom3-400.webp 400w, /assets/images/bedroom3.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom bedroom cabinetry and shelving Clyde North"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-4" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-4" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-4">Bespoke Bedroom Joinery — Cranbourne</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom4.webp" srcset="/assets/images/bedroom4-400.webp 400w, /assets/images/bedroom4.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Bespoke bedroom joinery Cranbourne"
+                     width="800" height="543" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-5" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-5" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-5">Floating Bedside &amp; Dresser — Narre Warren</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom5.webp" srcset="/assets/images/bedroom5-400.webp 400w, /assets/images/bedroom5.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Custom floating bedside and dresser Narre Warren"
+                     width="800" height="534" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm" data-project-modal="bedroom-6" hidden>
+        <div class="pm-backdrop" data-pm-close></div>
+        <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title-bedroom-6" data-pm-dialog>
+          <header class="pm-bar">
+            <div class="pm-heading">
+              <p class="pm-cat">Bedrooms</p>
+              <h2 class="pm-title" id="pm-title-bedroom-6">Timber Bedroom Suite — Hallam</h2>
+            </div>
+            <button type="button" class="pm-close" data-pm-close>
+              <span class="visually-hidden">Close project</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </header>
+          <div class="pm-scroll" data-pm-scroll>
+            <div class="pm-inner">
+              <figure class="pm-lead">
+                <img src="/assets/images/bedroom6.webp" srcset="/assets/images/bedroom6-400.webp 400w, /assets/images/bedroom6.webp 800w"
+                     sizes="(min-width: 1100px) 960px, 94vw" alt="Timber bedroom joinery suite Hallam"
+                     width="800" height="565" loading="lazy" decoding="async">
+              </figure>
+              
+              
+              <div class="pm-cta">
+                <h3 class="pm-cta-title">Want something like this?</h3>
+                <p class="pm-cta-text">Tell us about your space. We'll come to you, measure up and put together a clear, itemised quote.</p>
+                <a class="btn btn-accent" href="/get-a-quote/">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
         <p class="projects-empty" hidden>
           Projects for this category are on their way. In the meantime,
           <a href="/get-a-quote/">get in touch</a> and we'll talk you through

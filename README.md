@@ -16,7 +16,7 @@ so you only have to edit them once.
 - [The build step — read this first](#the-build-step--read-this-first)
 - [File structure](#file-structure)
 - [**Adding or editing a project**](#adding-or-editing-a-project) ← the common task
-- [How before/after photos work](#how-beforeafter-photos-work)
+- [How the gallery works](#how-the-gallery-works)
 - [Editing the menu, footer or contact details](#editing-the-menu-footer-or-contact-details)
 - [Adding a review](#adding-a-review)
 - [Changing brand colours](#changing-brand-colours)
@@ -116,7 +116,7 @@ our-work/ (+ kitchens/, wardrobes/, bathrooms/, bedrooms/,
 | Page | URL |
 |---|---|
 | Home | `/` |
-| Our Work (category picker) | `/our-work/` |
+| Our Work (all projects, filterable) | `/our-work/` |
 | Kitchens | `/our-work/kitchens/` |
 | Wardrobes | `/our-work/wardrobes/` |
 | Bathrooms | `/our-work/bathrooms/` |
@@ -184,30 +184,45 @@ node build.mjs
 
 ---
 
-## How before/after photos work
+## How the gallery works
 
-If a project has a `beforeImage`, it gets a **slider**: the before photo on
-the left, the finished photo on the right, and a divider you drag across.
-It works with mouse, touch and keyboard.
+There are two ways into the work:
 
-If `beforeImage` is `null`, the project simply shows its photos instead —
-no slider. Add a before photo later and the slider appears automatically.
+- **`/our-work/`** shows every project in one grid, with filter chips along
+  the top (All work, Kitchens, Wardrobes, …) that show a running count.
+  Filtering happens instantly in the browser — nothing reloads.
+- **The six category pages** (`/our-work/kitchens/` and friends) show just
+  that category. These have their own headings and SEO copy, which makes
+  them good Google Ads landing pages.
 
-For the slider to look right, the before and after photos should be taken
-from **roughly the same position**.
+Clicking any project opens a **project viewer**: a full-screen panel with
+the finished photo, the description and any extra photos, plus a "Get a
+Quote" button at the bottom. Escape closes it, so does the backdrop or the
+X, and the page behind it does not scroll while it is open.
 
-### ⚠️ Placeholder before-photos are currently in place
+### Deep links
 
-We don't have real "before" photos yet, so **two** projects
-(`kitchen-1` and `wardrobe-1`) point at a grey placeholder image
-(`/assets/images/placeholder-before.webp`) purely so you can see how the
-slider looks and behaves.
+`/our-work/#kitchens` opens the gallery already filtered to kitchens. Handy
+for ad landing pages, or links from elsewhere on the site.
 
-**Before this goes live**, either swap in real before photos or set those
-two back to `beforeImage: null`. They are marked with a `DEMO` comment in
-`projects.js`.
+### The before/after sliders are currently switched OFF
 
----
+The gallery can show a draggable before/after comparison on each project.
+It is turned off because we have no real "before" photos yet, so every
+project shows just its finished photo.
+
+To turn it back on, in `assets/js/projects.js`:
+
+1. Add the before photos to `/assets/images/`.
+2. Fill in `beforeImage` on the projects that have one.
+3. Set `beforeAfter: true` in the `SA_FEATURES` block at the top.
+4. Run `node build.mjs`.
+
+Projects without a `beforeImage` carry on showing just the finished photo,
+so it is safe to switch on before every project has one.
+
+> For the comparison to look right, the before and after need to be shot
+> from roughly the same spot.
 
 ## Editing the menu, footer or contact details
 
@@ -379,8 +394,10 @@ conversions; WebP photos, lazy loading and image dimensions.
 
 ### What's new
 
-- Six real category pages instead of one filterable grid.
-- A before/after slider and a photo lightbox, used identically everywhere.
+- An Our Work gallery with filter chips and a full-screen project viewer,
+  plus six category pages for the ad landing pages.
+- A before/after comparison slider, built and ready but switched off
+  until there are real before photos (see above).
 - One project list (`assets/js/projects.js`) driving all of it.
 - A shared header and footer, edited in one place.
 - A real `/thank-you/` page.
@@ -395,7 +412,7 @@ Measured with Lighthouse, mobile, with compression on:
 |---|---|---|---|
 | Home | 99 | 100 | 100 |
 | Our Work | 100 | 100 | 100 |
-| Kitchens | 100 | 100 | 100 |
+| Kitchens (category) | 100 | 100 | 100 |
 | About | 100 | 100 | 100 |
 | Reviews | 100 | 100 | 100 |
 | Get a Quote | 100 | 100 | 100 |
