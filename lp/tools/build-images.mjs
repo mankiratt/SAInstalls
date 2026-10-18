@@ -66,7 +66,18 @@ const SOURCES = [
     out: 'hero-kitchens',
     quality: 80,
   },
-  // wardrobes and cabinet-maker heroes are added when those pages are built
+  {
+    page: 'wardrobes',
+    src: 'wadrobe1.webp',
+    out: 'hero-wardrobes',
+    quality: 82,
+  },
+  {
+    page: 'cabinet-maker',
+    src: 'heroimage1-1600.webp',
+    out: 'hero-cabinet-maker',
+    quality: 80,
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -96,7 +107,16 @@ for (const item of SOURCES) {
 
   const skipped = [];
 
-  for (const w of HERO_WIDTHS) {
+  /* Any requested width above the source is dropped. If that leaves the
+     largest variant below the source's own width, the source width is
+     emitted too — otherwise an 800px original would only ever be served
+     at 640 and the detail it does have would go to waste. */
+  const widths = HERO_WIDTHS.filter((w) => w <= meta.width);
+  if (widths.length < HERO_WIDTHS.length && !widths.includes(meta.width)) {
+    widths.push(meta.width);
+  }
+
+  for (const w of widths) {
     if (w > meta.width) { skipped.push(w); continue; }
 
     const outPath = join(OUT_DIR, `${item.out}-${w}.webp`);
@@ -106,13 +126,17 @@ for (const item of SOURCES) {
       .toFile(outPath);
 
     const size = kb(outPath);
-    const overBudget = w === 960 && size > HERO_BUDGET_KB;
+    const overBudget = size > HERO_BUDGET_KB && w <= 960;
     if (overBudget) warnings++;
 
     console.log(
       `  ${pad(`${w}w`, 6)} ${pad(`${info.width}×${info.height}`, 11)}` +
       `${pad(size.toFixed(1) + 'KB', 9)}${overBudget ? `  ⚠ over ${HERO_BUDGET_KB}KB budget` : ''}`
     );
+  }
+
+  for (const w of HERO_WIDTHS) {
+    if (w > meta.width) skipped.push(w);
   }
 
   if (skipped.length) {
