@@ -1,0 +1,12 @@
+{
+  "name": "sa-lp-tools",
+  "private": true,
+  "type": "module",
+  "description": "Image pipeline for the Google Ads landing pages. Run: npm install && node build-images.mjs",
+  "scripts": {
+    "images": "node build-images.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.34.4"
+  }
+}
