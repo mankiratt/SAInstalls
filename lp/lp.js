@@ -141,6 +141,31 @@
     var year = $('[data-year]');
     if (year) year.textContent = String(new Date().getFullYear());
 
+    /* A long review is quoted in full, but clamped on screen so it does
+       not bury the rest of the page. Nothing is removed from the DOM —
+       the toggle just lets it out. */
+    $$('.lp-review__text').forEach(function (quote) {
+      quote.classList.add('lp-review__text--clamped');
+      if (quote.scrollHeight <= quote.clientHeight + 4) {
+        quote.classList.remove('lp-review__text--clamped');
+        return;
+      }
+
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'lp-review__more';
+      toggle.textContent = 'Read the full review';
+      toggle.setAttribute('aria-expanded', 'false');
+
+      toggle.addEventListener('click', function () {
+        var open = quote.classList.toggle('lp-review__text--clamped') === false;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.textContent = open ? 'Show less' : 'Read the full review';
+      });
+
+      quote.insertAdjacentElement('afterend', toggle);
+    });
+
     /* The review count is only persuasive once there are enough of
        them. Below the threshold the badge says "5.0 on Google" and
        stops there. */
@@ -150,26 +175,6 @@
       count.hidden = false;
     }
 
-    /* The team photo slot stays out of the DOM entirely until a real
-       photograph exists. No placeholder, no empty frame. */
-    var slot = $('[data-photo]');
-    if (slot) {
-      var src = slot.getAttribute('data-src');
-      if (src) {
-        var img = new Image();
-        img.src = src;
-        img.alt = slot.getAttribute('data-alt') || '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.className = 'lp-about__photoImg';
-        var w = slot.getAttribute('data-w'), h = slot.getAttribute('data-h');
-        if (w) img.width = w;
-        if (h) img.height = h;
-        slot.appendChild(img);
-      } else {
-        slot.remove();
-      }
-    }
   }
 
   /* ==========================================================

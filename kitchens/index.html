@@ -73,21 +73,32 @@
 ============================================================ -->
 <header class="lp-bar">
   <div class="lp-wrap lp-bar__inner">
-    <p class="lp-bar__mark">
-      <span class="lp-bar__markMain">S&amp;A</span>
-      <span class="lp-bar__markSub">JOINERY</span>
-    </p>
+    <div class="lp-bar__left">
+      <p class="lp-bar__mark">
+        <span class="lp-bar__markMain">S&amp;A</span>
+        <span class="lp-bar__markSub">JOINERY</span>
+      </p>
 
-    <p class="lp-bar__rating">
-      <span class="lp-bar__stars" aria-hidden="true">★</span>
-      <span class="lp-bar__ratingText">5.0 on Google</span>
-      <span class="lp-bar__count" data-review-count hidden></span>
-    </p>
+      <p class="lp-bar__rating">
+        <!-- Google's own mark, in Google's own colours, so the rating
+             reads as Google's rather than as our own claim. -->
+        <svg class="lp-bar__google" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        <span class="lp-bar__stars" aria-hidden="true">★★★★★</span>
+        <span class="lp-bar__ratingText">Rated 5.0 Stars on Google</span>
+        <span class="lp-bar__count" data-review-count hidden></span>
+      </p>
+    </div>
 
     <a class="lp-bar__call" href="tel:+61478671407">
       <svg class="lp-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
-      <span>0478 671 407</span>
-      <span class="lp-vh">Call S&amp;A Joinery</span>
+      <span class="lp-bar__callFull">0478 671 407</span>
+      <span class="lp-bar__callShort" aria-hidden="true">Call</span>
+      <span class="lp-vh">Call S&amp;A Joinery on 0478 671 407</span>
     </a>
   </div>
 </header>
@@ -118,10 +129,6 @@
       <p class="lp-eyebrow">Kitchen renovations · Melbourne's south east</p>
 
       <h1 class="lp-h1">Custom kitchens, built to fit your home</h1>
-
-      <!-- A machinist's scale. The ads promise cabinetry made to fit to
-           the millimetre; this is that promise, drawn. -->
-      <div class="lp-rule" aria-hidden="true"></div>
 
       <p class="lp-hero__sub">
         Every cabinet made to order in our Hallam factory and installed by our
@@ -283,25 +290,25 @@
     <div class="lp-reviews">
       <figure class="lp-review">
         <p class="lp-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
-        <blockquote class="lp-review__text">"Full kitchen reno, came out schmick af, great blokes, meticulous work, highly recommended."</blockquote>
+        <blockquote class="lp-review__text">"I have engaged S&amp;A Joinery on 2 projects. The first where I was introduced to Simon by a company who I contracted to rebuild a study; Simon was the man who did all the joinery and the result was terrific. I rang Simon a couple of months ago as I needed someone who had "attention to detail" and "his design skill" I needed a vanity to be built in a period style and who had connections to great stone merchants. The result with the vanity basin and the nib wall built with remaining Caesarstone was superb. Simon is a man who will share his ideas freely and work with you to get the result that you are after. Thank you, Simon,."</blockquote>
+        <figcaption class="lp-review__by">
+          <cite class="lp-review__byName">Tony Chaplin</cite>Google review
+        </figcaption>
+      </figure>
+
+      <figure class="lp-review">
+        <p class="lp-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote class="lp-review__text">"The team from S&amp;A Installs showed up on time, conducted themselves in a professional manor and the quality of their work is amazing. The kitchen and custom made joinery turned out amazing exactly what i was after"</blockquote>
+        <figcaption class="lp-review__by">
+          <cite class="lp-review__byName">Abbie Dove</cite>Google review
+        </figcaption>
+      </figure>
+
+      <figure class="lp-review">
+        <p class="lp-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote class="lp-review__text">"We've used S&amp;A for several years now for the simple fact that they're good at what they do. The end product has turned out brilliant every time and the boys are friendly, courteous and always clean up. We'll use them again, and a big thankyou to Simon for going above and beyond."</blockquote>
         <figcaption class="lp-review__by">
           <cite class="lp-review__byName">Dave Nicholls</cite>Google review
-        </figcaption>
-      </figure>
-
-      <figure class="lp-review">
-        <p class="lp-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
-        <blockquote class="lp-review__text">"Highly recommend Simon and Adam. Very professional and detailed in their work. Great customer service and plenty of communication. Simon delivers a high quality result."</blockquote>
-        <figcaption class="lp-review__by">
-          <cite class="lp-review__byName">Steve Roberts</cite>Google review
-        </figcaption>
-      </figure>
-
-      <figure class="lp-review">
-        <p class="lp-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
-        <blockquote class="lp-review__text">"Simon and team did an amazing job. Attention to every detail from planning to installation was fantastic. Far exceeded our expectations. We are thrilled."</blockquote>
-        <figcaption class="lp-review__by">
-          <cite class="lp-review__byName">Gerard Kennedy</cite>Google review
         </figcaption>
       </figure>
     </div>
@@ -362,48 +369,6 @@
   </div>
 </section>
 
-<!-- Mid-page call to action -->
-<section class="lp-section" aria-labelledby="lp-midcta-head">
-  <div class="lp-wrap lp-cta">
-    <h2 class="lp-h2 lp-cta__head" id="lp-midcta-head">Book your free measure &amp; quote</h2>
-    <div class="lp-cta__actions">
-      <a class="lp-btn lp-btn--call lp-btn--block" href="tel:+61478671407">
-        <svg class="lp-btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
-        Call for a free measure &amp; quote
-      </a>
-      <p class="lp-cta__note">
-        <a class="lp-textlink" href="#enquire">Prefer to type? Book online</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     OBJECTIONS — most common first.
-============================================================ -->
-<section class="lp-section lp-section--tint" aria-labelledby="lp-obj-head">
-  <div class="lp-wrap">
-    <div class="lp-section__head">
-      <h2 class="lp-h2" id="lp-obj-head">Before you call</h2>
-    </div>
-
-    <div class="lp-points">
-      <div class="lp-point">
-        <h3 class="lp-point__q">What will it cost?</h3>
-        <p class="lp-point__a">The measure and quote are free, and you'll have a written quote before anything is built. No obligation.</p>
-      </div>
-      <div class="lp-point">
-        <h3 class="lp-point__q">Can I trust you in my home?</h3>
-        <p class="lp-point__a">Family-owned, 30+ years and 500+ Melbourne projects. Rated 5.0 on Google.</p>
-      </div>
-      <div class="lp-point">
-        <h3 class="lp-point__q">How long will my kitchen be out of action?</h3>
-        <p class="lp-point__a">We build everything in our factory first, so the time in your home is mostly installation. You'll get a timeline with your quote.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============================================================
      HOW IT WORKS — numbered, because the order is the point.
 ============================================================ -->
@@ -416,19 +381,25 @@
     <div class="lp-steps">
       <div class="lp-step">
         <div>
-          <h3 class="lp-step__name">Free measure</h3>
+          <h3 class="lp-step__name">Free site measure</h3>
           <p class="lp-step__note">We come to you, measure up and talk through what you want.</p>
         </div>
       </div>
       <div class="lp-step">
         <div>
-          <h3 class="lp-step__name">Design and written quote</h3>
-          <p class="lp-step__note">You'll know exactly what you're getting and what it costs.</p>
+          <h3 class="lp-step__name">Estimated quote</h3>
+          <p class="lp-step__note">A written estimate, so you know what the project costs before anything is committed.</p>
         </div>
       </div>
       <div class="lp-step">
         <div>
-          <h3 class="lp-step__name">Made and installed</h3>
+          <h3 class="lp-step__name">Full 3D rendered design</h3>
+          <p class="lp-step__note">A 3D design, suited to the way you use the space and drawn around your needs.</p>
+        </div>
+      </div>
+      <div class="lp-step">
+        <div>
+          <h3 class="lp-step__name">Build and installation</h3>
           <p class="lp-step__note">Built in our Hallam factory, installed by our team.</p>
         </div>
       </div>
@@ -451,11 +422,17 @@
       <p class="lp-about__text">
         S&amp;A Installs &amp; Joinery is a family-owned cabinet making business in
         Hallam, run by Simon Torney. Everything we make is built in our own
-        factory, by a team with more than 60 years' combined experience.
+        factory, by a team with more than 30 years' experience.
       </p>
     </div>
 
-    <div class="lp-about__photo" data-photo data-src="" data-alt="" data-w="800" data-h="534"></div>
+    <!-- Swap this for a real photograph of Simon, the team or the Hallam
+         workshop as soon as one exists. A face earns its place here; a
+         logo is holding the space. -->
+    <div class="lp-about__logo">
+      <img class="lp-about__logoImg" src="/assets/logo.png" alt="S&amp;A Joinery"
+           width="500" height="500" loading="lazy" decoding="async">
+    </div>
   </div>
 </section>
 
@@ -518,19 +495,25 @@
 <footer class="lp-footer">
   <div class="lp-wrap">
     <p class="lp-footer__legal">
-      S&amp;A Installs &amp; Joinery · ABN 72 181 041 385 ·
-      Factory 5/19 Technology Circuit, Hallam VIC 3803 ·
+      S&amp;A Joinery · ABN 72 181 041 385 ·
+      <a class="lp-footer__map"
+         href="https://www.google.com/maps/dir/?api=1&amp;destination=Factory+5%2F19+Technology+Circuit,+Hallam+VIC+3803,+Australia"
+         target="_blank" rel="noopener noreferrer">Factory 5/19 Technology Circuit, Hallam VIC 3803</a> ·
       Mon–Fri 8am–4pm, Sat 10am–3pm ·
       © <span data-year>2026</span>
     </p>
   </div>
 </footer>
 
-<!-- Sticky call bar — below 900px only. The body reserves space for it
-     so it never covers the footer or the submit button. -->
-<div class="lp-sticky">
-  <a class="lp-btn lp-btn--call lp-sticky__btn" href="tel:+61478671407">Call 0478 671 407</a>
-  <a class="lp-btn lp-btn--ghost lp-sticky__btn" href="#enquire">Book online</a>
+<!-- The dock. Fixed to the foot of the screen at every width — the page
+     has no navigation, so this is the one piece of furniture that is
+     always there. "Book online" takes you back up to the hero form. -->
+<div class="lp-dock">
+  <div class="lp-wrap lp-dock__inner">
+    <p class="lp-dock__pitch">Free measure &amp; quote — no obligation.</p>
+    <a class="lp-btn lp-btn--call lp-dock__btn" href="tel:+61478671407">Call 0478 671 407</a>
+    <a class="lp-btn lp-btn--ghost lp-dock__btn" href="#enquire">Book online</a>
+  </div>
 </div>
 
 </body>
