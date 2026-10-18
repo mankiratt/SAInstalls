@@ -95,6 +95,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
@@ -247,6 +248,15 @@ a { color: inherit; }
 }
 .lp-btn--ghost:hover { border-color: var(--ink); }
 
+/* The same button on a dark background — cream on near-black is 16.6:1,
+   so it stays legible at any size. */
+.lp-btn--ghostDark {
+  background: transparent;
+  border-color: rgba(240, 237, 232, 0.45);
+  color: var(--hero-text);
+}
+.lp-btn--ghostDark:hover { border-color: var(--hero-text); }
+
 .lp-btn--block { display: flex; width: 100%; }
 
 .lp-btn__icon { width: 20px; height: 20px; flex: none; fill: currentColor; }
@@ -271,9 +281,21 @@ a { color: inherit; }
 /* ============================================================
    4. TOP BAR
 ============================================================ */
+/* The bar sits over the hero photograph rather than above it in its own
+   black strip, so the top of the page reads as one image. Its own
+   gradient keeps the text on something dark enough to stay legible
+   wherever the photo happens to be bright. */
 .lp-bar {
-  background: var(--ink-900);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   color: var(--hero-text);
+  background: linear-gradient(to bottom,
+    rgba(13, 13, 13, 0.92) 0%,
+    rgba(13, 13, 13, 0.72) 55%,
+    rgba(13, 13, 13, 0) 100%);
 }
 
 .lp-bar__inner {
@@ -297,11 +319,13 @@ a { color: inherit; }
   margin-right: auto;
 }
 
-.lp-bar__mark { display: flex; align-items: baseline; gap: 0.4rem; line-height: 1; }
+/* "JOINERY" sits under "S&A", the way the main site's header sets it. */
+.lp-bar__mark { display: flex; flex-direction: column; line-height: 1; }
 
 .lp-bar__markMain { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
 
 .lp-bar__markSub {
+  margin-top: 3px;
   color: var(--hero-muted);
   font-size: 0.5rem;
   font-weight: 600;
@@ -404,7 +428,7 @@ a { color: inherit; }
   width: 100%;
   /* Grows with the viewport so the photo is never a thin letterbox on a
      wide phone or a tablet. Deterministic, so it costs no layout shift. */
-  height: clamp(11.75rem, 30vw, 17rem);
+  height: clamp(14rem, 34vw, 19rem);
   overflow: hidden;
 }
 
@@ -421,8 +445,8 @@ a { color: inherit; }
   inset: 0;
   background:
     linear-gradient(to bottom,
-      rgba(13, 13, 13, 0.22) 0%,
-      rgba(13, 13, 13, 0.00) 38%,
+      rgba(13, 13, 13, 0.55) 0%,
+      rgba(13, 13, 13, 0.00) 42%,
       rgba(13, 13, 13, 0.92) 100%);
 }
 
@@ -655,6 +679,58 @@ a { color: inherit; }
 
 .lp-review__byName { display: block; color: var(--ink); font-size: 0.9375rem; }
 
+/* --- The Google mark beside a section heading --- */
+.lp-headRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.lp-headRating__google { width: 20px; height: 20px; flex: none; }
+
+.lp-headRating__stars {
+  color: var(--flame-ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lp-headRating__text { font-size: 0.9375rem; font-weight: 600; }
+
+/* --- Hardware brands ---
+   The names are set in type. Drop real logo files into /lp/img/brands/
+   and swap the <span> for an <img class="lp-brand__logo"> — the strip
+   is already sized for it. Nothing here is a placeholder graphic: a
+   brand's name in its own right is honest, a fake logo is not. */
+.lp-brands {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.lp-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: 1rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.lp-brand__name {
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.lp-brand__logo { max-width: 100%; max-height: 2.75rem; width: auto; height: auto; }
+
 /* --- Photo grid --- */
 .lp-grid {
   margin-top: 1.75rem;
@@ -744,38 +820,6 @@ a { color: inherit; }
 .lp-step__name { font-size: 1.0625rem; font-weight: 700; }
 .lp-step__note { margin-top: 0.25rem; color: var(--ink-muted); }
 
-/* --- About --- */
-.lp-about__text { max-width: var(--measure); font-size: 1.0625rem; }
-
-/* The logo fills the space beside the About copy. The panel is dark
-   because the only logo asset in the repo is white on transparent —
-   on a white card it is literally invisible. The dark panel also ties
-   this block back to the hero and the dock.
-
-   Replace it with a real photograph of Simon, the team or the Hallam
-   workshop as soon as one exists: a face does more work here than a
-   mark does. */
-.lp-about__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-  padding: 1.75rem;
-  border-radius: var(--radius-lg);
-  background: var(--ink-900);
-}
-
-/* The logo PNG is a 500x500 canvas with the mark floating in the middle
-   of a lot of transparent padding, so drawn at its natural size it is a
-   speck. Cropping to a letterbox with object-fit scales the mark up and
-   throws the padding away, without touching the asset. */
-.lp-about__logoImg {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-}
-
 /* --- FAQ --- */
 .lp-faq { display: grid; gap: 0.5rem; }
 
@@ -828,11 +872,12 @@ a { color: inherit; }
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 50;
-  padding-block: 0.55rem;
-  padding-bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(8px);
+  padding-block: 0.6rem;
+  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  /* Black, so it reads as a fixed bar and not as more page. A white
+     dock disappeared into the light sections above it. */
+  background: var(--ink-900);
+  color: var(--hero-text);
 }
 
 /* The inner element carries .lp-wrap too, so the dock's contents line
@@ -850,8 +895,6 @@ a { color: inherit; }
   font-size: var(--btn-text-size);
 }
 
-/* The line of copy only appears once there is room for it. */
-.lp-dock__pitch { display: none; }
 
 /* ============================================================
    9. FOOTER
@@ -907,7 +950,8 @@ a { color: inherit; }
     grid-template-columns: minmax(0, 1.05fr) minmax(23rem, 27rem);
     gap: 3rem;
     align-items: start;
-    padding-block: 4rem 4.5rem;
+    /* The bar floats over this, so the top padding has to clear it. */
+    padding-block: 8rem 4.5rem;
   }
 
   /* Back to a full-bleed background. The copy sits on the near-opaque
@@ -937,26 +981,20 @@ a { color: inherit; }
 
   .lp-form { margin-top: 0; padding: 1.75rem 1.6rem 2rem; }
 
-  /* On a wide screen the dock becomes a bar: the pitch on the left,
-     the two actions on the right. */
-  .lp-dock { padding-block: 0.65rem; }
+  /* On a wide screen the two actions sit together on the right. */
+  .lp-dock { padding-block: 0.7rem; }
 
   .lp-dock__inner {
     display: flex;
+    justify-content: flex-end;
     gap: 1rem;
   }
 
-  .lp-dock__pitch {
-    display: block;
-    margin-right: auto;
-    font-size: 1.0625rem;
-    font-weight: 600;
-  }
-
-  .lp-dock__btn { flex: none; padding-inline: 1.5rem; }
+  .lp-dock__btn { flex: none; padding-inline: 1.75rem; }
 
   .lp-reviews { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .lp-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  .lp-brands { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .lp-tiles { grid-template-columns: repeat(4, 1fr); }
 
   .lp-steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
@@ -964,8 +1002,6 @@ a { color: inherit; }
   .lp-cta__actions { display: flex; align-items: center; gap: 1.25rem; }
   .lp-cta__note { margin-top: 0; }
 
-  .lp-about { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
-  .lp-about__logo { margin-top: 0; padding: 2.25rem; }
 
   .lp-faq { max-width: 48rem; }
 }
@@ -974,6 +1010,7 @@ a { color: inherit; }
 @media (min-width: 600px) and (max-width: 899.98px) {
   .lp-reviews { grid-template-columns: repeat(2, 1fr); }
   .lp-grid    { grid-template-columns: repeat(3, 1fr); }
+  .lp-brands  { grid-template-columns: repeat(4, 1fr); }
   .lp-steps   { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; }
 }
 

@@ -285,6 +285,16 @@
   <div class="lp-wrap">
     <div class="lp-section__head">
       <h2 class="lp-h2" id="lp-reviews-head">Rated 5.0 on Google</h2>
+      <p class="lp-headRating">
+        <svg class="lp-headRating__google" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        <span class="lp-headRating__stars" aria-hidden="true">★★★★★</span>
+        <span class="lp-headRating__text">5.0 from our Google reviews</span>
+      </p>
     </div>
 
     <div class="lp-reviews">
@@ -370,9 +380,39 @@
 </section>
 
 <!-- ============================================================
+     HARDWARE BRANDS
+     The names are set in type, not as logo images, because no logo
+     files for these brands exist in the repo and a fabricated logo is
+     worse than no logo. Drop real files into /lp/img/brands/ and swap
+     each <span class="lp-brand__name"> for:
+       <img class="lp-brand__logo" src="/lp/img/brands/blum.svg"
+            alt="Blum" width="120" height="32" loading="lazy" decoding="async">
+     The strip is already sized for it. Note that supplier logos
+     normally come with brand guidelines about how they may be used.
+============================================================ -->
+<section class="lp-section" aria-labelledby="lp-brands-head">
+  <div class="lp-wrap">
+    <div class="lp-section__head">
+      <h2 class="lp-h2" id="lp-brands-head">The hardware we build with</h2>
+      <p class="lp-lede">
+        We only use high-quality hardware, with a range available to suit
+        your budget and what the job needs.
+      </p>
+    </div>
+
+    <ul class="lp-brands">
+      <li class="lp-brand"><span class="lp-brand__name">Blum</span></li>
+      <li class="lp-brand"><span class="lp-brand__name">H&auml;fele</span></li>
+      <li class="lp-brand"><span class="lp-brand__name">Polytec</span></li>
+      <li class="lp-brand"><span class="lp-brand__name">Cemux</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
      HOW IT WORKS — numbered, because the order is the point.
 ============================================================ -->
-<section class="lp-section" aria-labelledby="lp-how-head">
+<section class="lp-section lp-section--tint" aria-labelledby="lp-how-head">
   <div class="lp-wrap">
     <div class="lp-section__head">
       <h2 class="lp-h2" id="lp-how-head">How it works</h2>
@@ -408,35 +448,6 @@
 </section>
 
 <!-- ============================================================
-     ABOUT
-     The photo slot renders nothing until data-src is filled in with a
-     real photograph of Simon, the team or the Hallam workshop. lp.js
-     removes the empty slot rather than leaving a frame behind.
-============================================================ -->
-<section class="lp-section lp-section--tint" aria-labelledby="lp-about-head">
-  <div class="lp-wrap lp-about">
-    <div>
-      <div class="lp-section__head">
-        <h2 class="lp-h2" id="lp-about-head">Who you'll be dealing with</h2>
-      </div>
-      <p class="lp-about__text">
-        S&amp;A Installs &amp; Joinery is a family-owned cabinet making business in
-        Hallam, run by Simon Torney. Everything we make is built in our own
-        factory, by a team with more than 30 years' experience.
-      </p>
-    </div>
-
-    <!-- Swap this for a real photograph of Simon, the team or the Hallam
-         workshop as soon as one exists. A face earns its place here; a
-         logo is holding the space. -->
-    <div class="lp-about__logo">
-      <img class="lp-about__logoImg" src="/assets/logo.png" alt="S&amp;A Joinery"
-           width="500" height="500" loading="lazy" decoding="async">
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      FAQ
      Deliberately incomplete. No price list and no availability — the
      page gives enough reason to call, not an answer to everything.
@@ -455,8 +466,8 @@
 
     <div class="lp-faq">
       <details class="lp-faq__item">
-        <summary class="lp-faq__q">Is the measure and quote really free?</summary>
-        <p class="lp-faq__a">Yes. No cost and no obligation.</p>
+        <summary class="lp-faq__q">What happens at the free measure?</summary>
+        <p class="lp-faq__a">We come to you, measure the space properly and talk through how you use it. You'll get an estimated quote, and from there a full 3D design before anything is built.</p>
       </details>
 
       <details class="lp-faq__item">
@@ -465,8 +476,13 @@
       </details>
 
       <details class="lp-faq__item">
-        <summary class="lp-faq__q">How long does a kitchen take?</summary>
-        <p class="lp-faq__a">It depends on the size and finishes. We'll give you a timeline with your quote.</p>
+        <summary class="lp-faq__q">Do you make the cabinetry yourselves?</summary>
+        <p class="lp-faq__a">Yes. Everything is built to order in our own factory in Hallam and installed by our team. No flat pack and no off-the-shelf sizes.</p>
+      </details>
+
+      <details class="lp-faq__item">
+        <summary class="lp-faq__q">Can I see the design before I commit?</summary>
+        <p class="lp-faq__a">Yes. You'll have a full 3D rendered design and a written quote in hand before anything goes into production.</p>
       </details>
     </div>
   </div>
@@ -510,9 +526,8 @@
      always there. "Book online" takes you back up to the hero form. -->
 <div class="lp-dock">
   <div class="lp-wrap lp-dock__inner">
-    <p class="lp-dock__pitch">Free measure &amp; quote — no obligation.</p>
     <a class="lp-btn lp-btn--call lp-dock__btn" href="tel:+61478671407">Call 0478 671 407</a>
-    <a class="lp-btn lp-btn--ghost lp-dock__btn" href="#enquire">Book online</a>
+    <a class="lp-btn lp-btn--ghostDark lp-dock__btn" href="#enquire">Book online</a>
   </div>
 </div>
 
