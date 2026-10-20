@@ -1,0 +1,1030 @@
+/* ============================================================
+   S&A JOINERY — GOOGLE ADS LANDING PAGES
+   Shared stylesheet for /kitchens, /wardrobes and /cabinet-maker.
+   ------------------------------------------------------------
+   These pages are deliberately separate from the main site's
+   stylesheet. They have one job — produce a call or a form
+   submission — so they carry none of the main site's navigation,
+   cursor, scroll or animation machinery.
+
+   Edit here and the change reaches all three pages.
+
+   STRUCTURE
+     1. Tokens
+     2. Base
+     3. Buttons
+     4. Top bar
+     5. Hero (dark)
+     6. Form
+     7. Light body sections
+     8. Sticky mobile call bar
+     9. Footer
+    10. Desktop (>= 900px)
+
+   SELECTOR DISCIPLINE
+   Every rule below is a single class. There are no element or
+   descendant selectors that could cancel each other out, and
+   section spacing comes from one token (--section-y) applied by
+   one class (.lp-section), so no two rules ever fight over the
+   padding of a section.
+============================================================ */
+
+/* ============================================================
+   1. TOKENS
+============================================================ */
+:root {
+  /* --- Dark hero band. Taken from the main site so the pages
+         read as the same business. --- */
+  --ink-900:      #0d0d0d;   /* site background */
+  --ink-800:      #161513;
+  --hero-text:    #f0ede8;   /* site text — 16.6:1 on --ink-900 */
+  --hero-muted:   #bdb5a8;   /*  9.6:1 on --ink-900 */
+
+  /* --- Light body --- */
+  --paper:        #ffffff;
+  --paper-2:      #f7f5f1;   /* warm off-white, echoes the site's warm text */
+  --ink:          #15120f;   /* 18.7:1 on --paper */
+  --ink-muted:    #5c564d;   /*  7.3:1 on --paper */
+  --line:         #e4dfd7;
+  --line-strong:  #cfc7ba;
+
+  /* --- Brand orange ---
+     --flame is the brand value. It is 3.76:1 on white, so it is only
+     ever used for button backgrounds carrying large bold white text
+     (see --btn-text-size) and for non-text accents.
+     --flame-ink is the darkened version for small orange text:
+     5.2:1 on --paper and 4.8:1 on --paper-2, both clearing AA. */
+  --flame:        #E8500A;
+  --flame-hover:  #FF6A2E;   /* the main site's hover value */
+  --flame-ink:    #C23F00;
+  --flame-soft:   rgba(232, 80, 10, 0.08);
+
+  /* --- Type ---
+     Outfit is the main site's body face. Only 400/600/700 are loaded. */
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+
+  /* Only the wordmark uses these two, matching the main site's header
+     exactly. Nothing else on the page pulls them in. */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-mono:    'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* 19px keeps white-on-orange button text inside WCAG's large-text
+     rule (>= 18.66px bold needs 3:1, and we have 3.76:1). Do not
+     lower this without darkening --flame. */
+  --btn-text-size: 1.1875rem;
+
+  /* --- Space --- */
+  --section-y:    3.25rem;   /* vertical padding on every .lp-section */
+  --gutter:       1.25rem;   /* page side gutter on mobile */
+  --measure:      34rem;     /* readable line length */
+
+  --radius:       10px;
+  --radius-lg:    16px;
+
+  --tap:          44px;      /* minimum tap target */
+  --bar-h:        4.75rem;   /* sticky call bar height, mobile */
+
+  --ease:         0.18s ease;
+}
+
+/* ============================================================
+   2. BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor targets clear the sticky bar and leave breathing room. */
+  scroll-padding-top: 1.5rem;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1rem;          /* 16px — stops iOS zooming form fields */
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+
+  /* Room for the sticky call bar so it never covers the footer.
+     Removed at >= 900px where the bar is hidden. */
+  padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom, 0px));
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 { margin: 0; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
+p  { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--flame);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Visible to screen readers, invisible on screen. Used for the
+   honeypot, so it stays in the layout and in the accessibility tree
+   rather than being display:none, which bots detect. */
+.lp-vh {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lp-wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.lp-section { padding-block: var(--section-y); }
+.lp-section--tint { background: var(--paper-2); }
+
+/* The closing ask returns to the hero's dark band, so the last thing
+   on the page carries the same weight as the first. Text colour is
+   inherited, so nothing inside needs a descendant override. */
+.lp-section--dark { background: var(--ink-900); color: var(--hero-text); }
+
+.lp-section__head { margin-bottom: 1.75rem; }
+
+/* Every section heading carries a short orange bar beneath it. It is
+   the one repeating device that marks where one block ends and the
+   next begins, so the page reads as sections rather than as a wall
+   of text. One rule, so the bar can never fall out of step. */
+.lp-h2 {
+  font-size: clamp(1.5rem, 5.5vw, 2rem);
+  letter-spacing: -0.025em;
+}
+
+.lp-h2::after {
+  content: "";
+  display: block;
+  width: 3.25rem;
+  height: 4px;
+  margin-top: 0.75rem;
+  border-radius: 2px;
+  background: var(--flame);
+}
+
+.lp-lede {
+  margin-top: 0.9rem;
+  max-width: var(--measure);
+  color: var(--ink-muted);
+  font-size: 1.0625rem;
+}
+
+/* ============================================================
+   3. BUTTONS
+============================================================ */
+.lp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 54px;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: var(--btn-text-size);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--ease), border-color var(--ease),
+              transform var(--ease);
+}
+
+.lp-btn--call {
+  position: relative;
+  overflow: hidden;
+  background: var(--flame);
+  color: #ffffff;           /* 3.76:1 — inside AA large-text at 19px/700 */
+}
+.lp-btn--call:hover { background: var(--flame-hover); }
+.lp-btn--call:active { transform: translateY(1px); }
+
+/* A light sweeps across the orange buttons on hover. Transform and
+   opacity only, and the reduced-motion block at the foot of this file
+   stills it for anyone who asks for that. */
+.lp-btn--call::after,
+.lp-bar__call::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-180%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.lp-btn--call:hover::after,
+.lp-bar__call:hover::after {
+  transform: translateX(320%) skewX(-18deg);
+  transition: transform 0.65s ease;
+}
+
+.lp-btn--ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.lp-btn--ghost:hover { border-color: var(--ink); }
+
+/* The same button on a dark background — cream on near-black is 16.6:1,
+   so it stays legible at any size. */
+.lp-btn--ghostDark {
+  background: transparent;
+  border-color: rgba(240, 237, 232, 0.45);
+  color: var(--hero-text);
+}
+.lp-btn--ghostDark:hover { border-color: var(--hero-text); }
+
+.lp-btn--block { display: flex; width: 100%; }
+
+.lp-btn__icon { width: 20px; height: 20px; flex: none; fill: currentColor; }
+
+/* "Prefer to type? Book online" — a text link, not a button, so it
+   never competes with the call. Underlined so it reads as a link
+   without relying on colour alone. */
+.lp-textlink {
+  display: inline-block;
+  min-height: var(--tap);
+  padding-block: 0.6rem;
+  color: var(--flame-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lp-textlink:hover { color: var(--ink); }
+
+.lp-textlink--onDark { color: var(--hero-text); }
+.lp-textlink--onDark:hover { color: var(--flame-hover); }
+
+/* ============================================================
+   4. TOP BAR
+============================================================ */
+/* The bar sits over the hero photograph rather than above it in its own
+   black strip, so the top of the page reads as one image. Its own
+   gradient keeps the text on something dark enough to stay legible
+   wherever the photo happens to be bright. */
+.lp-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: var(--hero-text);
+  background: linear-gradient(to bottom,
+    rgba(13, 13, 13, 0.92) 0%,
+    rgba(13, 13, 13, 0.72) 55%,
+    rgba(13, 13, 13, 0) 100%);
+}
+
+.lp-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 64px;
+  padding-block: 0.5rem;
+}
+
+/* The wordmark, set the way the main site's own header sets it —
+   "S&A" over a letterspaced "JOINERY". It is a <p>, not a link.
+   (The site's header uses Cormorant and DM Mono for these two lines.
+   Only Outfit is loaded here, so the lockup is rebuilt in Outfit
+   rather than pulling two more font families onto an ad page.) */
+.lp-bar__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+  margin-right: auto;
+}
+
+/* "JOINERY" sits under "S&A", the way the main site's header sets it. */
+.lp-bar__mark { display: flex; flex-direction: column; line-height: 1; }
+
+.lp-bar__markMain {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.lp-bar__markSub {
+  margin-top: 2px;
+  align-self: center;
+  color: var(--hero-muted);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+
+/* The Google rating badge. The G is Google's own mark in its own
+   colours, so the rating reads as Google's and not as a claim the
+   page is making about itself. */
+.lp-bar__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.lp-bar__google { width: 15px; height: 15px; flex: none; }
+
+/* The glyphs are hidden below 900px. "Rated 5.0 Stars on Google" already
+   says it in words, and the ~45px they take is the difference between
+   the call button showing the phone number and showing "Call". */
+.lp-bar__stars {
+  display: none;
+  color: var(--flame);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.lp-bar__ratingText {
+  color: var(--hero-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lp-bar__count {
+  color: var(--hero-muted);
+  font-size: 0.6875rem;
+}
+
+/* Solid brand orange, like every other call button on the page. The
+   label is 19px/700 so white-on-#E8500A stays inside WCAG's large-text
+   rule — do not shrink it without darkening the fill. */
+.lp-bar__call {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: none;
+  min-height: var(--tap);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius);
+  background: var(--flame);
+  color: #ffffff;
+  font-size: var(--btn-text-size);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lp-bar__icon { width: 19px; height: 19px; flex: none; fill: currentColor; }
+
+/* On the narrowest phones the digits give way to the word, because the
+   wordmark and the Google badge come first. The full number is always
+   one tap away in the dock at the foot of the screen. */
+.lp-bar__callFull { display: none; }
+
+@media (min-width: 400px) {
+  .lp-bar__callFull { display: inline; }
+  .lp-bar__callShort { display: none; }
+}
+
+/* ============================================================
+   5. HERO
+============================================================ */
+/* No `overflow: hidden` here, deliberately. An overflow-hidden ancestor
+   becomes the scroll container for anything inside it, and the form is
+   inside it — which silently breaks every "Book online" link, because
+   the browser scrolls this box instead of the page. The clipping the
+   hero photo needs is done on .lp-hero__media instead. */
+.lp-hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--ink-900);   /* the real computed background behind the
+                                   hero text, scrim or no scrim */
+  color: var(--hero-text);
+}
+
+/* On a phone the photograph gets a band of its own rather than sitting
+   behind the words. A scrim heavy enough to keep cream text at 16:1
+   over white subway tiles would have hidden the kitchen completely,
+   and the kitchen is the reason the page works. So: photo on top,
+   words on solid --ink-900 below it, and both are at full strength.
+   At 900px and up it becomes a background again — see the media query
+   at the end of this file, where there is room for the text to sit on
+   the dark side of a directional gradient. */
+.lp-hero__media {
+  position: relative;
+  width: 100%;
+  /* Grows with the viewport so the photo is never a thin letterbox on a
+     wide phone or a tablet. Deterministic, so it costs no layout shift. */
+  height: clamp(14rem, 34vw, 19rem);
+  overflow: hidden;
+}
+
+/* The rotation works the way the main site's hero does: the slides are
+   stacked, only one carries .is-active, and lp.js moves the class on a
+   6s interval with a 1.8s cross-fade and a slow drift. The difference is
+   that these are <img> elements rather than CSS backgrounds, so the
+   first slide can still be preloaded with srcset and stay the LCP
+   element. */
+.lp-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  animation: lpHeroDrift 22s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* The first slide is visible before JavaScript runs, so a blocked or
+   failed script leaves a still hero rather than a blank band. */
+.lp-hero__img:first-of-type,
+.lp-hero__img.is-active { opacity: 1; }
+
+@keyframes lpHeroDrift {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
+}
+
+/* Fades the foot of the photo into the copy block below it. */
+.lp-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(13, 13, 13, 0.55) 0%,
+      rgba(13, 13, 13, 0.00) 42%,
+      rgba(13, 13, 13, 0.92) 100%);
+}
+
+.lp-hero__inner { position: relative; padding-block: 1.5rem 2.5rem; }
+
+.lp-eyebrow {
+  margin: 0 0 0.8rem;
+  line-height: 1.35;
+  color: var(--flame);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lp-h1 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 8.5vw, 3.25rem);
+  letter-spacing: -0.035em;
+}
+
+.lp-hero__sub {
+  margin-top: 1.1rem;
+  max-width: var(--measure);
+  color: var(--hero-muted);
+  font-size: 1.0625rem;
+}
+
+.lp-benefits {
+  margin-top: 1.35rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.lp-benefit {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.lp-benefit__tick { width: 22px; height: 22px; margin-top: 1px; fill: var(--flame); }
+
+.lp-hero__actions { margin-top: 1.5rem; }
+.lp-hero__actionsNote { margin-top: 0.35rem; }
+
+/* ============================================================
+   6. FORM
+   Rendered once per page. On mobile it sits here, directly after
+   the hero's call-to-action. On desktop it moves into the hero's
+   right-hand column — same element, no duplicate in the DOM.
+============================================================ */
+.lp-form {
+  margin-top: 2rem;
+  padding: 1.5rem 1.25rem 1.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.75);
+  scroll-margin-top: 1rem;
+}
+
+.lp-form__head { font-size: 1.375rem; letter-spacing: -0.025em; }
+
+.lp-form__intro {
+  margin-top: 0.4rem;
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.lp-field { margin-top: 1.1rem; }
+
+.lp-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.lp-input,
+.lp-select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1rem;         /* 16px minimum — stops iOS zoom on focus */
+  line-height: 1.4;
+  transition: border-color var(--ease);
+}
+
+.lp-select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%235c564d' d='M1.4 0 6 4.6 10.6 0 12 1.4 6 7.4 0 1.4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 12px 8px;
+}
+
+.lp-input:hover, .lp-select:hover { border-color: var(--ink-muted); }
+.lp-input:focus, .lp-select:focus { border-color: var(--flame-ink); }
+
+.lp-input[aria-invalid="true"],
+.lp-select[aria-invalid="true"] { border-color: #B3261E; }
+
+.lp-error {
+  display: block;
+  min-height: 0;
+  margin-top: 0.3rem;
+  color: #B3261E;          /* 6.1:1 on white */
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.lp-form__submit { margin-top: 1.5rem; }
+
+.lp-form__submit[disabled] {
+  background: var(--flame-ink);
+  cursor: progress;
+}
+
+.lp-form__privacy {
+  margin-top: 0.9rem;
+  color: var(--ink-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Replaces the form on a successful send. */
+.lp-form__done { padding-block: 0.5rem; }
+
+.lp-form__doneIcon {
+  width: 44px; height: 44px;
+  margin-bottom: 0.85rem;
+  fill: var(--flame);
+}
+
+.lp-form__doneText {
+  margin-top: 0.6rem;
+  color: var(--ink-muted);
+  font-size: 1rem;
+}
+
+/* Shown when the request fails. The visitor's answers stay put. */
+.lp-form__fail {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #B3261E;
+  border-radius: var(--radius);
+  background: #fdf3f2;
+  color: #8C1D18;          /* 7.4:1 on #fdf3f2 */
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.lp-form__failLink { color: inherit; font-weight: 700; }
+
+/* ============================================================
+   7. LIGHT BODY SECTIONS
+============================================================ */
+
+/* --- Reviews --- */
+.lp-reviews { display: grid; gap: 1rem; }
+
+.lp-review {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.lp-review__stars {
+  color: var(--flame-ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.lp-review__text {
+  margin: 0.6rem 0 0;
+  font-size: 1.0625rem;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+/* One of the Google reviews runs to 150 words. It is quoted in full —
+   trimming someone's review and still attributing it to them is not on —
+   but on a phone it would otherwise be a 700px wall of text in the middle
+   of the page. lp.js clamps anything over seven lines and adds a toggle.
+   With JavaScript off the clamp is never applied and the full review
+   shows, which is the right way round. */
+.lp-review__text--clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lp-review__more {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0;
+  min-height: var(--tap);
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--flame-ink);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lp-review__more:hover { color: var(--ink); }
+
+.lp-review__by {
+  margin-top: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--ink-muted);
+}
+
+.lp-review__byName { display: block; color: var(--ink); font-size: 0.9375rem; }
+
+/* --- The Google mark beside a section heading --- */
+.lp-headRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.lp-headRating__google { width: 20px; height: 20px; flex: none; }
+
+.lp-headRating__stars {
+  color: var(--flame-ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lp-headRating__text { font-size: 0.9375rem; font-weight: 600; }
+
+/* --- Photo grid --- */
+.lp-grid {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.lp-grid__img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+
+/* --- Service tiles (cabinet-maker page) --- */
+.lp-tiles {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.lp-tile {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.lp-tile__img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+.lp-tile__body { padding: 0.75rem 0.85rem 0.95rem; }
+.lp-tile__name { font-size: 1rem; font-weight: 700; }
+.lp-tile__note { margin-top: 0.15rem; color: var(--ink-muted); font-size: 0.875rem; }
+
+.lp-suburbs {
+  margin-top: 1.5rem;
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+/* --- Mid-page and final call-to-action --- */
+.lp-cta { text-align: left; }
+
+.lp-cta__head {
+  max-width: 20ch;
+  font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+  letter-spacing: -0.025em;
+}
+
+.lp-cta__actions { margin-top: 1.35rem; }
+.lp-cta__note { margin-top: 0.35rem; }
+
+/* --- How it works --- */
+
+/* The three steps ARE a sequence — the number carries real
+   information about the order things happen in, so it is numbered. */
+.lp-steps {
+  display: grid;
+  gap: 1.5rem;
+  counter-reset: lp-step;
+}
+
+.lp-step {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0.9rem;
+  counter-increment: lp-step;
+}
+
+.lp-step::before {
+  content: counter(lp-step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--flame-soft);
+  color: var(--flame-ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.lp-step__name { font-size: 1.0625rem; font-weight: 700; }
+.lp-step__note { margin-top: 0.25rem; color: var(--ink-muted); }
+
+/* --- FAQ --- */
+.lp-faq { display: grid; gap: 0.5rem; }
+
+.lp-faq__item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.lp-faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--tap);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.lp-faq__q::-webkit-details-marker { display: none; }
+
+.lp-faq__q::after {
+  content: "";
+  width: 12px; height: 8px;
+  flex: none;
+  background: var(--ink-muted);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  transition: transform var(--ease);
+}
+
+.lp-faq__item[open] .lp-faq__q::after { transform: rotate(180deg); }
+
+.lp-faq__a {
+  padding: 0 1rem 1rem;
+  max-width: var(--measure);
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   8. THE DOCK — fixed call-to-action bar
+   Present at every width, not just on phones: the page has no
+   navigation, so this is the one piece of furniture that is always
+   on screen. The page reserves --bar-h of bottom padding (see body)
+   so the dock never covers the footer or the submit button.
+============================================================ */
+.lp-dock {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  padding-block: 0.6rem;
+  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  /* Black, so it reads as a fixed bar and not as more page. A white
+     dock disappeared into the light sections above it. */
+  background: var(--ink-900);
+  color: var(--hero-text);
+}
+
+/* The inner element carries .lp-wrap too, so the dock's contents line
+   up with the top bar and every section above it. Equal columns, so the
+   two actions read as a balanced pair rather than one leading the other. */
+.lp-dock__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.lp-dock__btn {
+  min-height: var(--tap);
+  padding: 0.6rem 0.75rem;
+  font-size: var(--btn-text-size);
+}
+
+
+/* ============================================================
+   9. FOOTER
+============================================================ */
+.lp-footer {
+  padding-block: 1.75rem 2rem;
+  border-top: 1px solid var(--line);
+  background: var(--paper-2);
+}
+
+.lp-footer__legal {
+  color: var(--ink-muted);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+/* The only link on these pages that leaves the page. It opens the
+   address in Google Maps, which is what someone checking a local trade
+   actually wants, so it earns the exception. */
+.lp-footer__map {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.lp-footer__map:hover { color: var(--flame-ink); }
+
+/* ============================================================
+   10. DESKTOP — 900px and up
+   The form moves into the hero's right-hand column, the sticky bar
+   goes away, and the phone lives in the top bar.
+============================================================ */
+@media (min-width: 900px) {
+  :root {
+    --section-y: 4.5rem;
+    --gutter: 2rem;
+    --bar-h: 4.25rem;
+  }
+
+  .lp-bar__inner { min-height: 76px; gap: 1.5rem; }
+  .lp-bar__left { flex-direction: row; align-items: center; gap: 1.25rem; }
+  .lp-bar__markMain { font-size: 2rem; }
+  .lp-bar__google { width: 18px; height: 18px; }
+  .lp-bar__stars { display: inline; font-size: 0.9375rem; }
+  .lp-bar__ratingText { font-size: 0.9375rem; }
+  .lp-bar__count { font-size: 0.8125rem; }
+  .lp-bar__call { padding: 0.65rem 1.25rem; }
+  .lp-bar__icon { width: 21px; height: 21px; }
+
+  .lp-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(23rem, 27rem);
+    gap: 3rem;
+    align-items: start;
+    /* The bar floats over this, so the top padding has to clear it. */
+    padding-block: 8rem 4.5rem;
+  }
+
+  /* Back to a full-bleed background. The copy sits on the near-opaque
+     left end of the gradient; the right end stays light enough to show
+     the kitchen around the white form card. */
+  .lp-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    height: auto;
+  }
+
+  .lp-hero__img { object-position: center 48%; }
+
+  .lp-hero__scrim {
+    background:
+      linear-gradient(100deg,
+        rgba(13, 13, 13, 0.96) 0%,
+        rgba(13, 13, 13, 0.93) 40%,
+        rgba(13, 13, 13, 0.45) 100%);
+  }
+
+  /* The phone is in the top bar on desktop, and the form is right
+     here, so the hero's own call button and "book online" link have
+     nothing left to do. */
+  .lp-hero__actions { display: none; }
+
+  .lp-form { margin-top: 0; padding: 1.75rem 1.6rem 2rem; }
+
+  /* On a wide screen the two actions sit together in the middle. */
+  .lp-dock { padding-block: 0.7rem; }
+
+  .lp-dock__inner {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .lp-dock__btn { flex: none; padding-inline: 1.75rem; }
+
+  .lp-reviews { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .lp-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  .lp-tiles { grid-template-columns: repeat(4, 1fr); }
+
+  .lp-steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+
+  .lp-cta__actions { display: flex; align-items: center; gap: 1.25rem; }
+  .lp-cta__note { margin-top: 0; }
+
+
+  .lp-faq { max-width: 48rem; }
+}
+
+/* A middle width where three review columns are cramped but two work. */
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .lp-reviews { grid-template-columns: repeat(2, 1fr); }
+  .lp-grid    { grid-template-columns: repeat(3, 1fr); }
+  .lp-steps   { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  /* lp.js also stops advancing the slides; this stills the drift. */
+  .lp-hero__img { animation: none; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
