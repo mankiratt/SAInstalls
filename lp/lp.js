@@ -135,6 +135,39 @@
   }
 
   /* ==========================================================
+     HERO SLIDESHOW
+     The same approach the main site's hero uses: the slides are
+     stacked, one carries the active class, and the class moves on an
+     interval while CSS does the cross-fade.
+
+     Two differences. The first slide starts visible from CSS, so a
+     blocked script leaves a still hero rather than an empty band. And
+     nothing starts until that first slide has actually painted, so the
+     rotation never competes with it for bandwidth.
+  ========================================================== */
+  function initHeroSlides() {
+    var slides = $$('.lp-hero__img');
+    if (slides.length < 2) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var HOLD = 6000;
+    var current = 0;
+
+    slides[0].classList.add('is-active');
+
+    function advance() {
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }
+
+    var start = function () { setInterval(advance, HOLD); };
+    if (slides[0].complete) start();
+    else slides[0].addEventListener('load', start, { once: true });
+  }
+
+  /* ==========================================================
      SMALL PAGE FURNITURE
   ========================================================== */
   function initChrome() {
@@ -325,6 +358,7 @@
   /* ==========================================================
      GO
   ========================================================== */
+  initHeroSlides();
   initChrome();
   initForm();
 

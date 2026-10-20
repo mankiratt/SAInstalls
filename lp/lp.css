@@ -64,6 +64,11 @@
   --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
           'Helvetica Neue', Arial, sans-serif;
 
+  /* Only the wordmark uses these two, matching the main site's header
+     exactly. Nothing else on the page pulls them in. */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-mono:    'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
   /* 19px keeps white-on-orange button text inside WCAG's large-text
      rule (>= 18.66px bold needs 3:1, and we have 3.76:1). Do not
      lower this without darkening --flame. */
@@ -322,14 +327,21 @@ a { color: inherit; }
 /* "JOINERY" sits under "S&A", the way the main site's header sets it. */
 .lp-bar__mark { display: flex; flex-direction: column; line-height: 1; }
 
-.lp-bar__markMain { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
+.lp-bar__markMain {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
 
 .lp-bar__markSub {
-  margin-top: 3px;
+  margin-top: 2px;
+  align-self: center;
   color: var(--hero-muted);
-  font-size: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
 }
 
 /* The Google rating badge. The G is Google's own mark in its own
@@ -432,11 +444,33 @@ a { color: inherit; }
   overflow: hidden;
 }
 
+/* The rotation works the way the main site's hero does: the slides are
+   stacked, only one carries .is-active, and lp.js moves the class on a
+   6s interval with a 1.8s cross-fade and a slow drift. The difference is
+   that these are <img> elements rather than CSS backgrounds, so the
+   first slide can still be preloaded with srcset and stay the LCP
+   element. */
 .lp-hero__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 52%;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  animation: lpHeroDrift 22s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* The first slide is visible before JavaScript runs, so a blocked or
+   failed script leaves a still hero rather than a blank band. */
+.lp-hero__img:first-of-type,
+.lp-hero__img.is-active { opacity: 1; }
+
+@keyframes lpHeroDrift {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
 }
 
 /* Fades the foot of the photo into the copy block below it. */
@@ -698,40 +732,6 @@ a { color: inherit; }
 
 .lp-headRating__text { font-size: 0.9375rem; font-weight: 600; }
 
-/* --- Hardware brands ---
-   The names are set in type. Drop real logo files into /lp/img/brands/
-   and swap the <span> for an <img class="lp-brand__logo"> — the strip
-   is already sized for it. Nothing here is a placeholder graphic: a
-   brand's name in its own right is honest, a fake logo is not. */
-/* auto-fit, so adding or removing a brand needs no change here. */
-.lp-brands {
-  margin-top: 1.75rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: 0.75rem;
-}
-
-.lp-brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 5rem;
-  padding: 1rem 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--paper);
-}
-
-.lp-brand__name {
-  color: var(--ink);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-align: center;
-}
-
-.lp-brand__logo { max-width: 100%; max-height: 2.75rem; width: auto; height: auto; }
-
 /* --- Photo grid --- */
 .lp-grid {
   margin-top: 1.75rem;
@@ -938,8 +938,7 @@ a { color: inherit; }
 
   .lp-bar__inner { min-height: 76px; gap: 1.5rem; }
   .lp-bar__left { flex-direction: row; align-items: center; gap: 1.25rem; }
-  .lp-bar__markMain { font-size: 1.75rem; }
-  .lp-bar__markSub { font-size: 0.5625rem; }
+  .lp-bar__markMain { font-size: 2rem; }
   .lp-bar__google { width: 18px; height: 18px; }
   .lp-bar__stars { display: inline; font-size: 0.9375rem; }
   .lp-bar__ratingText { font-size: 0.9375rem; }
@@ -996,7 +995,6 @@ a { color: inherit; }
 
   .lp-reviews { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .lp-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
-  .lp-brands { gap: 1rem; }
   .lp-tiles { grid-template-columns: repeat(4, 1fr); }
 
   .lp-steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
@@ -1020,6 +1018,9 @@ a { color: inherit; }
 ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+
+  /* lp.js also stops advancing the slides; this stills the drift. */
+  .lp-hero__img { animation: none; }
 
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

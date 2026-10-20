@@ -59,7 +59,7 @@
      pages actually use are requested. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Mono:wght@400&family=Outfit:wght@400;600;700&display=swap">
 
 <link rel="stylesheet" href="/lp/lp.css">
 <script src="/lp/lp.js" defer></script>
@@ -119,6 +119,18 @@
                  /lp/img/hero-cabinet-maker-1440.webp 1440w"
          sizes="100vw" width="1440" height="960" fetchpriority="high" decoding="async"
          alt="White handleless kitchen with a dark benchtop, built-in oven cabinet and a black mixer tap">
+    <img class="lp-hero__img"
+         src="/lp/img/hero-cabinet-maker-b-800.webp"
+         srcset="/lp/img/hero-cabinet-maker-b-640.webp 640w,
+                 /lp/img/hero-cabinet-maker-b-800.webp 800w"
+         sizes="100vw" width="800" height="543"
+         loading="lazy" fetchpriority="low" decoding="async" alt="">
+    <img class="lp-hero__img"
+         src="/lp/img/hero-cabinet-maker-c-800.webp"
+         srcset="/lp/img/hero-cabinet-maker-c-640.webp 640w,
+                 /lp/img/hero-cabinet-maker-c-800.webp 800w"
+         sizes="100vw" width="800" height="533"
+         loading="lazy" fetchpriority="low" decoding="async" alt="">
     <div class="lp-hero__scrim" aria-hidden="true"></div>
   </div>
 
@@ -375,53 +387,9 @@
 </section>
 
 <!-- ============================================================
-     HARDWARE BRANDS
-     The names are set in type, not as logo images, because no logo
-     files for these brands exist in the repo and a fabricated logo is
-     worse than no logo. Drop real files into /lp/img/brands/ and swap
-     each <span class="lp-brand__name"> for:
-       <img class="lp-brand__logo" src="/lp/img/brands/blum.svg"
-            alt="Blum" width="120" height="32" loading="lazy" decoding="async">
-     The strip is already sized for it. Note that supplier logos
-     normally come with brand guidelines about how they may be used.
-============================================================ -->
-<section class="lp-section" aria-labelledby="lp-brands-head">
-  <div class="lp-wrap">
-    <div class="lp-section__head">
-      <h2 class="lp-h2" id="lp-brands-head">The hardware we build with</h2>
-      <p class="lp-lede">
-        We only use high-quality hardware, with a range available to suit
-        your budget and what the job needs.
-      </p>
-    </div>
-
-    <!-- TO ADD A REAL LOGO
-         Put the transparent PNG (or SVG) in /lp/img/brands/ and replace
-         that brand's <span> with:
-
-           <img class="lp-brand__logo" src="/lp/img/brands/blum.png"
-                alt="Blum" width="160" height="44"
-                loading="lazy" decoding="async">
-
-         The tile is already sized for it. See /lp/img/brands/README.md.
-
-         TO ADD A BRAND
-         Copy a <li>. The grid is auto-fit, so the row re-flows on its
-         own and nothing in lp.css needs touching. -->
-    <ul class="lp-brands">
-      <li class="lp-brand"><span class="lp-brand__name">Blum</span></li>
-      <li class="lp-brand"><span class="lp-brand__name">H&auml;fele</span></li>
-      <li class="lp-brand"><span class="lp-brand__name">Harn</span></li>
-      <li class="lp-brand"><span class="lp-brand__name">Polytec</span></li>
-      <li class="lp-brand"><span class="lp-brand__name">Cemux</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================================================
      HOW IT WORKS — numbered, because the order is the point.
 ============================================================ -->
-<section class="lp-section lp-section--tint" aria-labelledby="lp-how-head">
+<section class="lp-section" aria-labelledby="lp-how-head">
   <div class="lp-wrap">
     <div class="lp-section__head">
       <h2 class="lp-h2" id="lp-how-head">How it works</h2>
@@ -467,7 +435,7 @@
          <p class="lp-faq__a">ANSWER NEEDED FROM SIMON</p>
        </details>
 ============================================================ -->
-<section class="lp-section" aria-labelledby="lp-faq-head">
+<section class="lp-section lp-section--tint" aria-labelledby="lp-faq-head">
   <div class="lp-wrap">
     <div class="lp-section__head">
       <h2 class="lp-h2" id="lp-faq-head">Questions people ask</h2>

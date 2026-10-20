@@ -78,6 +78,16 @@ const SOURCES = [
     out: 'hero-cabinet-maker',
     quality: 80,
   },
+
+  /* The second and third slides in each hero's rotation. The first slide
+     is the one above: it is preloaded and is the LCP element, so it is
+     listed first and kept first in the markup. */
+  { page: 'kitchens slide b',      src: 'heroimage1-1600.webp', out: 'hero-kitchens-b',      quality: 80 },
+  { page: 'kitchens slide c',      src: 'heroimage3-1600.webp', out: 'hero-kitchens-c',      quality: 80 },
+  { page: 'wardrobes slide b',     src: 'wadrobe6.webp',        out: 'hero-wardrobes-b',     quality: 82 },
+  { page: 'wardrobes slide c',     src: 'wadrobe3.webp',        out: 'hero-wardrobes-c',     quality: 82 },
+  { page: 'cabinet-maker slide b', src: 'wadrobe1.webp',        out: 'hero-cabinet-maker-b', quality: 82 },
+  { page: 'cabinet-maker slide c', src: 'living6.webp',         out: 'hero-cabinet-maker-c', quality: 82 },
 ];
 
 /* ------------------------------------------------------------------ */
