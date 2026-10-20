@@ -703,10 +703,11 @@ a { color: inherit; }
    and swap the <span> for an <img class="lp-brand__logo"> — the strip
    is already sized for it. Nothing here is a placeholder graphic: a
    brand's name in its own right is honest, a fake logo is not. */
+/* auto-fit, so adding or removing a brand needs no change here. */
 .lp-brands {
   margin-top: 1.75rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 0.75rem;
 }
 
@@ -881,11 +882,12 @@ a { color: inherit; }
 }
 
 /* The inner element carries .lp-wrap too, so the dock's contents line
-   up with the top bar and every section above it. */
+   up with the top bar and every section above it. Equal columns, so the
+   two actions read as a balanced pair rather than one leading the other. */
 .lp-dock__inner {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
   align-items: center;
 }
 
@@ -981,12 +983,12 @@ a { color: inherit; }
 
   .lp-form { margin-top: 0; padding: 1.75rem 1.6rem 2rem; }
 
-  /* On a wide screen the two actions sit together on the right. */
+  /* On a wide screen the two actions sit together in the middle. */
   .lp-dock { padding-block: 0.7rem; }
 
   .lp-dock__inner {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1rem;
   }
 
@@ -994,7 +996,7 @@ a { color: inherit; }
 
   .lp-reviews { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .lp-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
-  .lp-brands { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .lp-brands { gap: 1rem; }
   .lp-tiles { grid-template-columns: repeat(4, 1fr); }
 
   .lp-steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
@@ -1010,7 +1012,6 @@ a { color: inherit; }
 @media (min-width: 600px) and (max-width: 899.98px) {
   .lp-reviews { grid-template-columns: repeat(2, 1fr); }
   .lp-grid    { grid-template-columns: repeat(3, 1fr); }
-  .lp-brands  { grid-template-columns: repeat(4, 1fr); }
   .lp-steps   { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; }
 }
 

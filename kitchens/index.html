@@ -180,28 +180,10 @@
 
       <div class="lp-field">
         <label class="lp-label" for="lp-suburb">Your suburb</label>
+        <!-- Plain text, no suggestion list. autocomplete is kept so the
+             browser's own saved-address fill still offers a suburb. -->
         <input class="lp-input" id="lp-suburb" name="suburb" type="text" required
-               list="lp-suburbs" autocomplete="address-level2"
-               aria-describedby="lp-err-suburb">
-        <datalist id="lp-suburbs">
-          <option value="Hallam"></option>
-          <option value="Berwick"></option>
-          <option value="Narre Warren"></option>
-          <option value="Narre Warren North"></option>
-          <option value="Narre Warren South"></option>
-          <option value="Clyde North"></option>
-          <option value="Clyde"></option>
-          <option value="Cranbourne"></option>
-          <option value="Cranbourne East"></option>
-          <option value="Officer"></option>
-          <option value="Pakenham"></option>
-          <option value="Beaconsfield"></option>
-          <option value="Endeavour Hills"></option>
-          <option value="Dandenong"></option>
-          <option value="Doveton"></option>
-          <option value="Hampton Park"></option>
-          <option value="Lynbrook"></option>
-        </datalist>
+               autocomplete="address-level2" aria-describedby="lp-err-suburb">
         <span class="lp-error" id="lp-err-suburb" data-error="suburb" role="alert"></span>
       </div>
 
@@ -400,9 +382,23 @@
       </p>
     </div>
 
+    <!-- TO ADD A REAL LOGO
+         Put the transparent PNG (or SVG) in /lp/img/brands/ and replace
+         that brand's <span> with:
+
+           <img class="lp-brand__logo" src="/lp/img/brands/blum.png"
+                alt="Blum" width="160" height="44"
+                loading="lazy" decoding="async">
+
+         The tile is already sized for it. See /lp/img/brands/README.md.
+
+         TO ADD A BRAND
+         Copy a <li>. The grid is auto-fit, so the row re-flows on its
+         own and nothing in lp.css needs touching. -->
     <ul class="lp-brands">
       <li class="lp-brand"><span class="lp-brand__name">Blum</span></li>
       <li class="lp-brand"><span class="lp-brand__name">H&auml;fele</span></li>
+      <li class="lp-brand"><span class="lp-brand__name">Harn</span></li>
       <li class="lp-brand"><span class="lp-brand__name">Polytec</span></li>
       <li class="lp-brand"><span class="lp-brand__name">Cemux</span></li>
     </ul>
